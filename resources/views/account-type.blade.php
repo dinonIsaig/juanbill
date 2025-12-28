@@ -33,7 +33,7 @@
             <a href="{{ route('user.sign-up') }}" class="block">
                 <button class="user-btn w-full text-lg font-semibold">User</button>
             </a>
-            <a href="">
+            <a href="{{ route('admin.log-in') }}" class="block">
                 <button class="admin-btn w-full text-lg font-semibold">Admin</button>
             </a>
         </div>

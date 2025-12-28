@@ -43,10 +43,10 @@
                     <input class="input-field" type="text" name="username" placeholder="Enter your username" required>
                 </div>
 
-                <!-- Unit Number -->
+                <!-- Admin ID -->
                 <div>
                     <label class="input-label">Admin ID</label>
-                    <input class="input-field" type="text" name="unit_number" placeholder="Enter your Admin ID" required>
+                    <input class="input-field" type="text" name="admin_id" placeholder="Enter your admin id" required>
                 </div>
 
                 <!-- Password -->

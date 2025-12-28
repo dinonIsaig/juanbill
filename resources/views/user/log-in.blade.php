@@ -22,11 +22,10 @@
     <div class="flex flex-col justify-center items center w-full p-5">
         <div class="flex justify-center flex-col items-center max-w-md mx-auto w-full">
             <!-- Logo -->
-            <div class="flex items-center gap-2 mb-12">
+            <div class="absolute top-4 right-4 flex items-center gap-2 mb-12">
                 <div class="p-2 rounded-lg">
-                    <img src="{{ asset('build/assets/images/userPage/logo.png') }}" alt="Logo">
+                    <img src="{{ asset('build/assets/images/userPage/wordLogo.png') }}" alt="Logo">
                 </div>
-                <span class="font-semibold text-xl text-text-primary">JuanBIll</span>
             </div>
 
             <!-- Welcome Text -->
@@ -61,7 +60,7 @@
 
             <!-- Login Link -->
             <p class="text-center text-neutral-gray mt-6">
-                Don’t have an account? <a href="{{ route('user.sign-up') }}" class="text-primary font-semibold hover:underline">Sign-up</a>
+                Don’t have an account? <a href="{{ route('user.sign-up') }}" class="text-[#CE1126] font-semibold hover:underline">Sign-up</a>
             </p>
         </div>
     </div>
