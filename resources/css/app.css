@@ -1,0 +1,56 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+
+    --color-primary: #0038A8;
+    --color-text-primary: #1E2024;
+    --color-neutral-light: #F8F8FA;
+    --color-neutral-gray: #6B7280;
+    --color-secondary: #FFCC00;
+}
+
+@layer base {
+    body {
+        @apply font-sans text-text-primary bg-neutral-light;
+    }
+}
+
+@layer components {
+    .user-btn {
+        @apply bg-linear-to-t from-primary to-[#001642] hover:bg-linear-to-t text-neutral-light px-6 py-3 rounded-[11.76px] font-semibold cursor-pointer
+        hover:shadow-xl transition-all duration-300;
+    }
+
+    .admin-btn {
+        @apply bg-linear-to-t from-[#CE1126] to-[#680913] text-white px-6 py-3 rounded-[11.76px] font-semibold cursor-pointer
+        hover:shadow-xl transition-all duration-300;
+    }
+
+    .input-label {
+        @apply block text-[18px] md:text-[24px] tracking-normal font-medium text-text-primary mb-2;
+    }
+
+    .input-field {
+        @apply w-full text-[14px] md:text-[18px] border-4 border-[#F3F4F6] rounded-[23.50px] px-4 py-2 focus:outline-none focus:ring-4 focus:ring-primary
+        focus:border-transparent;
+    }
+
+    .welcome-text {
+        @apply text-[42px] md:text-[56px] tracking-[-0.5px] font-bold text-primary mb-2;
+    }
+
+    .welcome-description {
+        @apply text-neutral-gray text-lg md:text-2xl mb-10;
+    }
+
+    .footer {
+        @apply bg-linear-to-b from-primary to-[#001642] text-white flex flex-col justify-center items-center text-center py-6;
+    }
+}
