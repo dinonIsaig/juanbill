@@ -23,29 +23,18 @@
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 <!-- Monthly Billing Breakdown -->
                 <div class="lg:col-span-2 bg-white rounded-lg shadow-md p-8">
-                    <h2 class="text-xl font-bold text-text-primary mb-6">Monthly Billing Breakdown</h2>
+                    <h2 class="text-xl font-medium text-primary mb-6">Monthly Billing Breakdown</h2>
 
-                    <!-- Chart Placeholder -->
-                    <div class="h-80 bg-gradient-to-b from-gray-50 to-gray-100 rounded-lg flex items-end justify-around p-4">
-                    </div>
-
-                    <!-- Legend -->
-                    <div class="flex gap-6 mt-6 justify-center">
-                        <div class="flex items-center gap-2">
-                            <div class="w-4 h-4 rounded"></div>
-                            <span class="text-sm text-neutral-gray">Electricity</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <div class="w-4 h-4 rounded"></div>
-                            <span class="text-sm text-neutral-gray">Water</span>
-                        </div>
+                    <!-- Chart -->
+                    <div class="h-80 relative">
+                        <canvas id="myChart"></canvas>
                     </div>
                 </div>
 
                 <!-- Upcoming Bills -->
                 <div class="bg-white rounded-lg shadow-md p-8">
                     <div class="flex items-center justify-between mb-6">
-                        <h2 class="text-xl font-bold text-text-primary">Upcoming Bills</h2>
+                        <h2 class="text-xl font-medium text-primary">Upcoming Bills</h2>
                         <button class="text-neutral-gray hover:text-primary">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"/>
@@ -71,4 +60,7 @@
 </div>
 @endsection
 
+@push('scripts')
+    @vite('resources/js/charts.js')
+@endpush
 

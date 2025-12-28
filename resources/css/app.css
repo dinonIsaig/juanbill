@@ -15,6 +15,15 @@
     --color-neutral-light: #F8F8FA;
     --color-neutral-gray: #6B7280;
     --color-secondary: #FFCC00;
+    --color-paid: #DCFCE7;
+    --color-paid-border: #B9F8CF;
+    --color-paid-text: #008236;
+    --color-pending: #FEF9C2;
+    --color-pending-border: #FFF085;
+    --color-pending-text: #A65F00;
+    --color-overdue: #FFE2E2;
+    --color-overdue-border: #FFC9C9;
+    --color-overdue-text: #CE1126;
 }
 
 @layer base {
@@ -36,6 +45,30 @@
     .admin-btn {
         @apply bg-linear-to-t from-[#CE1126] to-[#680913] text-white px-6 py-3 rounded-[11.76px] font-semibold cursor-pointer
         hover:shadow-xl transition-all duration-300;
+    }
+
+    .table-btn {
+        @apply bg-primary hover:bg-primary-dark text-white px-4 py-2 rounded-lg font-medium cursor-pointer hover:shadow-md transition;
+    }
+
+    .table-headers {
+        @apply bg-gray-100 text-sm font-bold text-gray-700 text-center py-5;
+    }
+
+    .table-rows {
+        @apply px-6 py-4 border-b border-gray-300 text-sm text-gray-900 text-center;
+    }
+
+    .paid {
+        @apply bg-paid border-paid-border text-paid-text px-4 py-2 rounded-lg font-medium;
+    }
+
+    .pending {
+        @apply bg-pending border-pending-border text-pending-text px-4 py-2 rounded-lg font-medium;
+    }
+
+    .overdue {
+        @apply bg-overdue border-overdue-border text-overdue-text px-4 py-2 rounded-lg font-medium;
     }
 
     .input-label {
