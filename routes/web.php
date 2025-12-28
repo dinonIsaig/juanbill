@@ -19,6 +19,11 @@ Route::prefix('user')->group(function () {
     Route::get('log-in', function () {
         return view('user.log-in');
     })->name('user.log-in');
+
+    route::get('electricity', function () {
+        return view('user.electricity');
+    })->name('user.electricity');
+
 });
 
 // Admin Routes

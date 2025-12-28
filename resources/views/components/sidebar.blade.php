@@ -35,7 +35,7 @@
             <h3>Billing</h3>
             <ul class="space-y-3">
                 <li>
-                    <a href="#" class="icons-container">
+                    <a href="{{ route('user.electricity') }}" class="icons-container">
                         <img src="{{ asset('build/assets/icons/electricityIcon.png') }}" alt="Logo" class="icons">
                         <span class="max-sm:hidden">Electricity</span>
                     </a>

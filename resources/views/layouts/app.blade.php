@@ -11,10 +11,6 @@
     <main class="flex-grow">
         @yield('content')
     </main>
-
-    <footer">
-        @yield('footer')
-    </footer>
     @stack('scripts')
 </body>
 </html>
