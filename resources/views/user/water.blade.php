@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Electricity')
+@section('title', 'Water')
 
 @section('content')
 <div class="flex h-screen bg-neutral-light">
