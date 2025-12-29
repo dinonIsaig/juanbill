@@ -11,7 +11,7 @@
         <td class="table-rows "> <button class="overdue" disabled> {{ $status }}</button></td>
     @endif
     <td class="table-rows">
-        @if ($status === 'Pending')
+        @if ($status === 'Pending' || $status === 'Overdue')
         <button class="table-btn rounded-2 bg-primary text-white ">Pay</button>
         @endif
     </td>
