@@ -33,7 +33,10 @@
 
             <div class="gap-8">
                 <div class="bg-white rounded-lg shadow-md p-8 max-md:p-4">
-                    <h2 class="text-xl font-bold text-text-primary mb-6">Electricity Dashboard</h2>
+                    <div class="grid grid-cols-2">
+                        <h2 class="text-xl font-bold text-text-primary mb-6 col-span-1">Electricity Dashboard</h2>
+                        <button class="btn-primary col-span-1 w-40 justify-self-end mb-6 text-lg font-semibold">Pay Bill</button>
+                    </div>
                     <div class="overflow-x-auto">
                         <table class="min-w-full table-auto border border-gray-300">
                             <thead class="bg-gray-100">
@@ -61,20 +64,7 @@
 
         </div>
 
-        <div class="footer pb-8">
-            <div class="w-full flex justify-evenly text-[14px]">
-                <img class="w-32 h-auto inline" src="{{ asset('build/assets/images/userPage/wordLogo.png') }}" alt="Logo">
-                <span>About Us</span>
-                <span>FAQs</span>
-                <span>Privacy Statement</span>
-                <span>Terms and condition</span>
-                <span>Help & Support</span>
-            </div>
-            <div class="w-full justify-center items-center text-center mt-5">
-                <hr class="items-center w-9/10 mx-auto border-neutral-gray">
-                <p class="text-center text-[12px] text-neutral-gray mt-4 mb-4">© 2025 JuanBill. All rights reserved.</p>
-            </div>
-        </div>
+        @include('components.page-footer')
 
     </div>
 </div>
