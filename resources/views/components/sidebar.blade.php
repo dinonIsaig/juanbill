@@ -1,5 +1,4 @@
-<div class="w-auto bg-primary text-white flex flex-col">
-    <!-- Logo -->
+<div class="w-auto bg-primary text-white flex flex-col h-screen shrink-0">
     <div class="p-6  bg-linear-to-l from-primary to-[#001642]"">
         <div class="flex items-center gap-2">
             <div class=" p-2 rounded-lg">
@@ -9,9 +8,7 @@
         </div>
     </div>
 
-    <!-- Navigation -->
     <nav class="flex-1 p-6 space-y-8 bg-linear-to-l from-primary to-[#001642]">
-        <!-- General Section -->
         <div>
             <h3>General</h3>
             <ul class="space-y-3">
@@ -30,7 +27,6 @@
             </ul>
         </div>
 
-        <!-- Billing Section -->
         <div>
             <h3>Billing</h3>
             <ul class="space-y-3">
@@ -61,7 +57,6 @@
             </ul>
         </div>
 
-        <!-- Tools Section -->
         <div>
             <h3>Tools</h3>
             <ul class="space-y-3">
