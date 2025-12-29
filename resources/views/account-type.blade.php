@@ -18,8 +18,8 @@
     <div class="relative z-10 text-center max-w-md">
 
         <!-- Logo -->
-        <div class="flex justify-center mb-12">
-            <div class=" p-3 rounded-lg inline-block">
+        <div class="flex justify-center mb-2">
+            <div class=" p-3 rounded-lg inline-block w-1/2">
                 <img src="{{ asset('build/assets/images/accountTypePage/Logo.png') }}" alt="Logo">
             </div>
         </div>
@@ -31,10 +31,10 @@
         <!-- Action Buttons -->
         <div class="space-y-4">
             <a href="{{ route('user.sign-up') }}" class="block">
-                <button class="user-btn w-full text-lg font-semibold">User</button>
+                <button class="user-btn w-2/3 text-lg font-semibold">User</button>
             </a>
             <a href="{{ route('admin.log-in') }}" class="block">
-                <button class="admin-btn w-full text-lg font-semibold">Admin</button>
+                <button class="admin-btn w-2/3 text-lg font-semibold">Admin</button>
             </a>
         </div>
 </div>

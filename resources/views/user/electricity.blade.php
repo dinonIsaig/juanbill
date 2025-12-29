@@ -47,26 +47,28 @@
                 <!-- Electricity Dashboard -->
                 <div class="bg-white rounded-lg shadow-md p-8 max-md:p-4">
                     <h2 class="text-xl font-bold text-text-primary mb-6">Electricity Dashboard</h2>
-
-                    <table class="min-w-full table-auto border border-gray-300">
-                        <thead class="bg-gray-100">
-                            <tr>
-                                <th class="table-headers">Transaction ID</th>
-                                <th class="table-headers">kWh</th>
-                                <th class="table-headers">Date Paid</th>
-                                <th class="table-headers">Amount</th>
-                                <th class="table-headers">Status</th>
-                                <th class="table-headers"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @include('components.electricity-transaction', ['transactionID' => 'TXN-202-4-001', 'kwh' => '1000 kwh', 'datePaid' => '2024-06-15', 'amount' => '1000', 'status' => 'Paid'])
-                            @include('components.electricity-transaction', ['transactionID' => 'TXN-202-4-001', 'kwh' => '1000 kwh', 'datePaid' => '', 'amount' => '1000', 'status' => 'Pending'])
-                            @include('components.electricity-transaction', ['transactionID' => 'TXN-202-4-001', 'kwh' => '1000 kwh', 'datePaid' => '', 'amount' => '1000', 'status' => 'Overdue'])
-                            @include('components.electricity-transaction', ['transactionID' => 'TXN-202-4-001', 'kwh' => '1000 kwh', 'datePaid' => '', 'amount' => '1000', 'status' => 'Overdue'])
-                            @include('components.electricity-transaction', ['transactionID' => 'TXN-202-4-001', 'kwh' => '1000 kwh', 'datePaid' => '', 'amount' => '1000', 'status' => 'Pending'])
-                        </tbody>
-                    </table>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full table-auto border border-gray-300">
+                            <thead class="bg-gray-100">
+                                <tr>
+                                    <th class="table-headers">Transaction ID</th>
+                                    <th class="table-headers">kWh</th>
+                                    <th class="table-headers">Date Paid</th>
+                                    <th class="table-headers">Amount</th>
+                                    <th class="table-headers">Status</th>
+                                    <th class="table-headers"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @include('components.electricity-transaction', ['transactionID' => 'TXN-202-4-001', 'kwh' => '1000 kwh', 'datePaid' => '2024-06-15', 'amount' => '1000', 'status' => 'Paid'])
+                                @include('components.electricity-transaction', ['transactionID' => 'TXN-202-4-001', 'kwh' => '1000 kwh', 'datePaid' => '', 'amount' => '1000', 'status' => 'Pending'])
+                                @include('components.electricity-transaction', ['transactionID' => 'TXN-202-4-001', 'kwh' => '1000 kwh', 'datePaid' => '', 'amount' => '1000', 'status' => 'Overdue'])
+                                @include('components.electricity-transaction', ['transactionID' => 'TXN-202-4-001', 'kwh' => '1000 kwh', 'datePaid' => '', 'amount' => '1000', 'status' => 'Overdue'])
+                                @include('components.electricity-transaction', ['transactionID' => 'TXN-202-4-001', 'kwh' => '1000 kwh', 'datePaid' => '', 'amount' => '1000', 'status' => 'Pending'])
+                                @include('components.electricity-transaction', ['transactionID' => 'TXN-202-4-001', 'kwh' => '1000 kwh', 'datePaid' => '2024-06-16', 'amount' => '1000', 'status' => 'Paid'])
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
