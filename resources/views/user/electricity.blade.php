@@ -39,13 +39,13 @@
     </div>
 </div>
 
-<div class="flex h-screen bg-neutral-light pl-60 max-md:pl-26">
+<div class="flex h-screen bg-neutral-light pl-60 max-md:pl-2">
     <div class="flex-1 overflow-auto">
         <!-- Electricity Dashboard Container -->
         <div class="p-8 px-18 max-md:px-8 pt-15">
             <div class="gap-8">
                 <!-- Electricity Dashboard -->
-                <div class="bg-white rounded-lg shadow-md p-8">
+                <div class="bg-white rounded-lg shadow-md p-8 max-md:p-4">
                     <h2 class="text-xl font-bold text-text-primary mb-6">Electricity Dashboard</h2>
 
                     <table class="min-w-full table-auto border border-gray-300">
