@@ -24,6 +24,10 @@ Route::prefix('user')->group(function () {
         return view('user.electricity');
     })->name('user.electricity');
 
+    route::get('water', function () {
+        return view('user.water');
+    })->name('user.water');
+
 });
 
 // Admin Routes
