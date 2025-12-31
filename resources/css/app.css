@@ -13,7 +13,7 @@
     --color-primary-dark: #002366;
     --color-text-primary: #1E2024;
     --color-neutral-light: #F8F8FA;
-    --color-neutral-gray: #6B7280;
+    --color-neutral-gray: #B3B3B3;
     --color-secondary: #FFCC00;
     --color-paid: #DCFCE7;
     --color-paid-border: #B9F8CF;
@@ -47,8 +47,20 @@
         hover:shadow-xl transition-all duration-300;
     }
 
+    .next-btn {
+        @apply bg-primary hover:bg-primary-dark text-white px-4 py-2 rounded-lg font-medium cursor-pointer hover:shadow-md transition;
+    }
+
+    .back-btn {
+        @apply bg-white border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium cursor-pointer hover:shadow-md transition;
+    }
+
     .table-btn {
         @apply bg-primary hover:bg-primary-dark text-white px-4 py-2 rounded-lg font-medium cursor-pointer hover:shadow-md transition;
+    }
+
+    .filter-btn {
+        @apply flex items-center gap-2 px-4 py-2 text-primary border border-primary font-medium cursor-pointer rounded-lg hover:bg-blue-50 transition-colors;
     }
 
     .table-headers {
