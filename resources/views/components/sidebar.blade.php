@@ -73,10 +73,13 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="icons-container">
-                        <img src="{{ asset('build/assets/icons/signOutIcon.png') }}" alt="Logo" class="icons">
-                        <span class="max-sm:hidden">Sign Out</span>
-                    </a>
+                    <form method="POST" action="{{ route('user.log-out') }}">
+                    @csrf
+                        <button type="submit" class="icons-container w-full text-left">
+                            <img src="{{ asset('build/assets/icons/signOutIcon.png') }}" alt="Logo" class="icons">
+                            <span class="max-sm:hidden">Sign Out</span>
+                        </button>
+                    </form>
                 </li>
 
             </ul>
