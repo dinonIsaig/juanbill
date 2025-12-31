@@ -33,34 +33,40 @@
             <p class="welcome-description">Stay updated with your latest bills</p>
 
             <!-- Sign Up Form -->
-            <form method="POST" action="#" class="space-y-4 flex justify-center flex-col w-full">
+            <form method="POST" action="{{ route('user.login') }}" class="space-y-4 flex justify-center flex-col w-full">
                 @csrf
 
-                <!-- Username -->
+                @if($errors->any())
+                    <div class="text-red-600 mb-2">
+                        <ul>
+                            @foreach($errors->all() as $err)
+                                <li>{{ $err }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
                 <div>
                     <label class="input-label">Username</label>
-                    <input class="input-field" type="text" name="username" placeholder="Enter your username" required>
+                    <input class="input-field" type="text" name="username" value="{{ old('username') }}" required>
                 </div>
 
-                <!-- Unit Number -->
                 <div>
                     <label class="input-label">Unit Number</label>
-                    <input class="input-field" type="text" name="unit_number" placeholder="Enter your unit number" required>
+                    <input class="input-field" type="text" name="unit_number" value="{{ old('unit_number') }}" required>
                 </div>
 
-                <!-- Password -->
                 <div>
                     <label class="input-label">Password</label>
-                    <input class="input-field" type="password" name="password" placeholder="Create a password" required>
+                    <input class="input-field" type="password" name="password" required>
                 </div>
 
-                <!-- Submit Button -->
                 <button type="submit" class="user-btn w-full text-lg font-semibold mt-8">Log In</button>
             </form>
 
             <!-- Login Link -->
             <p class="text-center text-neutral-gray mt-6">
-                Don’t have an account? <a href="{{ route('user.sign-up') }}" class="text-[#CE1126] font-semibold hover:underline">Sign-up</a>
+                Don’t have an account? <a href="{{ route('user.sign-up') }}" class="text-primary font-semibold hover:underline">Sign-up</a>
             </p>
         </div>
     </div>
