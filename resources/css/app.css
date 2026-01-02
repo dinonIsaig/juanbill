@@ -40,7 +40,7 @@
 
     .normal-btn {
         @apply w-full bg-primary text-white text-center p-2 rounded-lg hover:bg-primary-dark
-        hover:shadow-xl transition-colors cursor-pointer;
+        hover:shadow-xl  transition-all cursor-pointer;
     }
 
     .user-btn {
