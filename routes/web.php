@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\SignupController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\User\DashboardController;
+use App\Http\Controllers\User\ProfileController;
+use App\Http\Controllers\User\PasswordController;
 
 
 Route::get('/', function () {
@@ -34,6 +36,15 @@ Route::prefix('user')->group(function () {
     route::get('association', function () {
         return view('user.association');
     })->name('user.association');
+
+    route::get('settings', function () {
+        return view('user.settings');
+    })->name('user.settings');
+
+    Route::patch('/settings/profile', [ProfileController::class, 'update'])->name('user.settings.updateProfile')->middleware('auth');
+
+    Route::patch('/settings/password', [PasswordController::class, 'update'])->name('user.settings.updatePassword')->middleware('auth');
+
 });
 
 // Admin Routes
