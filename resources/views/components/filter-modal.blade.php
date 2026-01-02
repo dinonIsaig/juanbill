@@ -1,7 +1,7 @@
 @props(['id' => 'filterModal'])
 
 <div id="{{ $id }}" class="fixed inset-0 z-50 hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-    <div class="fixed inset-0 transition-opacity backdrop-blur-md"
+    <div class="fixed inset-0 opacity-50 bg-black"
         onclick="document.getElementById('{{ $id }}').classList.add('hidden')"></div>
 
     <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
