@@ -26,7 +26,6 @@ class SignupController extends Controller
      */
     public function store(Request $request)
     {
-        // 1. Validation stays the same (it runs before the transaction)
         $request->validate([
             'first_name' => 'required|string|max:50',
             'middle_name' => 'nullable|string|max:50',
@@ -66,7 +65,6 @@ class SignupController extends Controller
                 'dob'        => $request->dob,
             ]);
 
-            // Commit the Transaction
             DB::commit();
 
             return redirect()->route('login')->with('success', 'Account created! Please login.');
