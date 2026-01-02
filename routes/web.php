@@ -44,4 +44,8 @@ Route::prefix('admin')->group(function () {
     Route::get('dashboard', function () {
         return view('admin.dashboard');
     })->name('admin.dashboard');
+
+    Route::get('electricity', function () {
+        return view('admin.electricity');
+    })->name('admin.electricity');
 });
