@@ -28,7 +28,11 @@
 
     <td class="table-rows">
         @if ($status === 'Pending' || $status === 'Overdue')
-        <button class="table-btn rounded-2 bg-primary text-white">Pay</button>
+        <button  onclick="document.getElementById('paymentModal').classList.remove('hidden')" class="table-btn rounded-2 bg-primary text-white hover:bg-white hover:text-primary hover:ring-1">
+            Pay</button>
         @endif
     </td>
+
+
 </tr>
+<x-payment-modal id="paymentModal" />
