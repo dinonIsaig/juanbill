@@ -35,7 +35,13 @@
                 <div class="bg-white rounded-lg shadow-md p-8 max-md:p-4">
                     <div class="grid grid-cols-2">
                         <h2 class="text-xl font-bold text-text-primary mb-6 col-span-1">Electricity Dashboard</h2>
-                        <button class="btn-primary col-span-1 w-40 justify-self-end mb-6 text-lg font-semibold">Pay Bill</button>
+                        <div class="flex justify-end mb-6 col-span-1">
+                            <button onclick="document.getElementById('filterModal').classList.remove('hidden')"
+                                    class="filter-btn flex items-center gap-2">
+                                <img src="{{ asset('build/assets/icons/filter.png') }}" alt="Filter" class="w-4 h-4">
+                                Filter
+                            </button>
+                        </div>
                     </div>
                     <div class="overflow-x-auto">
                         <table class="min-w-full table-auto border border-gray-300">
@@ -68,8 +74,10 @@
 
     </div>
 </div>
+<x-filter-modal id="filterModal" />
 @endsection
 
 @push('scripts')
     @vite('resources/js/charts.js')
+    @vite('resources/js/filter.js')
 @endpush

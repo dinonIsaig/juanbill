@@ -73,13 +73,15 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="icons-container">
-                        <img src="{{ asset('build/assets/icons/signOutIcon.png') }}" alt="Logo" class="icons">
-                        <span class="max-sm:hidden">Sign Out</span>
-                    </a>
+                    <button type="button" class="icons-container w-full text-left"
+                            onclick="document.getElementById('signOutModal').classList.remove('hidden')">
+                            <img src="{{ asset('build/assets/icons/signOutIcon.png') }}" alt="Logo" class="icons">
+                            <span class="max-sm:hidden">Sign Out</span>
+                    </button>
                 </li>
 
             </ul>
         </div>
     </nav>
 </div>
+<x-sign-out-modal id="signOutModal" />

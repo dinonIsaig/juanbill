@@ -10,10 +10,10 @@
         'Segoe UI Symbol', 'Noto Color Emoji';
 
     --color-primary: #0038A8;
-    --color-primary-dark: #002366;
+    --color-primary-dark: #001642;
     --color-text-primary: #1E2024;
     --color-neutral-light: #F8F8FA;
-    --color-neutral-gray: #6B7280;
+    --color-neutral-gray: #B3B3B3;
     --color-secondary: #FFCC00;
     --color-paid: #DCFCE7;
     --color-paid-border: #B9F8CF;
@@ -40,8 +40,14 @@
 }
 
 @layer components {
+
+    .normal-btn {
+        @apply w-full bg-primary text-white text-center p-2 rounded-lg hover:bg-primary-dark
+        hover:shadow-xl  transition-all cursor-pointer;
+    }
+
     .user-btn {
-        @apply bg-linear-to-t from-primary to-[#001642] hover:bg-linear-to-t text-neutral-light px-6 py-3 rounded-[11.76px] font-semibold cursor-pointer
+        @apply bg-linear-to-t from-primary to-primary-dark hover:bg-linear-to-t text-neutral-light px-6 py-3 rounded-[11.76px] font-semibold cursor-pointer
         hover:shadow-xl transition-all duration-300;
     }
 
@@ -50,8 +56,20 @@
         hover:shadow-xl transition-all duration-300;
     }
 
+    .next-btn {
+        @apply bg-primary hover:bg-primary-dark text-white px-4 py-2 rounded-lg font-medium cursor-pointer hover:shadow-md transition;
+    }
+
+    .back-btn {
+        @apply bg-white border border-gray-100 text-gray-400 px-4 py-2 rounded-lg font-medium cursor-pointer hover:shadow-md transition;
+    }
+
     .table-btn {
         @apply bg-primary hover:bg-primary-dark text-white px-4 py-2 rounded-lg font-medium cursor-pointer hover:shadow-md transition;
+    }
+
+    .filter-btn {
+        @apply flex items-center gap-2 px-4 py-2 text-primary border border-primary font-medium cursor-pointer rounded-lg hover:bg-blue-50 transition-colors;
     }
 
     .table-headers {
@@ -83,6 +101,22 @@
         focus:border-transparent;
     }
 
+    .input-label-small {
+        @apply block text-sm font-medium text-text-primary mb-2;
+    }
+
+    .input-field-small {
+        @apply w-full text-sm border-2 border-[#F3F4F6] rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary
+        focus:border-transparent;
+    }
+
+    .input-label-modal {
+        @apply block text-sm font-medium text-gray-700 mb-1
+    }
+
+    .input-field-modal{
+        @apply block w-full appearance-none rounded-md border border-gray-300 bg-gray-50 py-2 px-3 shadow-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary sm:text-sm
+    }
     .welcome-text {
         @apply text-[42px] md:text-[56px] tracking-[-0.5px] font-bold text-primary mb-2;
     }
@@ -92,7 +126,7 @@
     }
 
     .footer {
-        @apply bg-linear-to-b from-primary to-[#001642] text-white flex flex-col justify-center items-center text-center py-6;
+        @apply bg-linear-to-b from-primary to-primary-dark text-white flex flex-col justify-center items-center text-center py-6;
     }
 
     .admin-footer {
