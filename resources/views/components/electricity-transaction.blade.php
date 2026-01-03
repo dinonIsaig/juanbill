@@ -29,18 +29,15 @@
     <td class="table-rows">{{ $amount }}</td>
 
     <td class="table-rows">
-<<<<<<< Updated upstream
         @if ($status === 'Pending' || $status === 'Overdue')
         <button  onclick="document.getElementById('paymentModal').classList.remove('hidden')" class="payment-btn">
             Pay</button>
-=======
         @if ($uiStatus === 'Paid')
             <button class="paid" disabled>Paid</button>
         @elseif ($uiStatus === 'Pending')
             <button class="pending" disabled>Pending</button>
         @else
             <button class="overdue" disabled>{{ $uiStatus }}</button>
->>>>>>> Stashed changes
         @endif
     </td>
 

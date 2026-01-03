@@ -26,6 +26,8 @@
     --color-overdue: #FFE2E2;
     --color-overdue-border: #FFC9C9;
     --color-overdue-text: #CE1126;
+    --color-overdue-text-dark: #241e1e;
+
 }
 
 @layer base {
@@ -34,7 +36,7 @@
     }
 
     h3 {
-        @apply text-xs font-bold text-neutral-gray uppercase tracking-wider mb-4;
+        @apply text-xs font-bold text-neutral-gray capitalize tracking-wider ;
     }
     .h3-admin{
         @apply text-xs font-bold text-neutral-400 uppercase tracking-wider mb-4;
@@ -58,6 +60,10 @@
         hover:shadow-xl transition-all duration-300;
     }
 
+    .admin-add-btn{
+        @apply flex items-center cursor-pointer px-6 py-1.5 rounded-lg bg-[#CE1126] hover:shadow-md text-white transition hover:bg-white hover:text-[#CE1126] hover:ring-1;
+    }
+
     .next-btn {
         @apply bg-primary hover:bg-primary-dark text-white px-4 py-2 rounded-lg font-medium cursor-pointer hover:shadow-md transition;
     }
@@ -75,20 +81,19 @@
     }
 
     .admin-filter-btn{
-        @apply flex items-center gap-2 px-3 py-1.5 border border-[#CE1126] text-[#CE1126] rounded-md hover:bg-[#CE1126] hover:text-white transition-all duration-200 text-xs font-semibold h-fit leading-none;
+        @apply flex items-center cursor-pointer gap-2 px-3 py-1.5 border border-[#CE1126] text-[#CE1126] rounded-md hover:bg-[#CE1126] hover:text-white transition-all duration-200 text-xs font-semibold h-fit leading-none;
     }
 
-<<<<<<< Updated upstream
     .payment-btn{
         @apply   bg-primary text-white px-6 py-1.5 rounded-lg font-medium cursor-pointer hover:shadow-md transition hover:bg-white hover:text-primary hover:ring-1;
-=======
+    }
+
     .pagination-btn {
         @apply px-4 py-2 text-sm font-medium border rounded-lg bg-white text-primary hover:bg-primary hover:text-white hover:ring-1;
     }
 
     .transaction-counter {
         @apply font-medium text-gray-500;
->>>>>>> Stashed changes
     }
 
     .table-headers {
