@@ -7,7 +7,7 @@
 
     @include('components.sidebar')
 
-    <div class="flex-1 overflow-auto">
+    < class="flex-1 overflow-auto">
         @include('components.topbar')
 
         <div class="p-8 px-18 max-md:px-8">
@@ -80,9 +80,7 @@
             </div>
 
         </div>
-
-        @include('components.page-footer')
-
+            @include('components.page-footer')
     </div>
 </div>
 <x-filter-modal id="filterModal" />
