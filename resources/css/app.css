@@ -78,6 +78,10 @@
         @apply flex items-center gap-2 px-3 py-1.5 border border-[#CE1126] text-[#CE1126] rounded-md hover:bg-[#CE1126] hover:text-white transition-all duration-200 text-xs font-semibold h-fit leading-none;
     }
 
+    .pagination-btn {
+        @apply  bg-white text-primary px-6 py-1.5 rounded-lg font-medium cursor-pointer border border-primary hover:shadow-md transition hover:bg-primary hover:text-white hover:ring-1
+    }
+
     .payment-btn{
         @apply   bg-primary text-white px-6 py-1.5 rounded-lg font-medium cursor-pointer hover:shadow-md transition hover:bg-white hover:text-primary hover:ring-1;
     }
