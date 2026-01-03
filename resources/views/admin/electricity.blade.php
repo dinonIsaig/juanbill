@@ -46,7 +46,7 @@
                             </svg>
                             <span class="tracking-tight text-base">Filter</span>
                         </button>
-                        
+
                     </div>
                     <div class="overflow-x-auto">
                         <table class="min-w-full table-auto border border-gray-300">
@@ -61,12 +61,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @include('components.electricity-transaction', ['transactionID' => 'TXN-202-4-001', 'kwh' => '1000 kwh', 'datePaid' => '2024-06-15', 'amount' => '1000', 'status' => 'Paid'])
-                                @include('components.electricity-transaction', ['transactionID' => 'TXN-202-4-001', 'kwh' => '1000 kwh', 'datePaid' => '', 'amount' => '1000', 'status' => 'Pending'])
-                                @include('components.electricity-transaction', ['transactionID' => 'TXN-202-4-001', 'kwh' => '1000 kwh', 'datePaid' => '', 'amount' => '1000', 'status' => 'Overdue'])
-                                @include('components.electricity-transaction', ['transactionID' => 'TXN-202-4-001', 'kwh' => '1000 kwh', 'datePaid' => '', 'amount' => '1000', 'status' => 'Overdue'])
-                                @include('components.electricity-transaction', ['transactionID' => 'TXN-202-4-001', 'kwh' => '1000 kwh', 'datePaid' => '', 'amount' => '1000', 'status' => 'Pending'])
-                                @include('components.electricity-transaction', ['transactionID' => 'TXN-202-4-001', 'kwh' => '1000 kwh', 'datePaid' => '2024-06-16', 'amount' => '1000', 'status' => 'Paid'])
+                                
                             </tbody>
                         </table>
                     </div>
