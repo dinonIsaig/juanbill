@@ -71,7 +71,11 @@
     }
 
     .filter-btn {
-        @apply flex items-center gap-2 px-4 py-2 text-primary border border-primary font-medium cursor-pointer rounded-lg hover:bg-blue-50 transition-colors;
+        @apply flex items-center gap-2 px-3 py-1.5 border border-primary text-primary rounded-md hover:bg-primary hover:text-white transition-all duration-200 text-xs font-semibold h-fit leading-none;
+    }
+
+    .admin-filter-btn{
+        @apply flex items-center gap-2 px-3 py-1.5 border border-[#CE1126] text-[#CE1126] rounded-md hover:bg-[#CE1126] hover:text-white transition-all duration-200 text-xs font-semibold h-fit leading-none;
     }
 
 <<<<<<< Updated upstream

@@ -40,12 +40,13 @@
                     <div class="flex items-center justify-between mb-6">
                         <h2 class="text-xl font-bold text-text-primary">Electricity Dashboard</h2>
                         
-                        <button class="flex items-center gap-2 px-3 py-1.5 border border-[#CE1126] text-[#CE1126] rounded-md hover:bg-[#CE1126] hover:text-white transition-all duration-200 text-xs font-semibold h-fit leading-none">
+                        <button class="admin-filter-btn">
                             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M3 6H21M6 12H18M10 18H14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
                             <span class="tracking-tight text-base">Filter</span>
                         </button>
+                        
                     </div>
                     <div class="overflow-x-auto">
                         <table class="min-w-full table-auto border border-gray-300">
