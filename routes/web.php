@@ -6,9 +6,10 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\User\DashboardController;
 use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\User\PasswordController;
-use App\Http\Controllers\User\BillController;
+use App\Http\Controllers\User\ElectricityController;
+use App\Http\Controllers\User\WaterController;
 
-
+// Account Type
 Route::get('/', function () {
     return view('account-type');
 })->name('account-type');
@@ -26,11 +27,9 @@ Route::prefix('user')->group(function () {
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('user.dashboard')->middleware('auth');
 
-    route::get('/electricity', [BillController::Class,'index'])->name('user.electricity')->middleware('auth');
+    route::get('/electricity', [ElectricityController::Class,'index'])->name('user.electricity')->middleware('auth');
 
-    route::get('water', function () {
-        return view('user.water');
-    })->name('user.water');
+    route::get('/water', [WaterController::Class,'index'])->name('user.water')->middleware('auth');
 
     route::get('association', function () {
         return view('user.association');
