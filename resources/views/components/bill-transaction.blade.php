@@ -26,7 +26,9 @@
     data-status="{{ $status }}">
 
     <td class="table-rows">{{ $transactionID }}</td>
-    <td class="table-rows">{{ $consumption }}</td>
+    @if ($bill->type === 'Electricity' || $bill->type === 'Water')
+        <td class="table-rows">{{ $consumption }}</td>
+    @endif
     <td class="table-rows">{{ $datePaid }}</td>
     <td class="table-rows">{{ $amount }}</td>
 
