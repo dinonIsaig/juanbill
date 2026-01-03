@@ -22,11 +22,18 @@
                 <p class="text-neutral-gray inline-block">Manage electricity consumption</p>
             </div>
 
-            <div class="gap-8 mb-15">
-                <div class="bg-white rounded-lg shadow-md p-8">
+            <div class="gap-8 mb-10">
+                <div class="bg-white rounded-lg shadow-md p-8 max-md:p-4">
                     <h2 class="text-xl font-medium text-primary mb-6">Monthly Consumption Summary</h2>
-                    <div class="h-120 max-md:h-80 relative">
-                        <canvas id="myChart"></canvas>
+                    <div class="mb-4">
+                        <x-annual-chart
+                            :year="$year"
+                            route="user.electricity"
+                            :data="$chartData"
+                            label="Electricity Consumption (kWh)"
+                            unit="kWh"
+                            color="#1e3a8a"
+                        />
                     </div>
                 </div>
             </div>
@@ -58,15 +65,19 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @include('components.electricity-transaction', ['transactionID' => 'TXN-202-4-001', 'kwh' => '1000 kwh', 'datePaid' => '2024-06-15', 'amount' => '1000', 'status' => 'Paid'])
-                                @include('components.electricity-transaction', ['transactionID' => 'TXN-202-4-001', 'kwh' => '1000 kwh', 'datePaid' => '', 'amount' => '1000', 'status' => 'Pending'])
-                                @include('components.electricity-transaction', ['transactionID' => 'TXN-202-4-001', 'kwh' => '1000 kwh', 'datePaid' => '', 'amount' => '1000', 'status' => 'Overdue'])
-                                @include('components.electricity-transaction', ['transactionID' => 'TXN-202-4-001', 'kwh' => '1000 kwh', 'datePaid' => '', 'amount' => '1000', 'status' => 'Overdue'])
-                                @include('components.electricity-transaction', ['transactionID' => 'TXN-202-4-001', 'kwh' => '1000 kwh', 'datePaid' => '', 'amount' => '1000', 'status' => 'Pending'])
-                                @include('components.electricity-transaction', ['transactionID' => 'TXN-202-4-001', 'kwh' => '1000 kwh', 'datePaid' => '2024-06-16', 'amount' => '1000', 'status' => 'Paid'])
+                                @forelse($bills as $bill)
+                                    <x-electricity-transaction :bill="$bill" />
+                                    @empty
+                                        <tr>
+                                            <td colspan="6" class="text-center p-4 text-gray-500">
+                                                No electricity billing history found.
+                                            </td>
+                                        </tr>
+                                    @endforelse
                             </tbody>
                         </table>
                     </div>
+                    @include('components.bills-footer')
                 </div>
             </div>
 

@@ -71,10 +71,13 @@
                             </div>
                         </div>
 
-                        <div class="pt-2">
+                        <div class="pt-2 space-y-2">
                             <button type="button" onclick="applyFilters('{{ $id }}')" class="w-full rounded-md bg-primary px-3 py-2.5 text-sm font-bold text-white shadow-sm hover:bg-primary-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
                                 Apply Filters
                             </button>
+                            <button type="button" onclick="document.getElementById('{{ $id }}').classList.add('hidden')" class="back-btn w-full">
+                                        Cancel
+                                    </button>
                         </div>
                     </div>
                 </div>

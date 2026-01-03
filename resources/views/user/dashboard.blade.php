@@ -49,6 +49,7 @@
         @include('components.page-footer')
     </div>
 </div>
+
 @endsection
 
 @push('scripts')
