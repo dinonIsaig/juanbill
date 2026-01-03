@@ -1,8 +1,8 @@
 <div x-data="{ sidebarOpen: true }"
-    class="bg-primary text-white flex flex-col h-screen shrink-0 transition-all duration-300 ease-in-out"
+    class="bg-gradient-to-b from-primary to-[#001642] text-white flex flex-col h-screen shrink-0 transition-all duration-300 ease-in-out"
     :class="sidebarOpen ? 'w-auto' : 'w-30'">
 
-    <div class="p-6 bg-linear-to-l from-primary to-[#001642]">
+    <div class="p-6">
         <div class="flex items-center gap-2 cursor-pointer" @click="sidebarOpen = !sidebarOpen">
             <div class="p-2 rounded-lg">
                 <img src="{{ asset('build/assets/images/userPage/wordLogo.png') }}"
@@ -18,7 +18,7 @@
         </div>
     </div>
 
-    <nav class="flex-1 p-6 space-y-8 bg-linear-to-l from-primary to-[#001642] overflow-y-auto">
+    <nav class="flex-1 p-6 space-y-8 overflow-y-auto">
         <div>
             <h3 x-show="sidebarOpen" class="transition-opacity duration-200">General</h3>
             <ul class="space-y-3" :class="!sidebarOpen ? 'mt-4' : ''">
