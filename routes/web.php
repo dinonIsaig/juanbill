@@ -8,6 +8,8 @@ use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\User\PasswordController;
 use App\Http\Controllers\User\ElectricityController;
 use App\Http\Controllers\User\WaterController;
+use App\Http\Controllers\User\AssociationController;
+use App\Http\Controllers\User\RentController;
 
 // Account Type
 Route::get('/', function () {
@@ -27,25 +29,21 @@ Route::prefix('user')->group(function () {
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('user.dashboard')->middleware('auth');
 
-    route::get('/electricity', [ElectricityController::Class,'index'])->name('user.electricity')->middleware('auth');
+    Route::get('/electricity', [ElectricityController::Class,'index'])->name('user.electricity')->middleware('auth');
 
-    route::get('/water', [WaterController::Class,'index'])->name('user.water')->middleware('auth');
+    Route::get('/water', [WaterController::Class,'index'])->name('user.water')->middleware('auth');
 
-    route::get('association', function () {
-        return view('user.association');
-    })->name('user.association');
+    Route::get('/association', [AssociationController::Class,'index'])->name('user.association')->middleware('auth');
 
-    route::get('help', function () {
+    Route::get('help', function () {
         return view('user.help-and-support');
     })->name('user.help');
 
-    route::get('settings', function () {
+    Route::get('settings', function () {
         return view('user.settings');
     })->name('user.settings');
 
-    route::get('rent', function () {
-        return view('user.rent');
-    })->name('user.rent');
+    Route::get('/rent', [RentController::Class,'index'])->name('user.rent')->middleware('auth');
 
     Route::patch('/settings/profile', [ProfileController::class, 'update'])->name('user.settings.updateProfile')->middleware('auth');
 
