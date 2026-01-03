@@ -41,6 +41,10 @@ Route::prefix('user')->group(function () {
         return view('user.settings');
     })->name('user.settings');
 
+    route::get('rent', function () {
+        return view('user.rent');
+    })->name('user.rent');
+
     Route::patch('/settings/profile', [ProfileController::class, 'update'])->name('user.settings.updateProfile')->middleware('auth');
 
     Route::patch('/settings/password', [PasswordController::class, 'update'])->name('user.settings.updatePassword')->middleware('auth');

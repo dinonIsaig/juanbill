@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Association Fees')
+@section('title', 'Rent')
 
 @section('content')
 <div class="flex h-screen bg-neutral-light">
@@ -13,14 +13,14 @@
         <div class="p-8 px-18 max-md:px-8">
 
             <div class="mb-8">
-                <h1 class="text-4xl font-bold text-primary">Association Fees</h1>
-                <p class="text-neutral-gray inline-block">Manage Association Fees Transactions</p>
+                <h1 class="text-4xl font-bold text-primary">Rent</h1>
+                <p class="text-neutral-gray inline-block">Manage Rent Fees Transactions</p>
             </div>
 
             <div class="gap-8">
                 <div class="bg-white rounded-lg shadow-md p-8 max-md:p-4">
                     <div class="grid grid-cols-2">
-                        <h2 class="text-xl font-bold text-text-primary mb-6 col-span-1">Association Fees Dashboard</h2>
+                        <h2 class="text-xl font-bold text-text-primary mb-6 col-span-1">Rent Fees Dashboard</h2>
                         <div class="flex justify-end mb-6 col-span-1">
                             <button onclick="document.getElementById('filterModal').classList.remove('hidden')"
                                     class="filter-btn flex items-center gap-2">
@@ -65,5 +65,4 @@
 
 @push('scripts')
     @vite('resources/js/charts.js')
-    @vite('resources/js/filter.js')
 @endpush

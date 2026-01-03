@@ -37,19 +37,19 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="icons-container">
+                    <a href="{{ route('user.water') }}" class="icons-container">
                         <img src="{{ asset('build/assets/icons/waterIcon.png') }}" alt="Logo" class="icons">
                         <span class="max-sm:hidden">Water</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="icons-container">
+                    <a href="{{ route('user.rent') }}" class="icons-container">
                         <img src="{{ asset('build/assets/icons/rentIcon.png') }}" alt="Logo" class="icons">
                         <span class="max-sm:hidden">Rent</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="icons-container">
+                    <a href="{{ route('user.association') }}" class="icons-container">
                         <img src="{{ asset('build/assets/icons/associationIcon.png') }}" alt="Logo" class="icons">
                         <span class="max-sm:hidden">Associate Fees</span>
                     </a>

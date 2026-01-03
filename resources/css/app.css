@@ -72,6 +72,10 @@
         @apply flex items-center gap-2 px-4 py-2 text-primary border border-primary font-medium cursor-pointer rounded-lg hover:bg-blue-50 transition-colors;
     }
 
+    .payment-btn{
+        @apply   bg-primary text-white px-6 py-1.5 rounded-lg font-medium cursor-pointer hover:shadow-md transition hover:bg-white hover:text-primary hover:ring-1;
+    }
+
     .table-headers {
         @apply bg-gray-100 text-sm font-bold text-gray-700 text-center py-5 max-sm:text-[10px] py-0;
     }
