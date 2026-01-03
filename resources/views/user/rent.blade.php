@@ -19,15 +19,16 @@
 
             <div class="gap-8">
                 <div class="bg-white rounded-lg shadow-md p-8 max-md:p-4">
-                    <div class="grid grid-cols-2">
-                        <h2 class="text-xl font-bold text-text-primary mb-6 col-span-1">Rent Fees Dashboard</h2>
-                        <div class="flex justify-end mb-6 col-span-1">
-                            <button onclick="document.getElementById('filterModal').classList.remove('hidden')"
-                                    class="filter-btn flex items-center gap-2">
-                                <img src="{{ asset('build/assets/icons/filter.png') }}" alt="Filter" class="w-4 h-4">
-                                Filter
-                            </button>
-                        </div>
+                    <div class="flex items-center justify-between mb-6">
+                        <h2 class="text-xl font-bold text-text-primary">Rent Dashboard</h2>
+                        
+                        <button onclick="document.getElementById('filterModal').classList.remove('hidden')"
+                        class="filter-btn">
+                            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3 6H21M6 12H18M10 18H14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <span class="tracking-tight text-base">Filter</span>
+                        </button>
                     </div>
                     <div class="overflow-x-auto">
                         <table class="min-w-full table-auto border border-gray-300">
