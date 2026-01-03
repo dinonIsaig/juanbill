@@ -22,11 +22,10 @@
     <div class="flex flex-col justify-center items center w-full p-5">
         <div class="flex justify-center flex-col items-center max-w-md mx-auto w-full">
             <!-- Logo -->
-            <div class="flex items-center gap-2 mb-12">
+            <div class="absolute top-4 right-4 flex items-center gap-2 mb-12">
                 <div class="p-2 rounded-lg">
-                    <img src="{{ asset('build/assets/images/adminPage/logo.png') }}" alt="Logo">
+                    <img src="{{ asset('build/assets/images/adminPage/wordLogo.png') }}" alt="Logo">
                 </div>
-                <span class="font-semibold text-xl text-text-primary">JuanBIll</span>
             </div>
 
             <!-- Welcome Text -->

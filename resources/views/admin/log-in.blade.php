@@ -24,7 +24,7 @@
             <!-- Logo -->
             <div class="absolute top-4 right-4 flex items-center gap-2 mb-12">
                 <div class="p-2 rounded-lg">
-                    <img src="{{ asset('build/assets/images/userPage/wordLogo.png') }}" alt="Logo">
+                    <img src="{{ asset('build/assets/images/adminPage/wordLogo.png') }}" alt="Logo">
                 </div>
             </div>
 

@@ -65,6 +65,7 @@ class SignupController extends Controller
                 'dob'        => $request->dob,
             ]);
 
+            // Commit the Transaction
             DB::commit();
 
             return redirect()->route('login')->with('success', 'Account created! Please login.');

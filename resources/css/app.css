@@ -1,5 +1,7 @@
 @import 'tailwindcss';
 
+@plugin "@tailwindcss/forms";
+@plugin "@tailwindcss/typography";
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
 @source '../**/*.blade.php';
@@ -34,6 +36,9 @@
     h3 {
         @apply text-xs font-bold text-neutral-gray uppercase tracking-wider mb-4;
     }
+    .h3-admin{
+        @apply text-xs font-bold text-neutral-400 uppercase tracking-wider mb-4;
+    }
 }
 
 @layer components {
@@ -67,6 +72,19 @@
 
     .filter-btn {
         @apply flex items-center gap-2 px-4 py-2 text-primary border border-primary font-medium cursor-pointer rounded-lg hover:bg-blue-50 transition-colors;
+    }
+
+<<<<<<< Updated upstream
+    .payment-btn{
+        @apply   bg-primary text-white px-6 py-1.5 rounded-lg font-medium cursor-pointer hover:shadow-md transition hover:bg-white hover:text-primary hover:ring-1;
+=======
+    .pagination-btn {
+        @apply px-4 py-2 text-sm font-medium border rounded-lg bg-white text-primary hover:bg-primary hover:text-white hover:ring-1;
+    }
+
+    .transaction-counter {
+        @apply font-medium text-gray-500;
+>>>>>>> Stashed changes
     }
 
     .table-headers {
@@ -126,12 +144,20 @@
         @apply bg-linear-to-b from-primary to-primary-dark text-white flex flex-col justify-center items-center text-center py-6;
     }
 
+    .admin-footer {
+        @apply bg-linear-to-b from-[#CE1126] to-[#281011] text-white flex flex-col justify-center items-center text-center py-6;
+    }
+
     .icons {
         @apply w-4 h-4 md:w-5 md:h-5;
     }
 
     .icons-container {
         @apply flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-primary-dark transition;
+    }
+
+    .iconsRed-container {
+    @apply flex items-center gap-3 px-4 py-2 rounded-lg transition hover:bg-gradient-to-b hover:from-[#CE1126] hover:to-[#721014] hover:text-white;
     }
 
 }

@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\User\DashboardController;
 use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\User\PasswordController;
+use App\Http\Controllers\User\BillController;
 
 
 Route::get('/', function () {
@@ -25,9 +26,7 @@ Route::prefix('user')->group(function () {
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('user.dashboard')->middleware('auth');
 
-    route::get('electricity', function () {
-        return view('user.electricity');
-    })->name('user.electricity');
+    route::get('/electricity', [BillController::Class,'index'])->name('user.electricity')->middleware('auth');
 
     route::get('water', function () {
         return view('user.water');
@@ -44,6 +43,10 @@ Route::prefix('user')->group(function () {
     route::get('settings', function () {
         return view('user.settings');
     })->name('user.settings');
+
+    route::get('rent', function () {
+        return view('user.rent');
+    })->name('user.rent');
 
     Route::patch('/settings/profile', [ProfileController::class, 'update'])->name('user.settings.updateProfile')->middleware('auth');
 
@@ -65,4 +68,8 @@ Route::prefix('admin')->group(function () {
     Route::get('dashboard', function () {
         return view('admin.dashboard');
     })->name('admin.dashboard');
+
+    Route::get('electricity', function () {
+        return view('admin.electricity');
+    })->name('admin.electricity');
 });
