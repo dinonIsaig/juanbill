@@ -37,6 +37,10 @@ Route::prefix('user')->group(function () {
         return view('user.association');
     })->name('user.association');
 
+    route::get('help', function () {
+        return view('user.help-and-support');
+    })->name('user.help');
+
     route::get('settings', function () {
         return view('user.settings');
     })->name('user.settings');

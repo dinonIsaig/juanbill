@@ -67,7 +67,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="icons-container">
+                    <a href="{{ route('user.help') }}" class="icons-container">
                         <img src="{{ asset('build/assets/icons/helpIcon.png') }}" alt="Logo" class="icons">
                         <span class="max-sm:hidden">Help & Support</span>
                     </a>
