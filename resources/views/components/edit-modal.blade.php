@@ -12,7 +12,7 @@
                 <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
                     
                     <div class="mb-6">
-                        <h3 class="text-lg font-bold text-overdue-text" id="modal-title ">Add Transaction</h3>
+                        <h3 class="text-lg font-bold text-overdue-text" id="modal-title ">Edit Transaction</h3>
                         <p class="text-sm text-gray-500 pb-3 border-b border-gray-200">Fill in the form below</p>
                     </div>
 
@@ -64,7 +64,7 @@
                 </div>
             </div>
         </div>
-
+    </div>
 </div>
 
 

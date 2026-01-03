@@ -89,7 +89,7 @@
     }
 
     .pagination-btn {
-        @apply px-4 py-2 text-sm font-medium border rounded-lg bg-white text-primary hover:bg-primary hover:text-white hover:ring-1;
+        @apply  bg-white text-primary px-6 py-1.5 rounded-lg font-medium cursor-pointer border border-primary hover:shadow-md transition hover:bg-primary hover:text-white hover:ring-1
     }
 
     .transaction-counter {

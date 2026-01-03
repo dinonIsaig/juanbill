@@ -72,4 +72,8 @@ Route::prefix('admin')->group(function () {
     Route::get('electricity', function () {
         return view('admin.electricity');
     })->name('admin.electricity');
+
+    Route::get('rent', function () {
+        return view('admin.rent');
+    })->name('admin.rent');
 });

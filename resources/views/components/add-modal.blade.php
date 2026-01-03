@@ -31,6 +31,7 @@
                                 <input class="block w-full appearance-none rounded-md border border-gray-200 bg-gray-50 py-2.5 px-3 text-gray-500 shadow-sm focus:border-overdue-text focus:outline-none focus:ring-1 focus:ring-overdue-text sm:text-sm type="text" placeholder="Unit No." class="placeholder-gray-400" ">
 
 
+
                             </div> 
                         </div>
 
@@ -63,7 +64,7 @@
                 </div>
             </div>
         </div>
-
+    </div>
 </div>
 
 
