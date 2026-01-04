@@ -69,15 +69,19 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @include('components.admin-electricity', ['transactionID' => 'TXN-202-4-001', 'kwh' => '1000 kwh', 'dueDate' => '2024-06-15', 'datePaid' => '2024-06-15', 'amount' => '1000', 'unit' => '3210', 'status' => 'Paid'])
-                                @include('components.admin-electricity', ['transactionID' => 'TXN-202-4-001', 'kwh' => '1000 kwh', 'dueDate' => '2023-01-15', 'datePaid' => '', 'amount' => '1000', 'unit' => '3110', 'status' => 'Pending'])
-                                @include('components.admin-electricity', ['transactionID' => 'TXN-202-4-001', 'kwh' => '1000 kwh', 'dueDate' => '2023-02-15', 'datePaid' => '', 'amount' => '1000', 'unit' => '2310', 'status' => 'Overdue'])
-                                @include('components.admin-electricity', ['transactionID' => 'TXN-202-4-001', 'kwh' => '1000 kwh', 'dueDate' => '2025-07-15', 'datePaid' => '', 'amount' => '1000', 'unit' => '1310', 'status' => 'Overdue'])
-                                @include('components.admin-electricity', ['transactionID' => 'TXN-202-4-001', 'kwh' => '1000 kwh', 'dueDate' => '2024-07-15', 'datePaid' => '', 'amount' => '1000', 'unit' => '2210', 'status' => 'Pending'])
-                                @include('components.admin-electricity', ['transactionID' => 'TXN-202-4-001', 'kwh' => '1000 kwh', 'dueDate' => '2024-04-15', 'datePaid' => '2024-06-16', 'amount' => '1000', 'unit' => '3205', 'status' => 'Paid'])
+                                @forelse($bills as $bill)
+                                    <x-admin-bill-transaction :bill="$bill" />
+                                    @empty
+                                        <tr>
+                                            <td colspan="7" class="text-center p-4 text-gray-500">
+                                                No electricity billing history found.
+                                            </td>
+                                        </tr>
+                                    @endforelse
                             </tbody>
                         </table>
                     </div>
+                    @include('components.admin-bills-footer')
                 </div>
             </div>
         </div>
