@@ -10,6 +10,8 @@ use App\Http\Controllers\User\ElectricityController;
 use App\Http\Controllers\User\WaterController;
 use App\Http\Controllers\User\AssociationController;
 use App\Http\Controllers\User\RentController;
+use App\Http\Controllers\Admin\AdminElectricityController;
+use App\Http\Controllers\Admin\AdminWaterController;
 
 // Account Type
 Route::get('/', function () {
@@ -66,9 +68,9 @@ Route::prefix('admin')->group(function () {
         return view('admin.dashboard');
     })->name('admin.dashboard');
 
-    Route::get('electricity', function () {
-        return view('admin.electricity');
-    })->name('admin.electricity');
+    Route::get('electricity', [AdminElectricityController::class, 'index'])->name('admin.electricity');
+
+    Route::get('water', [AdminWaterController::class, 'index'])->name('admin.water');
 
     Route::get('rent', function () {
         return view('admin.rent');
