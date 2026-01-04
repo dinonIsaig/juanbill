@@ -70,7 +70,7 @@
                                   </svg>
                               </button>
                               
-                              <div id="answer-{{ $index }}" class="hidden px-6 pb-6 text-neutral-gray bg-white">
+                              <div id="answer-{{ $index }}" class="hidden px-6 pb-6 text-neutral-700 bg-white">
                                 <p class="text-base leading-relaxed">{{ $faq['answer'] }}</p>
                               </div>
                           </div>
