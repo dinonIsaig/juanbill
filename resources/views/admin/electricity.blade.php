@@ -40,13 +40,11 @@
                     <div class="flex items-center justify-between mb-6">
                         <h2 class="text-xl font-bold text-text-primary">Electricity Dashboard</h2>
                         
-                        <button class="admin-filter-btn">
-                            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M3 6H21M6 12H18M10 18H14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                            <span class="tracking-tight text-base">Filter</span>
-                        </button>
-
+                        <button onclick="document.getElementById('admin-filterModal').classList.remove('hidden')"
+                                    class="admin-filter-btn flex items-center gap-2">
+                                <img src="{{ asset('build/assets/icons/red-filter.png') }}" alt="Filter" class="w-4 h-4">
+                                Filter
+                            </button>
                     </div>
                     <div class="overflow-x-auto">
                         <table class="min-w-full table-auto border border-gray-300">
@@ -54,25 +52,33 @@
                                 <tr>
                                     <th class="table-headers">Transaction ID</th>
                                     <th class="table-headers">kWh</th>
+                                    <th class="table-headers">Due Date</th>
                                     <th class="table-headers">Date Paid</th>
                                     <th class="table-headers">Amount</th>
+                                    <th class="table-headers">Unit</th>
                                     <th class="table-headers">Status</th>
-                                    <th class="table-headers"></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                
+                                @include('components.admin-electricity-transaction', ['transactionID' => 'TXN-202-4-001', 'kwh' => '1000 kwh', 'dueDate' => '2024-06-15', 'datePaid' => '2024-06-15', 'amount' => '1000', 'unit' => '3210', 'status' => 'Paid'])
+                                @include('components.admin-electricity-transaction', ['transactionID' => 'TXN-202-4-001', 'kwh' => '1000 kwh', 'dueDate' => '2023-01-15', 'datePaid' => '', 'amount' => '1000', 'unit' => '3110', 'status' => 'Pending'])
+                                @include('components.admin-electricity-transaction', ['transactionID' => 'TXN-202-4-001', 'kwh' => '1000 kwh', 'dueDate' => '2023-02-15', 'datePaid' => '', 'amount' => '1000', 'unit' => '2310', 'status' => 'Overdue'])
+                                @include('components.admin-electricity-transaction', ['transactionID' => 'TXN-202-4-001', 'kwh' => '1000 kwh', 'dueDate' => '2025-07-15', 'datePaid' => '', 'amount' => '1000', 'unit' => '1310', 'status' => 'Overdue'])
+                                @include('components.admin-electricity-transaction', ['transactionID' => 'TXN-202-4-001', 'kwh' => '1000 kwh', 'dueDate' => '2024-07-15', 'datePaid' => '', 'amount' => '1000', 'unit' => '2210', 'status' => 'Pending'])
+                                @include('components.admin-electricity-transaction', ['transactionID' => 'TXN-202-4-001', 'kwh' => '1000 kwh', 'dueDate' => '2024-04-15', 'datePaid' => '2024-06-16', 'amount' => '1000', 'unit' => '3205', 'status' => 'Paid'])
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
-            
         </div>
+        @include('components.admin-page-footer')
     </div>
 </div>
+<x-admin-filter-modal id="admin-filterModal"/>
 @endsection
 
 @push('scripts')
     @vite('resources/js/admin-electric-chart.js')
+    @vite('resources/js/admin-filter.js')
 @endpush

@@ -26,8 +26,8 @@
     --color-overdue: #FFE2E2;
     --color-overdue-border: #FFC9C9;
     --color-overdue-text: #CE1126;
-    --color-overdue-text-dark: #241e1e;
-
+    --color-admin: #CE1126;
+    --color-admin-dark: #680913;
 }
 
 @layer base {
@@ -94,6 +94,10 @@
 
     .transaction-counter {
         @apply font-medium text-gray-500;
+    }
+
+    .admin-filter-btn {
+        @apply flex items-center gap-2 px-4 py-2 text-[#CE1126] border border-[#CE1126] font-medium cursor-pointer rounded-lg hover:bg-red-50 transition-colors;
     }
 
     .table-headers {
