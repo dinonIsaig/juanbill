@@ -81,7 +81,7 @@
     }
 
     .admin-filter-btn{
-        @apply flex items-center cursor-pointer gap-2 px-3 py-1.5 border border-[#CE1126] text-[#CE1126] rounded-md hover:bg-[#CE1126] hover:text-white transition-all duration-200 text-xs font-semibold h-fit leading-none;
+        @apply flex items-center gap-2 px-3 py-1.5 border border-admin text-admin rounded-md hover:bg-admin hover:text-white transition-all duration-200 text-xs font-semibold h-fit leading-none;
     }
 
     .payment-btn{
@@ -92,12 +92,12 @@
         @apply  bg-white text-primary px-6 py-1.5 rounded-lg font-medium cursor-pointer border border-primary hover:shadow-md transition hover:bg-primary hover:text-white hover:ring-1
     }
 
-    .transaction-counter {
-        @apply font-medium text-gray-500;
+    .admin-pagination-btn {
+        @apply  bg-white text-admin px-6 py-1.5 rounded-lg font-medium cursor-pointer border border-admin hover:shadow-md transition hover:bg-admin hover:text-white hover:ring-1
     }
 
-    .admin-filter-btn {
-        @apply flex items-center gap-2 px-4 py-2 text-[#CE1126] border border-[#CE1126] font-medium cursor-pointer rounded-lg hover:bg-red-50 transition-colors;
+    .transaction-counter {
+        @apply font-medium text-gray-500;
     }
 
     .table-headers {
