@@ -29,16 +29,13 @@
                             <label class="block text-sm font-bold text-gray-700 mb-1">Unit</label>
                             <div class="relative">
                                 <input class="block w-full appearance-none rounded-md border border-gray-200 bg-gray-50 py-2.5 px-3 text-gray-500 shadow-sm focus:border-overdue-text focus:outline-none focus:ring-1 focus:ring-overdue-text sm:text-sm type="text" placeholder="Unit No." class="placeholder-gray-400" ">
-
-
-
                             </div> 
                         </div>
 
                         <div>
                             <label class="block text-sm font-bold text-gray-700 mb-1">Status</label>
                             <div class="relative">
-                                <select id="status" class="block w-full appearance-none rounded-md border border-gray-200 bg-gray-50 py-2.5 px-3 text-gray-500 shadow-sm focus:border-overdue-text focus:outline-none focus:ring-1 focus:ring-overdue-text sm:text-sm ">
+                                <select id="status" class="bg-none block w-full appearance-none rounded-md border border-gray-200 bg-gray-50 py-2.5 px-3 text-gray-500 shadow-sm focus:border-overdue-text focus:outline-none focus:ring-1 focus:ring-overdue-text sm:text-sm ">
                                     <option value="" disabled selected>Select</option>
                                     <option value="paid">Paid</option>
                                     <option value="pending">Pending</option>
@@ -56,7 +53,7 @@
                             </button>
                             
                             <button id="CancelBtn" onclick="document.getElementById('{{ $id }}').classList.add('hidden')" class="block w-full appearance-none rounded-md  text-[#364153] py-2 ring-primary sm:text-sm hover:bg-[#F3F4F6] transition-all duration-300 ease-in-out">
-                            Cancel
+                                Cancel
                             </button>
                         </div>
 

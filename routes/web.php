@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\TransactionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\SignupController;
 use App\Http\Controllers\Auth\LoginController;
@@ -76,4 +77,8 @@ Route::prefix('admin')->group(function () {
     Route::get('rent', function () {
         return view('admin.rent');
     })->name('admin.rent');
+
+    Route::get('association', function () {
+        return view('admin.association');
+    })->name('admin.association');
 });

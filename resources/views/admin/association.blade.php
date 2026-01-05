@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Rent')
+@section('title', 'Association')
 
 @section('content')
 <div class="flex h-screen bg-neutral-light">
@@ -13,8 +13,8 @@
         <div class="p-8 px-18 max-md:px-8">
 
             <div class="mb-2">
-                <h1 class="text-4xl font-bold text-overdue-text">Rent</h1>
-                <p class="text-neutral-gray inline-block">Manage Rent Fees Transactions</p>
+                <h1 class="text-4xl font-bold text-overdue-text">Association</h1>
+                <p class="text-neutral-gray inline-block">Manage Association Fees Transactions</p>
             </div>
 
             <div class="flex gap-4 p-4 justify-end">
@@ -47,7 +47,7 @@
             <div class="gap-8">
                 <div class="bg-white rounded-lg shadow-md p-8 max-md:p-4">
                     <div class="flex items-center justify-between mb-6">
-                        <h2 class="text-xl font-bold text-text-primary">Rent Dashboard</h2>
+                        <h2 class="text-xl font-bold text-text-primary">Association Fees Dashboard</h2>
                         
                         <button class="admin-filter-btn">
                             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
