@@ -31,9 +31,7 @@
         <!-- Profile -->
         <div class="flex items-center gap-2">
             <div class="w-10 h-10 bg-secondary rounded-full flex items-center justify-center text-primary font-bold">
-            <div>{{$user->first_name[0]}}{{ $user->last_name[0] }}</div>
-        </div>
-    </div>
+                {{$user->first_name[0]}}{{ $user->last_name[0] }}
             </div>
         </div>
     </div>
