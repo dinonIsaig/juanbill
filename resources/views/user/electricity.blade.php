@@ -30,7 +30,7 @@
                             :year="$year"
                             route="user.electricity"
                             :data="$chartData"
-                            label="Electricity Consumption (kWh)"
+                            label="Water Consumption (kWh)"
                             unit="kWh"
                             color="#1e3a8a"
                         />
@@ -66,7 +66,7 @@
                             </thead>
                             <tbody>
                                 @forelse($bills as $bill)
-                                    <x-electricity-transaction :bill="$bill" />
+                                    <x-bill-transaction :bill="$bill" />
                                     @empty
                                         <tr>
                                             <td colspan="6" class="text-center p-4 text-gray-500">

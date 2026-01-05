@@ -7,9 +7,15 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\User\DashboardController;
 use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\User\PasswordController;
-use App\Http\Controllers\User\BillController;
+use App\Http\Controllers\User\ElectricityController;
+use App\Http\Controllers\User\WaterController;
+use App\Http\Controllers\User\AssociationController;
+use App\Http\Controllers\User\RentController;
+use App\Http\Controllers\Admin\AdminElectricityController;
+use App\Http\Controllers\Admin\AdminWaterController;
+use App\Http\Controllers\Admin\AssocTransactionController;
 
-
+// Account Type
 Route::get('/', function () {
     return view('account-type');
 })->name('account-type');
@@ -27,27 +33,21 @@ Route::prefix('user')->group(function () {
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('user.dashboard')->middleware('auth');
 
-    route::get('/electricity', [BillController::Class,'index'])->name('user.electricity')->middleware('auth');
+    Route::get('/electricity', [ElectricityController::Class,'index'])->name('user.electricity')->middleware('auth');
 
-    route::get('water', function () {
-        return view('user.water');
-    })->name('user.water');
+    Route::get('/water', [WaterController::Class,'index'])->name('user.water')->middleware('auth');
 
-    route::get('association', function () {
-        return view('user.association');
-    })->name('user.association');
+    Route::get('/association', [AssociationController::Class,'index'])->name('user.association')->middleware('auth');
 
-    route::get('help', function () {
+    Route::get('help', function () {
         return view('user.help-and-support');
     })->name('user.help');
 
-    route::get('settings', function () {
+    Route::get('settings', function () {
         return view('user.settings');
     })->name('user.settings');
 
-    route::get('rent', function () {
-        return view('user.rent');
-    })->name('user.rent');
+    Route::get('/rent', [RentController::Class,'index'])->name('user.rent')->middleware('auth');
 
     Route::patch('/settings/profile', [ProfileController::class, 'update'])->name('user.settings.updateProfile')->middleware('auth');
 
@@ -70,15 +70,16 @@ Route::prefix('admin')->group(function () {
         return view('admin.dashboard');
     })->name('admin.dashboard');
 
-    Route::get('electricity', function () {
-        return view('admin.electricity');
-    })->name('admin.electricity');
+    Route::get('electricity', [AdminElectricityController::class, 'index'])->name('admin.electricity');
+
+    Route::get('water', [AdminWaterController::class, 'index'])->name('admin.water');
 
     Route::get('rent', function () {
         return view('admin.rent');
     })->name('admin.rent');
 
-    Route::get('association', function () {
-        return view('admin.association');
-    })->name('admin.association');
+
+    Route::resource('association', AssocTransactionController::class)
+     ->names('admin.association');
+
 });

@@ -25,7 +25,8 @@
             </a>
 
             {{-- Current Year --}}
-            <span class="px-4 py-1 text-sm font-bold text-primary mx-2 border-x border-gray-300">
+            <span class="px-4 py-1 text-sm font-bold mx-2 border-x border-gray-300"
+                  style="color: {{ $color }};">
                 {{ $year }}
             </span>
 

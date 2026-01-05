@@ -20,8 +20,8 @@
             <div class="gap-8">
                 <div class="bg-white rounded-lg shadow-md p-8 max-md:p-4">
                     <div class="flex items-center justify-between mb-6">
-                        <h2 class="text-xl font-bold text-text-primary">Association Dashboard</h2>
-                        
+                        <h2 class="text-xl font-bold text-text-primary">Rent Dashboard</h2>
+
                         <button onclick="document.getElementById('filterModal').classList.remove('hidden')"
                         class="filter-btn">
                             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -30,12 +30,12 @@
                             <span class="tracking-tight text-base">Filter</span>
                         </button>
                     </div>
+
                     <div class="overflow-x-auto">
                         <table class="min-w-full table-auto border border-gray-300">
                             <thead class="bg-gray-100">
                                 <tr>
                                     <th class="table-headers">Transaction ID</th>
-                                    <th class="table-headers">Due Date</th>
                                     <th class="table-headers">Date Paid</th>
                                     <th class="table-headers">Amount</th>
                                     <th class="table-headers">Status</th>
@@ -43,15 +43,19 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @include('components.association-transaction', ['transactionID' => 'TXN-202-4-001', 'dueDate' => '2024-06-15', 'datePaid' => '2024-06-15', 'amount' => '1000', 'status' => 'Paid'])
-                                @include('components.association-transaction', ['transactionID' => 'TXN-202-4-001', 'dueDate' => '2024-06-15', 'datePaid' => '', 'amount' => '1000', 'status' => 'Pending'])
-                                @include('components.association-transaction', ['transactionID' => 'TXN-202-4-001', 'dueDate' => '2024-06-15', 'datePaid' => '', 'amount' => '1000', 'status' => 'Overdue'])
-                                @include('components.association-transaction', ['transactionID' => 'TXN-202-4-001', 'dueDate' => '2024-06-15', 'datePaid' => '', 'amount' => '1000', 'status' => 'Overdue'])
-                                @include('components.association-transaction', ['transactionID' => 'TXN-202-4-001', 'dueDate' => '2024-06-15', 'datePaid' => '', 'amount' => '1000', 'status' => 'Pending'])
-                                @include('components.association-transaction', ['transactionID' => 'TXN-202-4-001', 'dueDate' => '2024-06-15', 'datePaid' => '2024-06-16', 'amount' => '1000', 'status' => 'Paid'])
+                                @forelse($bills as $bill)
+                                    <x-bill-transaction :bill="$bill" />
+                                    @empty
+                                        <tr>
+                                            <td colspan="6" class="text-center p-4 text-gray-500">
+                                                No electricity billing history found.
+                                            </td>
+                                        </tr>
+                                    @endforelse
                             </tbody>
                         </table>
                     </div>
+                    @include('components.bills-footer')
                 </div>
             </div>
 
@@ -66,5 +70,4 @@
 
 @push('scripts')
     @vite('resources/js/charts.js')
-    @vite('resources/js/filter.js')
 @endpush

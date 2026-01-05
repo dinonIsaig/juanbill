@@ -13,35 +13,46 @@
                     
                     <div class="mb-6">
                         <h3 class="text-lg font-bold text-overdue-text" id="modal-title ">Delete Transaction</h3>
-                        <p class="text-sm text-gray-500 pb-3 border-b border-gray-200">Enter a Transaction to Delete</p>
+                        <p class="text-sm text-gray-500 pb-3 border-b border-gray-200">Enter a Transaction ID to Delete</p>
                     </div>
 
-                    <div class="space-y-4">
-                    
-                        <div>
-                            <label class="block text-sm font-bold text-gray-700 mb-1">Unit</label>
-                            <div class="relative">
-                                <input class="block w-full appearance-none rounded-md border border-gray-200 bg-gray-50 py-2.5 px-3 text-gray-500 shadow-sm focus:border-overdue-text focus:outline-none focus:ring-1 focus:ring-overdue-text sm:text-sm type="text" placeholder="Unit No." class="placeholder-gray-400" ">
+                    <form id="deleteForm" method="POST" action="">
+                        @csrf
+                        @method('DELETE')
+                        
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-bold text-gray-700 mb-1">Transaction ID</label>
+                                <div class="relative">
+                                    <input id="delete_target" name="id" required 
+                                        class="block w-full appearance-none rounded-md border border-gray-200 bg-gray-50 py-2.5 px-3 text-gray-500 shadow-sm focus:border-overdue-text focus:outline-none focus:ring-1 focus:ring-overdue-text sm:text-sm" 
+                                        type="text" placeholder="e.g., TXN-101DN-56">
+                                </div>
+                            </div>
+
+                            <div class="pt-2 flex flex-col gap-3">
+                                <button type="submit" class="admin-add-btn justify-center">
+                                    Delete Record
+                                </button>
+                                
+                                <button type="button" onclick="document.getElementById('{{ $id }}').classList.add('hidden')" 
+                                    class="cancel-btn">
+                                    Cancel
+                                </button>
                             </div>
                         </div>
-
-                        <div class="pt-2 flex flex-col gap-3">
-                            <button type='Submit' class="admin-add-btn justify-center">
-                                Delete
-                            </button>
-                            
-                            <button id="CancelBtn" onclick="document.getElementById('{{ $id }}').classList.add('hidden')" class="block w-full appearance-none rounded-md  text-[#364153] py-2 ring-primary sm:text-sm hover:bg-[#F3F4F6] transition-all duration-300 ease-in-out">
-                                Cancel
-                            </button>
-                        </div>
+                    </form>
                     </div>
-                </div>
             </div>
         </div>
     </div>
 </div>
 
-
-
-
-
+<script>
+    // This script updates the form action URL dynamically as you type the ID
+    document.getElementById('delete_target').addEventListener('input', function() {
+        const transactionId = this.value.trim();
+        // This creates the URL: /admin/association/TXN-123
+        document.getElementById('deleteForm').action = "{{ url('admin/association') }}/" + transactionId;
+    });
+</script>

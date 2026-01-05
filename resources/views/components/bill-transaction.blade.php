@@ -2,8 +2,14 @@
 
 @php
     // 1. Extract values from the passed $bill object
-    $transactionID = $bill->id; // Or Str::limit($bill->id, 8)
-    $kwh = $bill->consumption . ' kWh';
+    $transactionID = $bill->id;
+
+    if ($bill->type === 'Electricity') {
+        $consumption = $bill->consumption . ' kWh';
+    } else {
+        $consumption = $bill->consumption . ' cu. m';
+    }
+
     $datePaid = $bill->date_paid ? $bill->date_paid->format('Y-m-d') : '--';
     $amount = '₱' . number_format($bill->amount, 2);
 
@@ -16,13 +22,13 @@
 
 @endphp
 
-<tr class="hover:bg-gray-100 transaction-row"
-    data-year="{{ $year }}"
-    data-month="{{ $month }}"
+<tr class="hover:bg-gray-100 transaction-row" data-year="{{ $year }}" data-month="{{ $month }}"
     data-status="{{ $status }}">
 
     <td class="table-rows">{{ $transactionID }}</td>
-    <td class="table-rows">{{ $kwh }}</td>
+    @if ($bill->type === 'Electricity' || $bill->type === 'Water')
+        <td class="table-rows">{{ $consumption }}</td>
+    @endif
     <td class="table-rows">{{ $datePaid }}</td>
     <td class="table-rows">{{ $amount }}</td>
 
@@ -33,8 +39,7 @@
         @elseif ($status === 'Unpaid')
             <button class="pending" disabled>Unpaid</button>
         @else
-            <button class="overdue" disabled>{{ $Status }}</button>
-
+            <button class="overdue" disabled>{{ $status }}</button>
         @endif
     </td>
 
@@ -50,4 +55,3 @@
 </tr>
 
 <x-payment-modal id="paymentModal" />
-

@@ -1,5 +1,5 @@
 <!-- Logo -->
-<div class="w-auto bg-gradient-to-b from-[#CE1126] to-[#281011] text-white flex flex-col h-full shrink-0 shadow-md">
+<div class="w-auto bg-gradient-to-b from-admin to-[#281011] text-white flex flex-col min-h-screen shrink-0 shadow-md">
     <div class="p-6 ">
         <div class="flex items-center gap-2">
             <div class="p-2 rounded-lg">
@@ -51,7 +51,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('admin.association') }}" class="iconsRed-container">
+                    <a href="{{ route('admin.association.index') }}" class="iconsRed-container">
                         <img src="{{ asset('build/assets/icons/associationIcon.png') }}" alt="Logo" class="icons">
                         <span class="max-sm:hidden">Association Fees</span>
                     </a>
