@@ -56,4 +56,4 @@
     </td>
 </tr>
 
-<x-payment-modal id="paymentModal" />
+<x-payment-modal id="paymentModal" :transactionID="$transactionID" />

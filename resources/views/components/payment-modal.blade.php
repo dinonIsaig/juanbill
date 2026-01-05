@@ -1,4 +1,4 @@
-@props(['id' => 'paymentModal'])
+@props(['id' => 'paymentModal', 'transactionID'])
 
 <div id="{{ $id }}" class="fixed inset-0 z-50 hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
     <div class="fixed inset-0 transition-opacity bg-black/50 "
@@ -37,6 +37,6 @@
 
 
 <x-online-payment-modal id="onlinePaymentModal" />
-<x-cash-payment-modal id="cashPaymentModal" />
+<x-cash-payment-modal id="cashPaymentModal" :transactionID="$transactionID" />
 
 
