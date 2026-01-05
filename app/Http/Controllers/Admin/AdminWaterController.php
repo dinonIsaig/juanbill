@@ -14,10 +14,9 @@ class AdminWaterController extends Controller
         $year = (int)$request->input('year', date('Y'));
 
         // Fetch all Water bills for the year
-        $billsQuery = Bill::where('type', 'Water')
-            ->whereYear('due_date', $year);
-
-        $bills = $billsQuery->orderBy('due_date', 'desc')->paginate(10);
+        $bills = Bill::where('type', 'Water')
+            ->orderBy('due_date', 'desc')
+            ->paginate(10);
 
         // Chart Data Calculation
         $monthlyBills = Bill::where('type', 'Water')
