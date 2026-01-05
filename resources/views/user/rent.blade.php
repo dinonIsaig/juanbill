@@ -36,6 +36,7 @@
                             <thead class="bg-gray-100">
                                 <tr>
                                     <th class="table-headers">Transaction ID</th>
+                                    <th class="table-headers">Due Paid</th>
                                     <th class="table-headers">Date Paid</th>
                                     <th class="table-headers">Amount</th>
                                     <th class="table-headers">Status</th>

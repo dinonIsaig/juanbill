@@ -28,6 +28,8 @@
     <td class="table-rows">{{ $transactionID }}</td>
     @if ($bill->type === 'Electricity' || $bill->type === 'Water')
         <td class="table-rows">{{ $consumption }}</td>
+    @else
+        <td class="table-rows">{{ $bill->due_date }}</td>
     @endif
     <td class="table-rows">{{ $datePaid }}</td>
     <td class="table-rows">{{ $amount }}</td>
