@@ -20,6 +20,7 @@
     $year = $bill->date_paid ? $bill->date_paid->format('Y') : '';
     $month = $bill->date_paid ? $bill->date_paid->format('m') : '';
 
+    $paymentModalId = 'paymentModal-' . $transactionID;
 @endphp
 
 <tr class="hover:bg-gray-100 transaction-row" data-year="{{ $year }}" data-month="{{ $month }}"
@@ -28,10 +29,11 @@
     <td class="table-rows">{{ $transactionID }}</td>
     @if ($bill->type === 'Electricity' || $bill->type === 'Water')
         <td class="table-rows">{{ $consumption }}</td>
+        <td class="table-rows text-gray-500">{{ $bill->due_date->format('Y-m-d') }}</td>
     @else
-        <td class="table-rows">{{ $bill->due_date }}</td>
+        <td class="table-rows text-gray-500">{{ $bill->due_date->format('Y-m-d') }}</td>
     @endif
-    <td class="table-rows">{{ $datePaid }}</td>
+    <td class="table-rows text-gray-500">{{ $datePaid }}</td>
     <td class="table-rows">{{ $amount }}</td>
 
     <td class="table-rows">
@@ -48,7 +50,7 @@
     <td class="table-rows">
 
         @if ($status === 'Unpaid' || $status === 'Overdue')
-            <button onclick="document.getElementById('paymentModal').classList.remove('hidden')"
+            <button onclick="document.getElementById('{{ $paymentModalId }}').classList.remove('hidden')"
                 class="payment-btn rounded-2 bg-primary text-white hover:bg-white hover:text-primary hover:ring-1">
                 Pay
             </button>
@@ -56,4 +58,4 @@
     </td>
 </tr>
 
-<x-payment-modal id="paymentModal" :transactionID="$transactionID" />
+<x-payment-modal id="{{ $paymentModalId }}" :transactionID="$transactionID" :amount="$amount" />
