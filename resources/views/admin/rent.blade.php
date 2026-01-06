@@ -3,18 +3,22 @@
 @section('title', 'Rent')
 
 @section('content')
-<div class="flex h-screen bg-neutral-light">
+<div class="flex min-h-screen bg-neutral-light items-start">
 
-    @include('components.admin-sidebar')
+    <aside class="sticky top-0 self-start">
+        @include('components.admin-sidebar')
+    </aside>
 
-    <div class="flex-1 overflow-auto">
-        @include('components.topbar')
+    <div class="flex-1 flex flex-col min-h-screen">
+        @include('components.admin-topbar')
 
-        <div class="p-8 px-18 max-md:px-8">
+        <div class="p-8 px-18 max-md:px-8 flex-grow">
 
-            <div class="mb-2">
-                <h1 class="text-4xl font-bold text-overdue-text">Rent</h1>
-                <p class="text-neutral-gray inline-block">Manage Rent Fees Transactions</p>
+            <div class="mb-8">
+                <div class="flex items-center mb-2">
+                <h1 class="text-4xl font-bold text-[#CE1126]">Rent</h1>
+                </div>
+                <p class="text-neutral-gray">Manage Rent Transactions</p>
             </div>
 
             <div class="flex flex-wrap gap-2 p-4 justify-end">
@@ -49,13 +53,13 @@
                     <div class="flex items-center justify-between mb-6">
                         <h2 class="sm:text-lg md:text-xl font-bold text-text-primary">Rent Dashboard</h2>
                         
-                        <button class="admin-filter-btn flex items-center px-3 md:px-4">
+                        <button onclick="document.getElementById('admin-filterModal').classList.remove('hidden')"
+                            class="admin-filter-btn">
                             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M3 6H21M6 12H18M10 18H14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
                             <span class="hidden sm:inline-block ml-1 tracking-tight text-base">Filter</span>
                         </button>
-
                     </div>
                     <div class="overflow-x-auto">
                         <table class="min-w-full table-auto border border-gray-300">
@@ -67,27 +71,37 @@
                                     <th class="table-headers">Amount</th>
                                     <th class="table-headers">Unit</th>
                                     <th class="table-headers">Status</th>
-
                                 </tr>
                             </thead>
                             <tbody>
-                               
+                                @forelse($bills as $bill)
+                                    <x-admin-bill-transaction :bill="$bill" />
+                                    @empty
+                                        <tr>
+                                            <td colspan="6" class="text-center p-4 text-gray-500">
+                                                No Rent billing history found.
+                                            </td>
+                                        </tr>
+                                    @endforelse
                             </tbody>
                         </table>
                     </div>
+                    @include('components.admin-bills-footer')
                 </div>
             </div>
-
         </div>
-
         @include('components.admin-page-footer')
-
     </div>
 </div>
-<x-filter-modal id="filterModal" />
+<x-admin-sign-out-modal id="adminSignOutModal" />
+<x-admin-filter-modal id="admin-filterModal"/>
 <x-add-modal id="addModal" />
 <x-edit-modal id="editModal" />
 <x-delete-modal id="deleteModal" />
 
 @endsection
 
+@push('scripts')
+    @vite('resources/js/charts.js')
+    @vite('resources/js/admin-filter.js')
+@endpush

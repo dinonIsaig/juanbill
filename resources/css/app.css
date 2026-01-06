@@ -50,6 +50,11 @@
         hover:shadow-xl  transition-all cursor-pointer;
     }
 
+    .admin-normal-btn {
+        @apply w-full bg-admin text-white text-center p-2 rounded-lg hover:bg-admin-dark
+        hover:shadow-xl  transition-all cursor-pointer;
+    }
+
     .user-btn {
         @apply bg-linear-to-t from-primary to-primary-dark hover:bg-linear-to-t text-neutral-light px-6 py-3 rounded-[11.76px] font-semibold cursor-pointer
         hover:shadow-xl transition-all duration-300;
@@ -66,6 +71,10 @@
 
     .next-btn {
         @apply bg-primary hover:bg-primary-dark text-white px-4 py-2 rounded-lg font-medium cursor-pointer hover:shadow-md transition;
+    }
+
+    .admin-next-btn {
+        @apply bg-admin hover:bg-admin-dark text-white px-4 py-2 rounded-lg font-medium cursor-pointer hover:shadow-md transition;
     }
 
     .back-btn {
@@ -130,6 +139,11 @@
 
     .input-field {
         @apply w-full text-[14px] md:text-[18px] border-4 border-[#F3F4F6] rounded-[23.50px] px-4 py-2 focus:outline-none focus:ring-4 focus:ring-primary
+        focus:border-transparent;
+    }
+
+    .admin-input-field {
+        @apply w-full text-[14px] md:text-[18px] border-4 border-[#F3F4F6] rounded-[11.76px] px-4 py-2 focus:outline-none focus:ring-4 focus:ring-admin
         focus:border-transparent;
     }
 

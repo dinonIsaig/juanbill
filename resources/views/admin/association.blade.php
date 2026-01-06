@@ -138,6 +138,7 @@
 
     </div>
 </div>
+<x-admin-sign-out-modal id="adminSignOutModal" />
 <x-filter-modal id="filterModal" />
 <x-add-modal id="addModal" />
 <x-edit-modal id="editModal" />
