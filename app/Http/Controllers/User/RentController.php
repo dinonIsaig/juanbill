@@ -11,32 +11,34 @@ class RentController extends Controller
 {
     public function index(Request $request)
     {
-        // 1. Get the requested year, default to current year if missing
-        $year = $request->input('year', date('Y'));
-
-        // 2. Fetch Bills for Table (Paginated)
-        $bills = Bill::where('user_id', Auth::id())
-                    ->where('type', 'Rent')
-                    ->orderBy('due_date', 'desc')
-                    ->paginate(10);
-
-        // 3. Fetch Data for Chart (Grouped by Month)
-        // We get all bills for the selected year to calculate totals
-        $monthlyBills = Bill::where('user_id', Auth::id())
+        // Get available years for the dropdown (Distinct years from DB)
+        $availableYears = Bill::where('user_id', Auth::id())
             ->where('type', 'Rent')
-            ->whereYear('due_date', $year)
-            ->get();
+            ->selectRaw('YEAR(due_date) as year')
+            ->distinct()
+            ->orderBy('year', 'desc')
+            ->pluck('year');
 
-        // Initialize array with 0s for Jan(0) to Dec(11)
-        $chartData = array_fill(0, 12, 0);
+        // Start the Query
+        $query = Bill::where('user_id', Auth::id())
+                    ->where('type', 'Rent');
 
-        foreach ($monthlyBills as $bill) {
-            // Carbon 'month' property is 1-12. We subtract 1 for array index (0-11).
-            // We use += just in case there are split bills in one month
-            $monthIndex = $bill->due_date->month - 1;
-            $chartData[$monthIndex] += $bill->consumption; // Summing water
+        // Apply Filters if present in URL
+        if ($request->filled('year') && $request->input('year') !== 'all') {
+            $query->whereYear('due_date', $request->input('year'));
         }
 
-        return view('user.rent', compact('bills', 'chartData', 'year'));
+        if ($request->filled('month') && $request->input('month') !== 'all') {
+            $query->whereMonth('due_date', $request->input('month'));
+        }
+
+        if ($request->filled('status') && $request->input('status') !== 'all') {
+            $query->where('status', $request->input('status'));
+        }
+
+        // Execute Query with Pagination
+        $bills = $query->orderBy('due_date', 'desc')->paginate(10)->withQueryString(); // withQueryString to filter during pagination
+
+        return view('user.rent', compact('bills', 'availableYears',));
     }
 }
