@@ -23,19 +23,19 @@
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl">
 
                 <!-- Electricity Card -->
-                <a href="" class="group col-span-1 bg-white rounded-xl p-6 shadow-xl transition-all duration-200 hover:scale-105 hover:shadow-2xl active:scale-95 text-left">
+                <a href="{{ route('admin.electricity') }}" class="group col-span-1 bg-white rounded-xl p-6 shadow-xl transition-all duration-200 hover:scale-105 hover:shadow-2xl active:scale-95 text-left">
                     <img src="{{ asset('build/assets/icons/yellowelectricityIcon.png') }}" alt="Electricity Icon">
                     <p class="py-4 font-semibold text-neutral-800 group-hover:text-admin">Electricity</p>
                 </a>
 
                 <!-- Water Card -->
-                <a href="" class="group col-span-1 bg-white rounded-xl p-6 shadow-xl transition-all duration-200 hover:scale-105 hover:shadow-2xl active:scale-95 text-left">
+                <a href="{{ route('admin.water') }}" class="group col-span-1 bg-white rounded-xl p-6 shadow-xl transition-all duration-200 hover:scale-105 hover:shadow-2xl active:scale-95 text-left">
                     <img src="{{ asset('build/assets/icons/blueWaterIcon.png') }}" alt="Water Icon">
                     <p class="py-4 font-semibold text-neutral-800 group-hover:text-admin">Water</p>
                 </a>
 
                 <!-- Rent Card -->
-                <a href="" class="group col-span-1 bg-white rounded-xl p-6 shadow-xl transition-all duration-200 hover:scale-105 hover:shadow-2xl active:scale-95 text-left">
+                <a href="{{ route('admin.rent') }}" class="group col-span-1 bg-white rounded-xl p-6 shadow-xl transition-all duration-200 hover:scale-105 hover:shadow-2xl active:scale-95 text-left">
                     <img src="{{ asset('build/assets/icons/redRentIcon.png') }}" alt="Rent Icon">
                     <p class="py-4 font-semibold text-neutral-800 group-hover:text-admin">Rent</p>
                 </a>
@@ -61,6 +61,7 @@
                 @include('components.admin-page-footer')
             </div>
 </div>
+<x-admin-sign-out-modal id="adminSignOutModal" />
 @endsection
 
 @push('scripts')
