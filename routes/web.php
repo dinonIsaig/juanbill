@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\TransactionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\SignupController;
 use App\Http\Controllers\Auth\LoginController;
@@ -12,6 +13,7 @@ use App\Http\Controllers\User\AssociationController;
 use App\Http\Controllers\User\RentController;
 use App\Http\Controllers\Admin\AdminElectricityController;
 use App\Http\Controllers\Admin\AdminWaterController;
+use App\Http\Controllers\Admin\AssocTransactionController;
 
 // Account Type
 Route::get('/', function () {
@@ -75,4 +77,9 @@ Route::prefix('admin')->group(function () {
     Route::get('rent', function () {
         return view('admin.rent');
     })->name('admin.rent');
+
+
+    Route::resource('association', AssocTransactionController::class)
+     ->names('admin.association');
+
 });

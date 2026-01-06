@@ -45,13 +45,13 @@
                     </a>
                 </li>
                 <li>
-                    <a href="" class="iconsRed-container">
+                    <a href="{{ route('admin.rent') }}" class="iconsRed-container">
                         <img src="{{ asset('build/assets/icons/rentIcon.png') }}" alt="Logo" class="icons">
                         <span class="max-sm:hidden">Rent</span>
                     </a>
                 </li>
                 <li>
-                    <a href="" class="iconsRed-container">
+                    <a href="{{ route('admin.association.index') }}" class="iconsRed-container">
                         <img src="{{ asset('build/assets/icons/associationIcon.png') }}" alt="Logo" class="icons">
                         <span class="max-sm:hidden">Association Fees</span>
                     </a>
