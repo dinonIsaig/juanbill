@@ -10,6 +10,7 @@ use App\Http\Controllers\User\ElectricityController;
 use App\Http\Controllers\User\WaterController;
 use App\Http\Controllers\User\AssociationController;
 use App\Http\Controllers\User\RentController;
+use App\Http\Controllers\User\OnlinePaymentController;
 use App\Http\Controllers\Admin\AdminElectricityController;
 use App\Http\Controllers\Admin\AdminWaterController;
 
@@ -37,6 +38,8 @@ Route::prefix('user')->group(function () {
 
     Route::get('/association', [AssociationController::Class,'index'])->name('user.association')->middleware('auth');
 
+    Route::post('/Online/pay/{id}', [OnlinePaymentController::class, 'pay'])->name('pay');
+    
     Route::get('help', function () {
         return view('user.help-and-support');
     })->name('user.help');
