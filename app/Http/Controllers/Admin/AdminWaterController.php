@@ -23,14 +23,14 @@ class AdminWaterController extends Controller
         $monthlyBills = Bill::where('type', 'Water')
             ->whereYear('due_date', $year)
             ->get();
-            
+
         $monthlyTotals = array_fill(0, 12, 0);
         $billCounts = array_fill(0, 12, 0);
         $chartData = array_fill(0, 12, 0);
 
         foreach ($monthlyBills as $bill) {
             $monthIndex = Carbon::parse($bill->due_date)->month - 1;
-            $monthlyTotals[$monthIndex] += $bill->consumption; 
+            $monthlyTotals[$monthIndex] += $bill->consumption;
             $billCounts[$monthIndex]++;
         }
 
