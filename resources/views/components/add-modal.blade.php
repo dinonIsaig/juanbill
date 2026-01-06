@@ -22,25 +22,29 @@
                             <div class="space-y-4">
                                 <div>
                                     <label class="block text-sm font-bold text-gray-700 mb-1">Transaction ID</label>
-                                    <input type="text" name="TransactionID" required class="block w-full rounded-md border border-gray-200 bg-gray-50 py-2.5 px-3 text-gray-500 sm:text-sm" placeholder="e.g. TXN-101">
+                                    <input type="text" name="TransactionID" required class="admin-input" placeholder="e.g. TXN-101">
                                 </div>
                                 <div>
                                     <label class="block text-sm font-bold text-gray-700 mb-1">Due Date</label>
-                                    <input type="date" name="DueDate" required class="block w-full rounded-md border border-gray-200 bg-gray-50 py-2.5 px-3 text-gray-500 sm:text-sm">
+                                    <input type="date" name="DueDate" required class="admin-input">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-bold text-gray-700 mb-1">Date Paid</label>
+                                    <input type="date" name="DatePaid" class="admin-input">
                                 </div>
                                 <div>
                                     <label class="block text-sm font-bold text-gray-700 mb-1">Amount</label>
-                                    <input type="number" step="0.01" name="Amount" required class="block w-full rounded-md border border-gray-200 bg-gray-50 py-2.5 px-3 text-gray-500 sm:text-sm">
+                                    <input name="Amount" required class="admin-input">
                                 </div>
                                 <div>
                                     <label class="block text-sm font-bold text-gray-700 mb-1">Unit</label>
-                                    <input type="number" name="Unit" required class="block w-full rounded-md border border-gray-200 bg-gray-50 py-2.5 px-3 text-gray-500 sm:text-sm">
+                                    <input name="Unit" required class="admin-input">
                                 </div>
                                 <div>
                                     <label class="block text-sm font-bold text-gray-700 mb-1">Status</label>
-                                    <select name="Status" required class="block w-full rounded-md border border-gray-200 bg-gray-50 py-2.5 px-3 text-gray-500 sm:text-sm">
+                                    <select name="Status" required class="admin-input">
                                         <option value="Paid">Paid</option>
-                                        <option value="Pending">Pending</option>
+                                        <option value="Unpaid">Unpaid</option>
                                         <option value="Overdue">Overdue</option>
                                     </select>
                                 </div>

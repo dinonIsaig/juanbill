@@ -133,6 +133,10 @@
         focus:border-transparent;
     }
 
+    .admin-input{
+        @apply block w-full rounded-md border focus:border-admin focus:outline-none ring-admin border-gray-200 bg-gray-50 py-2.5 px-3 text-gray-500 sm:text-sm transition;
+    }
+
     .input-label-small {
         @apply block text-sm font-medium text-text-primary mb-2;
     }

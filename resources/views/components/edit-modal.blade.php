@@ -23,7 +23,7 @@
                     <label class="block text-sm font-bold text-gray-700 mb-1">TransactionID</label>
                     <div class="relative">
                         <input id="edit_target" name="TransactionID" required 
-                            class="block w-full rounded-md border border-gray-200 bg-gray-100 py-2.5 px-3 text-gray-500 sm:text-sm" 
+                            class="admin-input" 
                             type="text" placeholder="Enter ID to find">
                     </div>
                 </div>
@@ -31,31 +31,31 @@
                 <div>
                     <label class="block text-sm font-bold text-gray-700 mb-1">Due Date</label>
                     <div class="relative">
-                        <input type="date" name="DueDate" required class="block w-full rounded-md border border-gray-200 bg-gray-50 py-2.5 px-3 text-gray-500 sm:text-sm">
+                        <input type="date" name="DueDate" required class="admin-input">
                     </div> 
                 </div>
 
                 <div>
                     <label class="block text-sm font-bold text-gray-700 mb-1">Date Paid</label>
                     <div class="relative">
-                        <input type="date" name="DatePaid" class="block w-full rounded-md border border-gray-200 bg-gray-50 py-2.5 px-3 text-gray-500 sm:text-sm">
+                        <input type="date" name="DatePaid" class="admin-input">
                     </div> 
                 </div>
 
                 <div>
                     <label class="block text-sm font-bold text-gray-700 mb-1">Unit</label>
                     <div class="relative">
-                        <input type="number" name="Unit" required placeholder="Unit No." 
-                            class="block w-full rounded-md border border-gray-200 bg-gray-50 py-2.5 px-3 text-gray-500 sm:text-sm">
+                        <input name="Unit" required placeholder="Unit No." 
+                            class="admin-input">
                     </div>
                 </div>
 
                 <div>
                     <label class="block text-sm font-bold text-gray-700 mb-1">Status</label>
                     <div class="relative">
-                        <select name="Status" required class="block w-full rounded-md border border-gray-200 bg-gray-50 py-2.5 px-3 text-gray-500 sm:text-sm">
+                        <select name="Status" required class="admin-input">
                             <option value="Paid">Paid</option>
-                            <option value="Pending">Pending</option>
+                            <option value="Unpaid">Unpaid</option>
                             <option value="Overdue">Overdue</option>
                         </select>
                     </div>

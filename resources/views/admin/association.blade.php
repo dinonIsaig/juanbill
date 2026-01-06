@@ -16,7 +16,6 @@
     </div>
 
     <script>
-        // Auto-hide after 5 seconds
         setTimeout(() => {
             const alert = document.getElementById('alert-success');
             if (alert) {
@@ -119,7 +118,7 @@
                                     <td class="px-4 py-3 text-sm">
                                         <span class="px-2 py-1 rounded-full text-xs font-semibold 
                                             {{ $transaction->Status == 'Paid' ? 'bg-green-100 text-green-800' : '' }}
-                                            {{ $transaction->Status == 'Pending' ? 'bg-yellow-100 text-yellow-800' : '' }}
+                                            {{ $transaction->Status == 'Unpaid' ? 'bg-yellow-100 text-yellow-800' : '' }}
                                             {{ $transaction->Status == 'Overdue' ? 'bg-red-100 text-red-800' : '' }}">
                                             {{ ucfirst($transaction->Status) }}
                                         </span>
