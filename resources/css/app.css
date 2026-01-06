@@ -101,11 +101,11 @@
     }
 
     .table-headers {
-        @apply bg-gray-100 text-sm font-bold text-gray-700 text-center py-5 max-sm:text-[10px] py-0;
+        @apply px-6 py-3 text-center font-bold text-black tracking-wider max-sm:text-[10px];
     }
 
     .table-rows {
-        @apply px-6 py-4 border-b border-gray-300 text-sm text-gray-900 text-center max-sm:text-[10px];
+        @apply px-6 py-4 whitespace-nowrap text-sm text-center max-sm:text-[10px];
     }
 
     .paid {
@@ -166,7 +166,7 @@
     }
 
     .icons-container {
-        @apply flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-primary-dark transition;
+        @apply flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gradient-to-b hover:from-primary hover:to-primary-dark hover:text-white transition;
     }
 
     .iconsRed-container {
