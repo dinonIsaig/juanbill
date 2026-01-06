@@ -10,7 +10,7 @@
     <div class="flex-1 overflow-auto">
         @include('components.topbar')
 
-        <div class="p-8 px-18 max-md:px-8">
+        <div class="p-8 px-18 max-md:px-8 mb-70 max-md:mb-0">
 
             <div class="mb-8">
                 <h1 class="text-4xl font-bold text-primary">Rent</h1>
@@ -32,8 +32,8 @@
                     </div>
 
                     <div class="overflow-x-auto">
-                        <table class="min-w-full table-auto border border-gray-300">
-                            <thead class="bg-gray-100">
+                        <table class="min-w-full table-auto border-collapse">
+                            <thead class="bg-gray-50 border-b border-gray-200">
                                 <tr>
                                     <th class="table-headers">Transaction ID</th>
                                     <th class="table-headers">Due Paid</th>
@@ -56,7 +56,7 @@
                             </tbody>
                         </table>
                     </div>
-                    @include('components.bills-footer')
+                    <x-bills-footer :items="$bills" />
                 </div>
             </div>
 
@@ -66,7 +66,7 @@
 
     </div>
 </div>
-<x-filter-modal id="filterModal" />
+<x-filter-modal id="filterModal" :availableYears="$availableYears" />
 @endsection
 
 @push('scripts')
