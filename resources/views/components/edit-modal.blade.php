@@ -22,24 +22,17 @@
                 <div>
                     <label class="block text-sm font-bold text-gray-700 mb-1">TransactionID</label>
                     <div class="relative">
-                        <input name="TransactionID" required 
-                            class="admin-input" 
+                        <input name="TransactionID" required
+                            class="admin-input"
                             type="text" placeholder="Enter ID to find">
                     </div>
-                </div>
-
-                <div>
-                    <label class="block text-sm font-bold text-gray-700 mb-1">Due Date</label>
-                    <div class="relative">
-                        <input type="date" name="due_date" required class="admin-input">
-                    </div> 
                 </div>
 
                 <div>
                     <label class="block text-sm font-bold text-gray-700 mb-1">Date Paid</label>
                     <div class="relative">
                         <input type="date" name="date_paid" class="admin-input">
-                    </div> 
+                    </div>
                 </div>
 
                 <div>
@@ -57,8 +50,8 @@
                     <button type="submit" class="admin-add-btn justify-center">
                         Update Transaction
                     </button>
-                    
-                    <button type="button" onclick="document.getElementById('{{ $id }}').classList.add('hidden')" 
+
+                    <button type="button" onclick="document.getElementById('{{ $id }}').classList.add('hidden')"
                         class="cancel-btn">
                         Cancel
                     </button>

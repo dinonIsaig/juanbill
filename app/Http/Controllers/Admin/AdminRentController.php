@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Bill;
-use App\Models\User; 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
@@ -30,10 +30,14 @@ class AdminRentController extends Controller
             $query->where('status', $request->input('status'));
         }
 
+        if ($request->filled('TransactionID')) {
+            $query->where('id', $request->input('TransactionID'));
+        }
+
         $bills = $query->with('user')->orderBy('due_date', 'desc')->paginate(10)->withQueryString(); // withQueryString to filter during pagination
 
         $chartYear = $request->input('chart_year', date('Y'));
-        
+
         $monthlyBills = Bill::where('type', 'Rent')->whereYear('due_date', date('Y')) ->get();
 
         $chartData = array_fill(0, 12, 0);
@@ -45,7 +49,7 @@ class AdminRentController extends Controller
         return view('admin.rent', compact('bills', 'availableYears', 'chartData'));
     }
 
-    public function create(): View 
+    public function create(): View
     {
         return view('components.add-modal');
     }
@@ -62,9 +66,9 @@ class AdminRentController extends Controller
 
         $user = User::where('unit_id', $request->unit_id)->first();
 
-        $data = $request->except('unit_id'); 
-        $data['user_id'] = $user->id;    
-        $data['type'] = 'Rent';  
+        $data = $request->except('unit_id');
+        $data['user_id'] = $user->id;
+        $data['type'] = 'Rent';
 
         Bill::create($data);
 
@@ -81,11 +85,10 @@ class AdminRentController extends Controller
     {
         $request->validate([
                     'TransactionID' => 'required|string',
-                    'due_date'       => 'required|date',
                     'date_paid'      => 'nullable|date',
                     'status'        => 'required|string',
                 ]);
-                
+
         $bill = Bill::where('id', $request->TransactionID)->first();
 
         if (!$bill) {
@@ -93,7 +96,6 @@ class AdminRentController extends Controller
         }
 
         $bill->update([
-                'due_date'  => $request->due_date,
                 'date_paid' => $request->date_paid,
                 'status'    => $request->status,
             ]);
@@ -102,7 +104,7 @@ class AdminRentController extends Controller
                          ->with('success', 'Transaction updated successfully');
     }
 
-    public function destroy(Request $request) 
+    public function destroy(Request $request)
     {
     $request->validate([
         'TransactionID' => 'required|string'

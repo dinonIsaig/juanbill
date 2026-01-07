@@ -3,37 +3,18 @@
 @section('title', 'Association')
 
 @if (session('success'))
-    <div id="alert-success" class="fixed top-5 right-5 z-[100] flex items-center p-4 mb-4 text-green-800 rounded-lg bg-green-50 border border-green-300 shadow-lg transition-opacity duration-500" role="alert">
+    <div id="alert-success" class="absolute top-10 right-200 z-[100] tracking-wide flex items-center p-4 px-10 mb-4 text-green-800 rounded-lg bg-green-50 border border-green-300 shadow-lg transition-opacity duration-500" role="alert">
         <div class="ms-3 text-sm font-medium">
             {{ session('success') }}
         </div>
-        <button type="button" onclick="document.getElementById('alert-success').remove()" class="ms-auto -mx-1.5 -my-1.5 bg-green-50 text-green-500 rounded-lg focus:ring-2 focus:ring-green-400 p-1.5 hover:bg-green-200 inline-flex items-center justify-center h-8 w-8">
-            <span class="sr-only">Close</span>
-            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
-            </svg>
-        </button>
     </div>
-
-    <script>
-        setTimeout(() => {
-            const alert = document.getElementById('alert-success');
-            if (alert) {
-                alert.style.opacity = '0';
-                setTimeout(() => alert.remove(), 500);
-            }
-        }, 5000);
-    </script>
 @endif
 
 @if (session('error'))
-    <div id="alert-error" class="fixed top-5 right-5 z-[100] flex items-center p-4 mb-4 text-red-800 rounded-lg bg-red-50 border border-red-300 shadow-lg" role="alert">
+    <div id="alert-error" class="absolute top-10 right-200 z-[100] flex items-center p-4 mb-4 text-red-800 rounded-lg bg-red-50 border border-red-300 shadow-lg" role="alert">
         <div class="ms-3 text-sm font-medium">
             {{ session('error') }}
         </div>
-        <button type="button" onclick="document.getElementById('alert-error').remove()" class="ms-auto -mx-1.5 -my-1.5 bg-red-50 text-red-500 rounded-lg focus:ring-2 focus:ring-red-400 p-1.5 hover:bg-red-200 inline-flex items-center justify-center h-8 w-8">
-            <svg class="w-3 h-3" fill="none" viewBox="0 0 14 14"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/></svg>
-        </button>
     </div>
 @endif
 
@@ -85,7 +66,7 @@
                 <div class="bg-white rounded-lg shadow-md p-8 max-md:p-4">
                     <div class="flex items-center justify-between mb-6">
                         <h2 class="sm:text-lg md:text-xl font-bold text-text-primary">Association Fees Dashboard</h2>
-                        
+
                         <button onclick="document.getElementById('adminfilterModal').classList.remove('hidden')"class="admin-filter-btn flex items-center px-3 md:px-4">
                             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M3 6H21M6 12H18M10 18H14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -135,6 +116,17 @@
 <x-edit-modal id="editModal"  type="association"/>
 <x-delete-modal id="deleteModal"  type="association"/>
 @endsection
+
+<script>
+        setTimeout(() => {
+            const alert = document.getElementById('alert-success');
+            if (alert) {
+                alert.style.opacity = '0';
+                setTimeout(() => alert.remove(), 500);
+            }
+        }, 5000);
+</script>
+
 
 @push('scripts')
     @vite('resources/js/admin-filter.js')

@@ -18,6 +18,15 @@
                     <form method="GET" action="">
                         <div class="space-y-4">
 
+                            <div>
+                                <label class="block text-sm font-bold text-gray-700 mb-1">TransactionID</label>
+                                <div class="relative">
+                                    <input name="TransactionID"
+                                        class="admin-input"
+                                        type="text" placeholder="Enter ID to find">
+                                </div>
+                            </div>
+
                             {{-- Dynamic Year Filter --}}
                             <div>
                                 <label class="block text-sm font-medium text-gray-700 mb-1">Year</label>
