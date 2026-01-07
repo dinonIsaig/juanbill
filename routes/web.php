@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Admin\TransactionController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\AdminSignupController;
+use App\Http\Controllers\Auth\AdminLoginController;
 use App\Http\Controllers\Auth\SignupController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\User\DashboardController;
@@ -11,9 +13,11 @@ use App\Http\Controllers\User\ElectricityController;
 use App\Http\Controllers\User\WaterController;
 use App\Http\Controllers\User\AssociationController;
 use App\Http\Controllers\User\RentController;
+use App\Http\Controllers\User\OnlinePaymentController;
 use App\Http\Controllers\Admin\AdminElectricityController;
 use App\Http\Controllers\Admin\AdminWaterController;
 use App\Http\Controllers\Admin\AssocTransactionController;
+use App\Http\Controllers\Admin\AdminRentController;
 
 // Account Type
 Route::get('/', function () {
@@ -39,6 +43,8 @@ Route::prefix('user')->group(function () {
 
     Route::get('/association', [AssociationController::Class,'index'])->name('user.association')->middleware('auth');
 
+    Route::post('/Online/pay/{id}', [OnlinePaymentController::class, 'pay'])->name('pay');
+    
     Route::get('help', function () {
         return view('user.help-and-support');
     })->name('user.help');
@@ -58,28 +64,27 @@ Route::prefix('user')->group(function () {
 // Admin Routes
 Route::prefix('admin')->group(function () {
 
-    Route::get('sign-up', function () {
-        return view('admin.sign-up');
-    })->name('admin.sign-up');
+    Route::get('/sign-up', [AdminSignupController::class, 'create'])->name('admin.sign-up');
 
-    Route::get('log-in', function () {
-        return view('admin.log-in');
-    })->name('admin.log-in');
+    Route::post('/sign-up', [AdminSignupController::class, 'store'])->name('admin.store');
 
-    Route::get('dashboard', function () {
-        return view('admin.dashboard');
-    })->name('admin.dashboard');
+    Route::get('/log-in', [AdminLoginController::class, 'showLogin'])->name('admin.log-in');
 
-    Route::get('electricity', [AdminElectricityController::class, 'index'])->name('admin.electricity');
+    Route::post('/login', [AdminLoginController::class, 'login'])->name('admin.login');
 
-    Route::get('water', [AdminWaterController::class, 'index'])->name('admin.water');
+    // 2. Protected Routes (Must be logged in as Admin)
+    Route::middleware(['auth:admin'])->group(function () {
 
-    Route::get('rent', function () {
-        return view('admin.rent');
-    })->name('admin.rent');
+        Route::post('/logout', [AdminLoginController::class, 'logout'])->name('admin.logout');
 
+        Route::get('/dashboard', function () { return view('admin.dashboard'); })->name('admin.dashboard');
 
-    Route::resource('association', AssocTransactionController::class)
-     ->names('admin.association');
+        Route::get('/electricity', [AdminElectricityController::class, 'index'])->name('admin.electricity');
 
+        Route::get('/water', [AdminWaterController::class, 'index'])->name('admin.water');
+
+        Route::get('/rent', [AdminRentController::class, 'index'])->name('admin.rent');
+
+        Route::resource('association', AssocTransactionController::class)->names('admin.association');
+    });
 });

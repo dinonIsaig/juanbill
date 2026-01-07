@@ -39,7 +39,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="" class="iconsRed-container">
+                    <a href="{{ route('admin.water') }}" class="iconsRed-container">
                         <img src="{{ asset('build/assets/icons/waterIcon.png') }}" alt="Logo" class="icons">
                         <span class="max-sm:hidden">Water</span>
                     </a>
@@ -75,12 +75,16 @@
                     </a>
                 </li>
                 <li>
-                    <a href="" class="iconsRed-container">
-                        <img src="{{ asset('build/assets/icons/signOutIcon.png') }}" alt="Logo" class="icons">
-                        <span class="max-sm:hidden">Sign Out</span>
-                    </a>
+                    <button type="button" class="iconsRed-container group w-full text-left"
+                            onclick="document.getElementById('adminSignOutModal').classList.remove('hidden')">
+                            <img src="{{ asset('build/assets/icons/signOutIcon.png') }}" alt="Sign Out" class="icons">
+                            <span class="max-sm:hidden">Sign Out</span>
+                    </button>
                 </li>
             </ul>
         </div>
     </nav>
-</div>
+</div>  
+
+
+

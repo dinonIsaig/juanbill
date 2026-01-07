@@ -29,11 +29,11 @@
             </div>
 
             <!-- Welcome Text -->
-            <h2 class="welcome-text text-[#CE1126] mb-2">Welcome User!</h2>
+            <h2 class="welcome-text text-[#CE1126] mb-2">Welcome Admin!</h2>
             <p class="welcome-description">Stay updated with your latest bills</p>
 
-            <!-- Sign Up Form -->
-            <form method="POST" action="#" class="space-y-4 flex justify-center flex-col w-full">
+            <!-- Log-in Form -->
+            <form method="POST" action="{{ route('admin.login') }}" class="space-y-4 flex justify-center flex-col w-full">
                 @csrf
 
                 <!-- Username -->

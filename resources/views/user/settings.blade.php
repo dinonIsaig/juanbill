@@ -10,7 +10,7 @@
         <div class="flex-1 overflow-auto">
             @include('components.topbar')
 
-            <div class="p-8 px-18 max-md:px-8">
+            <div class="p-8 px-18 max-md:px-8 mb-70 max-md:mb-0">
 
                 <div class="mb-8">
                     @if (session('error'))
@@ -92,7 +92,7 @@
                 </div>
 
                 @include('components.change-password')
-                
+
             </div>
 
             @include('components.page-footer')

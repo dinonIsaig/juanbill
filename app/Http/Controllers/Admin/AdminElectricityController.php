@@ -16,12 +16,9 @@ class AdminElectricityController extends Controller
         $year = (int)$request->input('year', date('Y'));
 
         // 2. Fetch all Electricity bills for the selected year
-        // We remove 'user_id' so Admin can see all units
-        $billsQuery = Bill::where('type', 'Electricity')
-            ->whereYear('due_date', $year);
-
-        // 3. Fetch Data for Table (Paginated)
-        $bills = $billsQuery->orderBy('due_date', 'desc')->paginate(10);
+        $bills = Bill::where('type', 'Electricity')
+            ->orderBy('due_date', 'desc')
+            ->paginate(10);
 
         // 4. Fetch Data for Chart (Annual Summary)
         $monthlyBills = Bill::where('type', 'Electricity')

@@ -8,7 +8,7 @@
     @stack('styles')
 </head>
 <body class="bg-neutral-light min-h-screen flex flex-col">
-    <main class="flex-grow">
+    <main class="flex-grow justify-content-between">
         @yield('content')
     </main>
     @stack('scripts')

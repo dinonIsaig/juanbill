@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Electricity')
+@section('title', 'Water')
 
 @section('content')
 
@@ -18,12 +18,12 @@
 
             <div class="mb-8">
                 <div class="flex items-center mb-2">
-                <h1 class="text-4xl font-bold text-[#CE1126]">Electricity</h1>
-                <svg class="w-10 h-10 ml-1" fill="none" stroke="#CE1126" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                <h1 class="text-4xl font-bold text-[#CE1126]">Water</h1>
+                <svg class="w-10 h-10 mb-1 ml-2" fill="none" stroke="#CE1126" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 2.69l5.66 5.66a8 8 0 11-11.32 0L12 2.69z"/>
                     </svg>
                 </div>
-                <p class="text-neutral-gray">Manage electricity consumption</p>
+                <p class="text-neutral-gray">Manage water consumption</p>
 
                 <div class=" grid grid-cols-1 gap-8 mb-15 mt-8">
                     <div class="bg-white rounded-lg shadow-md p-8 w-full">
@@ -31,10 +31,10 @@
                         <div class="mb-4">
                         <x-annual-chart
                             :year="$year"
-                            route="admin.electricity"
+                            route="admin.water"
                             :data="$chartData"
-                            label="Average Unit Consumption (kWh)"
-                            unit="kWh"
+                            label="Average Unit Consumption (cu. m)"
+                            unit="cu. m"
                             color="#CE1126"
                         />
                     </div>
@@ -72,7 +72,7 @@
             <div class="gap-8">
                 <div class="bg-white rounded-lg shadow-md p-8 max-md:p-4">
                     <div class="flex items-center justify-between mb-6">
-                        <h2 class="text-xl font-bold text-text-primary">Electricity Dashboard</h2>
+                        <h2 class="text-xl font-bold text-text-primary">Water Dashboard</h2>
                         
                         <button onclick="document.getElementById('admin-filterModal').classList.remove('hidden')"
                             class="admin-filter-btn">
@@ -87,7 +87,7 @@
                             <thead class="bg-gray-100">
                                 <tr>
                                     <th class="table-headers">Transaction ID</th>
-                                    <th class="table-headers">kWh</th>
+                                    <th class="table-headers">Cu. m</th>
                                     <th class="table-headers">Due Date</th>
                                     <th class="table-headers">Date Paid</th>
                                     <th class="table-headers">Amount</th>
@@ -101,7 +101,7 @@
                                     @empty
                                         <tr>
                                             <td colspan="7" class="text-center p-4 text-gray-500">
-                                                No electricity billing history found.
+                                                No water billing history found.
                                             </td>
                                         </tr>
                                     @endforelse
