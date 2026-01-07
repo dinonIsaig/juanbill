@@ -25,7 +25,7 @@
                                 <label class="block text-sm font-bold text-gray-700 mb-1">Transaction ID</label>
                                 <div class="relative">
                                     <input id="delete_target" name="id" required 
-                                        class="block w-full appearance-none rounded-md border border-gray-200 bg-gray-50 py-2.5 px-3 text-gray-500 shadow-sm focus:border-overdue-text focus:outline-none focus:ring-1 focus:ring-overdue-text sm:text-sm" 
+                                        class="admin-input" 
                                         type="text" placeholder="e.g., TXN-101DN-56">
                                 </div>
                             </div>

@@ -40,22 +40,28 @@ class AssocTransactionController extends Controller
 
     public function edit(AssocTransac $transaction): View
     {
-        return view('admin.edit-modal', compact('transaction'));
+        return view('admin.edit-modal');
     }
 
-    public function update(Request $request, AssocTransac $transaction): RedirectResponse
+    public function update(Request $request, $id): RedirectResponse
     {
+
+        $transaction = AssocTransac::where('TransactionID', $id)->first();
+
+        if (!$transaction) {
+            return redirect()->back()->with('error', 'Transaction not found.');
+        }
+
         $request->validate([
             'DueDate'   => 'required|date',
             'DatePaid'  => 'nullable|date',
-            'Amount'    => 'required|numeric',
             'Unit'      => 'required|integer',
             'Status'    => 'required|string',
         ]);
 
         $transaction->update($request->all());
 
-        return redirect()->route('admin.association')
+        return redirect()->route('admin.association.index')
                         ->with('success', 'Transaction updated successfully');
     }
 
