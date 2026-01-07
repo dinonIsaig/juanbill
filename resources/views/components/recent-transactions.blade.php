@@ -53,7 +53,7 @@
                 @empty
                     <tr>
                         <td colspan="6" class="px-6 py-10 text-center text-gray-500">
-                            No paid transactions found in the last 2 months.
+                            No paid transactions found in the last 3 months.
                         </td>
                     </tr>
                 @endforelse

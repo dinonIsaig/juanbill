@@ -27,7 +27,7 @@
     </div>
     <div class="flex-1">
         <h3 class="font-semibold text-text-primary">{{ $title }}</h3>
-        <p class="text-xs text-neutral-gray">{{ $dueDate }}</p>
+        <p class="text-xs">{{ $dueDate }}</p>
     </div>
     <div class="text-right">
         <p class="font-bold text-lg text-text-primary">{{ $amount }}</p>
