@@ -10,7 +10,7 @@
     <div class="flex-1 overflow-auto">
         @include('components.topbar')
 
-        <div class="p-8 px-18 max-md:px-8 mb-70 max-md:mb-0">
+        <div class="p-8 px-18 max-md:px-8 mb-70 max-md:mb-0 3xl:mb-120">
 
             <div class="mb-8">
                 <h1 class="text-4xl font-bold text-primary">Association Fees</h1>
