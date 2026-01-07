@@ -12,6 +12,10 @@ class AdminWaterController extends Controller
     public function index(Request $request)
     {
         $year = (int)$request->input('year', date('Y'));
+        
+        $availableYears = Bill::where('type', 'Association Dues')->selectRaw('YEAR(due_date) as year')->distinct()->orderBy('year', 'desc')->pluck('year');
+
+        
 
         // Fetch all Water bills for the year
         $bills = Bill::where('type', 'Water')
@@ -39,6 +43,5 @@ class AdminWaterController extends Controller
             }
         }
 
-        return view('admin.water', compact('year', 'chartData', 'bills'));
-    }
+        return view('admin.water', compact('bills', 'availableYears', 'chartData', 'year'));    }
 }

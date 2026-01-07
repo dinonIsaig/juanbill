@@ -1,4 +1,4 @@
-@props(['id' => 'editModal'])
+@props(['id' => 'editModal', 'type'])
 
 <div id="{{ $id }}" class="fixed inset-0 z-50 hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
     <div class="fixed inset-0 transition-opacity bg-black/50 "
@@ -14,15 +14,15 @@
             <p class="text-sm text-gray-500 pb-3 border-b border-gray-200">Specify the Transaction to Edit</p>
         </div>
 
-        <form id="editForm" method="POST" action="">
+        <form method="POST" action="{{ route('admin.' . $type . '.update') }}">
             @csrf
-            @method('PUT')
+            @method('PATCH')
 
             <div class="space-y-4">
                 <div>
                     <label class="block text-sm font-bold text-gray-700 mb-1">TransactionID</label>
                     <div class="relative">
-                        <input id="edit_target" name="TransactionID" required 
+                        <input name="TransactionID" required 
                             class="admin-input" 
                             type="text" placeholder="Enter ID to find">
                     </div>
@@ -31,29 +31,21 @@
                 <div>
                     <label class="block text-sm font-bold text-gray-700 mb-1">Due Date</label>
                     <div class="relative">
-                        <input type="date" name="DueDate" required class="admin-input">
+                        <input type="date" name="due_date" required class="admin-input">
                     </div> 
                 </div>
 
                 <div>
                     <label class="block text-sm font-bold text-gray-700 mb-1">Date Paid</label>
                     <div class="relative">
-                        <input type="date" name="DatePaid" class="admin-input">
+                        <input type="date" name="date_paid" class="admin-input">
                     </div> 
-                </div>
-
-                <div>
-                    <label class="block text-sm font-bold text-gray-700 mb-1">Unit</label>
-                    <div class="relative">
-                        <input name="Unit" required placeholder="Unit No." 
-                            class="admin-input">
-                    </div>
                 </div>
 
                 <div>
                     <label class="block text-sm font-bold text-gray-700 mb-1">Status</label>
                     <div class="relative">
-                        <select name="Status" required class="admin-input">
+                        <select name="status" required class="admin-input">
                             <option value="Paid">Paid</option>
                             <option value="Unpaid">Unpaid</option>
                             <option value="Overdue">Overdue</option>
@@ -70,16 +62,11 @@
                         class="cancel-btn">
                         Cancel
                     </button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
-    </form>
+        </div>
     </div>
-    </div> </div> </div> </div>
-
-<script>
-    // Updates the form URL to /admin/association/{TransactionID}
-    document.getElementById('edit_target').addEventListener('input', function() {
-        const transactionId = this.value.trim();
-        document.getElementById('editForm').action = "{{ url('admin/association') }}/" + transactionId;
-    });
-</script>
+</div>

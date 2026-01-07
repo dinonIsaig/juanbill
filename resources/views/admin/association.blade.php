@@ -40,10 +40,12 @@
 @section('content')
 <div class="flex h-screen bg-neutral-light">
 
-    @include('components.admin-sidebar')
+    <aside class="sticky top-0 self-start">
+        @include('components.admin-sidebar')
+    </aside>
 
     <div class="flex-1 overflow-auto">
-        @include('components.topbar')
+        @include('components.admin-topbar')
 
         <div class="p-8 px-18 max-md:px-8">
 
@@ -84,7 +86,7 @@
                     <div class="flex items-center justify-between mb-6">
                         <h2 class="sm:text-lg md:text-xl font-bold text-text-primary">Association Fees Dashboard</h2>
                         
-                        <button class="admin-filter-btn flex items-center px-3 md:px-4">
+                        <button onclick="document.getElementById('adminfilterModal').classList.remove('hidden')"class="admin-filter-btn flex items-center px-3 md:px-4">
                             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M3 6H21M6 12H18M10 18H14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
@@ -106,28 +108,19 @@
                                 </tr>
                             </thead>
                                 <tbody>
-                                @foreach($transactions as $transaction)
-                                <tr class="border-b border-gray-200 hover:bg-gray-50">
-                                    <td class="px-4 py-3 text-sm text-gray-700">{{ $transaction->TransactionID }}</td>
-                                    <td class="px-4 py-3 text-sm text-gray-700">{{ $transaction->DueDate }}</td>
-                                    <td class="px-4 py-3 text-sm text-gray-700">{{ $transaction->DatePaid ?? 'N/A' }}</td>
-                                    <td class="px-4 py-3 text-sm text-gray-700">₱{{ number_format($transaction->Amount, 2) }}</td>
-                                    
-                                    <td class="px-4 py-3 text-sm text-gray-700">{{ $transaction->Unit }}</td>
-                                    
-                                    <td class="px-4 py-3 text-sm">
-                                        <span class="px-2 py-1 rounded-full text-xs font-semibold 
-                                            {{ $transaction->Status == 'Paid' ? 'bg-green-100 text-green-800' : '' }}
-                                            {{ $transaction->Status == 'Unpaid' ? 'bg-yellow-100 text-yellow-800' : '' }}
-                                            {{ $transaction->Status == 'Overdue' ? 'bg-red-100 text-red-800' : '' }}">
-                                            {{ ucfirst($transaction->Status) }}
-                                        </span>
-                                    </td>
-                                </tr>
-                                @endforeach
+                                    @forelse($bills as $bill)
+                                        <x-admin-association-transaction :bill="$bill" />
+                                        @empty
+                                            <tr>
+                                                <td colspan="6" class="text-center p-4 text-gray-500">
+                                                    No association billing history found.
+                                                </td>
+                                            </tr>
+                                        @endforelse
                                 </tbody>
                         </table>
                     </div>
+                    @include('components.admin-bills-footer')
                 </div>
             </div>
 
@@ -137,10 +130,13 @@
 
     </div>
 </div>
-<x-filter-modal id="filterModal" />
-<x-add-modal id="addModal" />
-<x-edit-modal id="editModal" />
-<x-delete-modal id="deleteModal" />
-
+<x-admin-filter-modal id="adminfilterModal" :availableYears="$availableYears"/>
+<x-add-modal id="addModal" type="association"/>
+<x-edit-modal id="editModal"  type="association"/>
+<x-delete-modal id="deleteModal"  type="association"/>
 @endsection
+
+@push('scripts')
+    @vite('resources/js/admin-filter.js')
+@endpush
 

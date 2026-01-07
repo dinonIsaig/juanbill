@@ -4,31 +4,41 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Bill;
+use App\Models\User; 
 use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View;
 use Carbon\Carbon;
 
 class AdminElectricityController extends Controller
 {
     public function index(Request $request)
     {
-        // 1. Get the requested year, default to current year if missing
+        $availableYears = Bill::where('type', 'Electricity')->selectRaw('YEAR(due_date) as year')->distinct()->orderBy('year', 'desc')->pluck('year');
         $year = (int)$request->input('year', date('Y'));
 
-        // 2. Fetch all Electricity bills for the selected year
-        $bills = Bill::where('type', 'Electricity')
-            ->orderBy('due_date', 'desc')
-            ->paginate(10);
+        $query = Bill::where('type', 'Electricity');
 
-        // 4. Fetch Data for Chart (Annual Summary)
-        $monthlyBills = Bill::where('type', 'Electricity')
-            ->whereYear('due_date', $year)
-            ->get();
+        $bills = $query->with('user')->orderBy('due_date', 'desc')->paginate(10)->withQueryString(); // withQueryString to filter during pagination
+
+        if ($request->filled('year') && $request->input('year') !== 'all') {
+            $query->whereYear('due_date', $request->input('year'));
+        }
+
+        if ($request->filled('month') && $request->input('month') !== 'all') {
+            $query->whereMonth('due_date', $request->input('month'));
+        }
+
+        if ($request->filled('status') && $request->input('status') !== 'all') {
+            $query->where('status', $request->input('status'));
+        }
+
+        $monthlyBills = Bill::where('type', 'Electricity')->whereYear('due_date', $year)->get();
         
-        // Arrays to track monthly totals and the number of bills (units)
         $monthlyTotals = array_fill(0, 12, 0);
         $billCounts = array_fill(0, 12, 0);
-        $chartData = array_fill(0, 12, 0); // This will hold the final averages
+        $chartData = array_fill(0, 12, 0); 
 
         foreach ($monthlyBills as $bill) {
             $monthIndex = Carbon::parse($bill->due_date)->month - 1;
@@ -36,19 +46,13 @@ class AdminElectricityController extends Controller
             $billCounts[$monthIndex]++; // Increment count to calculate average later
         }
         
-        // 5. Calculate Average (Total / Count) for each month
         for ($i = 0; $i < 12; $i++) {
             if ($billCounts[$i] > 0) {
-                // Round to 2 decimal places for a clean chart
                 $chartData[$i] = round($monthlyTotals[$i] / $billCounts[$i], 2);
             }
         }
 
-        // 5. Pass variables to the admin view
-        return view('admin.electricity', [
-            'year'      => $year,
-            'chartData' => $chartData,
-            'bills'     => $bills
-        ]);
+        return view('admin.electricity', compact('bills', 'availableYears', 'chartData', 'year'));    
+
     }
 }

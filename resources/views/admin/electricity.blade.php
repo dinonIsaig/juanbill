@@ -74,7 +74,7 @@
                     <div class="flex items-center justify-between mb-6">
                         <h2 class="text-xl font-bold text-text-primary">Electricity Dashboard</h2>
                         
-                        <button onclick="document.getElementById('admin-filterModal').classList.remove('hidden')"
+                        <button onclick="document.getElementById('adminfilterModal').classList.remove('hidden')"
                             class="admin-filter-btn">
                             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M3 6H21M6 12H18M10 18H14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -97,7 +97,7 @@
                             </thead>
                             <tbody>
                                 @forelse($bills as $bill)
-                                    <x-admin-bill-transaction :bill="$bill" />
+                                    <x-admin-association-transaction :bill="$bill" />
                                     @empty
                                         <tr>
                                             <td colspan="7" class="text-center p-4 text-gray-500">
@@ -116,10 +116,12 @@
     </div>
 </div>
 <x-admin-sign-out-modal id="adminSignOutModal" />
-<x-admin-filter-modal id="admin-filterModal"/>
-<x-add-modal id="addModal" />
-<x-edit-modal id="editModal" />
-<x-delete-modal id="deleteModal" />
+<x-admin-filter-modal id="adminfilterModal" :availableYears="$availableYears"/>
+<x-add-modal id="addModal" type="electricity"/>
+<x-edit-modal id="editModal" type="electricity"/>
+<x-delete-modal id="deleteModal" type="electricity"/>
+<x-admin-association-transaction :bill="$bill" />
+
 @endsection
 
 @push('scripts')

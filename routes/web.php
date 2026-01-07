@@ -11,13 +11,14 @@ use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\User\PasswordController;
 use App\Http\Controllers\User\ElectricityController;
 use App\Http\Controllers\User\WaterController;
-use App\Http\Controllers\User\AssociationController;
+use App\Http\Controllers\User\AssociationController ;
 use App\Http\Controllers\User\RentController;
 use App\Http\Controllers\User\OnlinePaymentController;
 use App\Http\Controllers\Admin\AdminElectricityController;
 use App\Http\Controllers\Admin\AdminWaterController;
-use App\Http\Controllers\Admin\AssocTransactionController;
 use App\Http\Controllers\Admin\AdminRentController;
+use App\Http\Controllers\Admin\AdminAssociationController ;
+
 
 // Account Type
 Route::get('/', function () {
@@ -82,10 +83,36 @@ Route::prefix('admin')->group(function () {
 
         Route::get('/electricity', [AdminElectricityController::class, 'index'])->name('admin.electricity');
 
+        Route::post('/electricity', [AdminElectricityController::class, 'store'])->name('admin.electricity.store');
+
+        Route::patch('/electricity', [AdminElectricityController::class, 'update'])->name('admin.electricity.update');
+
+        Route::delete('/electricity', [AdminElectricityController::class, 'destroy'])->name('admin.electricity.destroy');
+
         Route::get('/water', [AdminWaterController::class, 'index'])->name('admin.water');
 
+        Route::post('/water', [AdminWaterController::class, 'store'])->name('admin.water.store');
+
+        Route::patch('/water', [AdminWaterController::class, 'update'])->name('admin.water.update');
+
+        Route::delete('/water', [AdminWaterController::class, 'destroy'])->name('admin.water.destroy');
+        
         Route::get('/rent', [AdminRentController::class, 'index'])->name('admin.rent');
 
-        Route::resource('association', AssocTransactionController::class)->names('admin.association');
+        Route::post('/rent', [AdminRentController::class, 'store'])->name('admin.rent.store');
+
+        Route::patch('/rent', [AdminRentController::class, 'update'])->name('admin.rent.update');
+
+        Route::delete('/rent', [AdminRentController::class, 'destroy'])->name('admin.rent.destroy');
+
+        Route::get('/association', [AdminAssociationController::class, 'index'])->name('admin.association');
+
+        Route::post('/association', [AdminAssociationController::class, 'store'])->name('admin.association.store');
+
+        Route::patch('/association', [AdminAssociationController::class, 'update'])->name('admin.association.update');
+
+        Route::delete('/association', [AdminAssociationController::class, 'destroy'])->name('admin.association.destroy');
+
+
     });
 });
