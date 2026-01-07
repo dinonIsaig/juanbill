@@ -17,8 +17,7 @@ return new class extends Migration
         $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
 
         $table->enum('type', ['Water', 'Electricity', 'Association Dues', 'Rent']);
-
-        $table->string('status', 20)->default('Unpaid');
+        $table->enum('status', ['Paid', 'Unpaid', 'Overdue', 'Pending'])->default('Unpaid');
         $table->decimal('amount', 10, 2);
         $table->date('due_date');
 
