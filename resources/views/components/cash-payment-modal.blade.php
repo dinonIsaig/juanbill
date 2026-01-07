@@ -1,4 +1,4 @@
-@props(['id' => 'cashPaymentModal', 'transactionID'])
+@props(['id', 'transactionID'])
 
 <div id="{{ $id }}" class="fixed inset-0 z-50 hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
     <div class="fixed inset-0 transition-opacity bg-black/50 "
@@ -18,9 +18,12 @@
                     </div>
 
                     <div class="flex flex-col gap-4 p-4 ">
-                      <button onclick="document.getElementById('{{ $id }}').classList.add('hidden')" class="normal-btn">
-                        Back to Dashboard
-                      </button>
+                    <form action="{{ route('cash', $transactionID) }}" method="POST">
+                            @csrf
+                            <button type="submit" class="normal-btn w-full">
+                                Back to Dashboard
+                            </button>
+                        </form>
                     </div>
 
                 </div>

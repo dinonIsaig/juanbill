@@ -45,14 +45,15 @@ Route::prefix('user')->group(function () {
     Route::get('/association', [AssociationController::Class,'index'])->name('user.association')->middleware('auth');
 
     Route::post('/Online/pay/{id}', [OnlinePaymentController::class, 'pay'])->name('pay');
-    
+    Route::post('/Online/cash/{id}', [OnlinePaymentController::class, 'cash'])->name('cash');
+
     Route::get('help', function () {
         return view('user.help-and-support');
-    })->name('user.help');
+    })->name('user.help')->middleware('auth');
 
     Route::get('settings', function () {
         return view('user.settings');
-    })->name('user.settings');
+    })->name('user.settings')->middleware('auth');
 
     Route::get('/rent', [RentController::Class,'index'])->name('user.rent')->middleware('auth');
 

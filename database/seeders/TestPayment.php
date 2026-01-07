@@ -29,9 +29,7 @@ class TestPayment extends Seeder
                 'contact_no' => '09171231222',
                 'username' => 'Overdue',
                 'password' => Hash::make('Password123'),
-                'dob' => '2004-10-04',
-                'created_at' => now(),
-                'updated_at' => now(),
+                'dob' => '2004-10-04'
             ];
             $userId = DB::table('users')->insertGetId($userData);
         } else {
@@ -82,9 +80,7 @@ class TestPayment extends Seeder
                 'reading_start' => $billing_date,
                 'reading_end' => $billing_date->copy()->endOfMonth(),
                 'date_paid' => null,
-                'payment_method' => null,
-                'created_at' => $billing_date,
-                'updated_at' => $billing_date,
+                'payment_method' => null
             ];
             $water_meter += $water_usage;
 
@@ -103,9 +99,7 @@ class TestPayment extends Seeder
                 'reading_start' => $billing_date,
                 'reading_end' => $billing_date->copy()->endOfMonth(),
                 'date_paid' => null,
-                'payment_method' => null,
-                'created_at' => $billing_date,
-                'updated_at' => $billing_date,
+                'payment_method' => null
             ];
             $elec_meter += $elec_usage;
 
@@ -121,9 +115,7 @@ class TestPayment extends Seeder
                 'reading_start' => null,
                 'reading_end' => null,
                 'date_paid' => null,
-                'payment_method' => null,
-                'created_at' => $billing_date,
-                'updated_at' => $billing_date,
+                'payment_method' => null
             ];
 
             // --- 4. ASSOCIATION DUES ---
@@ -138,9 +130,7 @@ class TestPayment extends Seeder
                 'reading_start' => null,
                 'reading_end' => null,
                 'date_paid' => null,
-                'payment_method' => null,
-                'created_at' => $billing_date,
-                'updated_at' => $billing_date,
+                'payment_method' => null
             ];
         }
 

@@ -22,7 +22,7 @@ class DashboardController extends Controller
         $waterData = $this->aggregateMonthlyData($waterBills);
 
         $upcomingBills = Bill::where('user_id', $userId)
-            ->where('status', 'Unpaid')
+            ->whereIn('status', [ 'Unpaid', 'Pending' ])
             ->where('due_date', '>=', now())
             ->orderBy('due_date', 'asc')
             ->limit(5)

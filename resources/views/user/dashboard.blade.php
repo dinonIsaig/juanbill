@@ -9,7 +9,7 @@
         <div class="flex-1 overflow-auto">
             @include('components.topbar')
 
-            <div class="p-8 mb-70 max-md:mb-0">
+            <div class="p-8 mb-70 max-md:mb-0 3xl:mb-120">
                 <div class="mb-8">
                     <h1 class="text-4xl font-bold text-primary mb-2">Billing & Payments Overview</h1>
                     <p class="text-neutral-gray">Manage your billing and track payments</p>
@@ -35,16 +35,22 @@
                         <div class="space-y-4">
                             @forelse($upcomingBills as $bill)
                                 @include('components.bill-card', [
-                                    'icon' => '',
-                                    'title' => ucfirst($bill->type),
-                                    'amount' => '₱' . number_format($bill->amount, 2),
+                                    'icon' => match($bill->type) {
+                                        'Electricity'      => 'build/assets/icons/electricityIcon.png',
+                                        'Water'            => 'build/assets/icons/waterIcon.png',
+                                        'Rent'             => 'build/assets/icons/rentIcon.png',
+                                        'Association Dues' => 'build/assets/icons/associationIcon.png',
+                                        default            => 'build/assets/icons/defaultIcon.png',
+                                    },
+                                    'title'   => ucfirst($bill->type),
+                                    'amount'  => '₱' . number_format($bill->amount, 2),
                                     'dueDate' => 'Due ' . $bill->due_date->format('M d'),
-                                    'color' => match (strtolower($bill->type)) {
-                                        'electricity' => 'bg-secondary',
-                                        'water' => 'bg-primary', // Adjusted based on your file
-                                        'rent' => 'bg-purple-300',
-                                        'association dues' => 'bg-gray-300',
-                                        default => 'bg-gray-100'
+                                    'color'   => match (strtolower($bill->type)) {
+                                        'electricity'      => 'bg-[#F59E0B]',
+                                        'water'            => 'bg-[#06B6D4]',
+                                        'rent'             => 'bg-[#0038A8]',
+                                        'association dues' => 'bg-[#10B981]',
+                                        default            => 'bg-gray-100',
                                     },
                                 ])
                             @empty

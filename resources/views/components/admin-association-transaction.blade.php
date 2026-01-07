@@ -15,6 +15,7 @@
 
     // 2. Map Database Status
     $status = $bill->status;
+    $unit = $bill->user ? $bill->user->unit_id : 'N/A';
 
     // 3. Data attributes for filtering
     $year = $bill->date_paid ? $bill->date_paid->format('Y') : '';
@@ -23,7 +24,8 @@
     $paymentModalId = 'paymentModal-' . $transactionID;
 @endphp
 
-<tr class="hover:bg-gray-100 transaction-row" data-year="{{ $year }}" data-month="{{ $month }}"
+<tr class="hover:bg-gray-100 transaction-row" data-year="{{ $year }} " 
+    data-month="{{ $month }}"
     data-status="{{ $status }}">
 
     <td class="table-rows">{{ $transactionID }}</td>
@@ -32,9 +34,10 @@
         <td class="table-rows text-gray-500">{{ $bill->due_date->format('Y-m-d') }}</td>
     @else
         <td class="table-rows text-gray-500">{{ $bill->due_date->format('Y-m-d') }}</td>
-    @endif
-    <td class="table-rows text-gray-500">{{ $datePaid }}</td>
+    @endif    <td class="table-rows text-gray-500">{{ $datePaid }}</td>
     <td class="table-rows">{{ $amount }}</td>
+
+    <td class="table-rows">{{ $unit }}</td>
 
     <td class="table-rows">
 
@@ -42,22 +45,11 @@
             <button class="paid" disabled>Paid</button>
         @elseif ($status === 'Unpaid')
             <button class="pending" disabled>Unpaid</button>
-        @elseif ($status === 'Pending')
-            <button class="pending" disabled>Pending</button>
         @else
             <button class="overdue" disabled>{{ $status }}</button>
         @endif
     </td>
 
-    <td class="table-rows">
-
-        @if ($status === 'Unpaid' || $status === 'Overdue' || $status === 'Pending'    )
-            <button onclick="document.getElementById('{{ $paymentModalId }}').classList.remove('hidden')"
-                class="payment-btn rounded-2 bg-primary text-white hover:bg-white hover:text-primary hover:ring-1">
-                Pay
-            </button>
-        @endif
-    </td>
 </tr>
 
-<x-payment-modal id="{{ $paymentModalId }}" :transactionID="$transactionID" :amount="$amount" />
+

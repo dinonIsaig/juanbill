@@ -14,7 +14,7 @@ class Bill extends Model
     protected $primaryKey = 'id';
     protected $keyType = 'string';
     public $incrementing = false;
-
+    
     // 2. Mass Assignable Fields
     protected $fillable = [
         'user_id',
