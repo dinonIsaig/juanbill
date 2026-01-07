@@ -33,6 +33,7 @@
                             label="Water Consumption (cu. m)"
                             unit="cu. m"
                             color="#1e3a8a"
+                            yearParam="chart_year"
                         />
                     </div>
                 </div>
