@@ -1,4 +1,4 @@
-@props(['bills'])
+    @props(['bills'])
 
 <div class="bg-white rounded-lg shadow-md p-8 max-md:p-4">
     <div class="flex items-center justify-between mb-6">
@@ -27,14 +27,7 @@
                         </td>
 
                         <td class="table-rows">
-                            <span class="px-2 py-1 rounded-md text-xs
-                                {{ match(strtolower($bill->type)) {
-                                    'electricity' => 'bg-yellow-100 text-yellow-800',
-                                    'water' => 'bg-blue-100 text-blue-800',
-                                    'rent' => 'bg-purple-100 text-purple-800',
-                                    'association dues' => 'bg-gray-100 text-gray-800',
-                                    default => 'bg-gray-100 text-gray-800'
-                                } }}">
+                            <span class="px-2 py-1 rounded-md text-xs bg-[#e0e7f3] bg-opacity-90 text-[#0038A8] font-medium">
                                 {{ ucfirst($bill->type) }}
                             </span>
                         </td>

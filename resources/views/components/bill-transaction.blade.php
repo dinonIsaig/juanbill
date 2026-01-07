@@ -42,6 +42,8 @@
             <button class="paid" disabled>Paid</button>
         @elseif ($status === 'Unpaid')
             <button class="pending" disabled>Unpaid</button>
+        @elseif ($status === 'Pending')
+            <button class="pending" disabled>Pending</button>
         @else
             <button class="overdue" disabled>{{ $status }}</button>
         @endif
@@ -49,7 +51,7 @@
 
     <td class="table-rows">
 
-        @if ($status === 'Unpaid' || $status === 'Overdue')
+        @if ($status === 'Unpaid' || $status === 'Overdue' || $status === 'Pending'    )
             <button onclick="document.getElementById('{{ $paymentModalId }}').classList.remove('hidden')"
                 class="payment-btn rounded-2 bg-primary text-white hover:bg-white hover:text-primary hover:ring-1">
                 Pay

@@ -24,4 +24,19 @@ class OnlinePaymentController extends Controller
 
         return redirect()->back()->with('success', 'Payment successful!');
     }
+
+    public function cash(Request $request, $id)
+    {
+
+        $bill = Bill::where('user_id', Auth::id())
+                    ->where('id', $id)
+                    ->firstOrFail();
+
+        // Update
+        $bill->status = 'Pending';
+        $bill->save();
+
+        return redirect()->back()->with('success', 'Payment successful!');
+    }
+
 }
