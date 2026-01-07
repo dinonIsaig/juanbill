@@ -5,7 +5,7 @@
 @section('content')
 
 <div class="flex min-h-screen bg-neutral-light items-start">
-        
+
     <aside class="sticky top-0 self-start">
         @include('components.admin-sidebar')
     </aside>
@@ -17,7 +17,7 @@
          <div class="p-8 px-18 max-md:px-8 ">
 
             <div class="mb-8">
-                <div class="flex items-center mb-2">
+                <div class="flex items-center mb-2 3xl:mb-120">
                 <h1 class="text-4xl font-bold text-[#CE1126]">Electricity</h1>
                 <svg class="w-10 h-10 ml-1" fill="none" stroke="#CE1126" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/>
@@ -73,7 +73,7 @@
                 <div class="bg-white rounded-lg shadow-md p-8 max-md:p-4">
                     <div class="flex items-center justify-between mb-6">
                         <h2 class="text-xl font-bold text-text-primary">Electricity Dashboard</h2>
-                        
+
                         <button onclick="document.getElementById('adminfilterModal').classList.remove('hidden')"
                             class="admin-filter-btn">
                             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">

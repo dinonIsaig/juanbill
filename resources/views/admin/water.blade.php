@@ -5,7 +5,7 @@
 @section('content')
 
 <div class="flex min-h-screen bg-neutral-light items-start">
-        
+
     <aside class="sticky top-0 self-start">
         @include('components.admin-sidebar')
     </aside>
@@ -14,7 +14,7 @@
         @include('components.admin-topbar')
 
         <!-- Header -->
-         <div class="p-8 px-18 max-md:px-8 ">
+         <div class="p-8 px-18 max-md:px-8 3xl:mb-120">
 
             <div class="mb-8">
                 <div class="flex items-center mb-2">
@@ -73,7 +73,7 @@
                 <div class="bg-white rounded-lg shadow-md p-8 max-md:p-4">
                     <div class="flex items-center justify-between mb-6">
                         <h2 class="text-xl font-bold text-text-primary">Water Dashboard</h2>
-                        
+
                         <button onclick="document.getElementById('adminfilterModal').classList.remove('hidden')"
                             class="admin-filter-btn">
                             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
