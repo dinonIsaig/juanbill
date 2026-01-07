@@ -1,4 +1,4 @@
-@props(['id' => 'deleteModal'])
+@props(['id' => 'deleteModal', 'type'])
 
 <div id="{{ $id }}" class="fixed inset-0 z-50 hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
     <div class="fixed inset-0 transition-opacity bg-black/50 "
@@ -16,7 +16,7 @@
                         <p class="text-sm text-gray-500 pb-3 border-b border-gray-200">Enter a Transaction ID to Delete</p>
                     </div>
 
-                    <form id="deleteForm" method="POST" action="">
+                    <form id="deleteForm" method="POST" action="{{ route('admin.' . $type . '.destroy') }}">
                         @csrf
                         @method('DELETE')
                         
@@ -24,9 +24,9 @@
                             <div>
                                 <label class="block text-sm font-bold text-gray-700 mb-1">Transaction ID</label>
                                 <div class="relative">
-                                    <input id="delete_target" name="id" required 
+                                    <input id="delete_target" name="TransactionID" required 
                                         class="admin-input" 
-                                        type="text" placeholder="e.g., TXN-101DN-56">
+                                        type="text" placeholder="ex. e02eff46-">
                                 </div>
                             </div>
 
@@ -47,12 +47,3 @@
         </div>
     </div>
 </div>
-
-<script>
-    // This script updates the form action URL dynamically as you type the ID
-    document.getElementById('delete_target').addEventListener('input', function() {
-        const transactionId = this.value.trim();
-        // This creates the URL: /admin/association/TXN-123
-        document.getElementById('deleteForm').action = "{{ url('admin/association') }}/" + transactionId;
-    });
-</script>

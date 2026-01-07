@@ -50,7 +50,6 @@
 
 
     <td class="table-rows">
-        {{-- Applying your custom CSS classes based on status --}}
         @if($status === 'Paid')
             <span class="paid inline-block">Paid</span>
         @elseif($status === 'Unpaid' || $status === 'Pending')
