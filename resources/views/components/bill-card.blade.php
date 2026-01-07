@@ -10,10 +10,18 @@
     } else {
         $route = 'user.dashboard';
     }
+    if ($status === 'Overdue') {
+        $statusColor = 'text-red-600';
+        $borderColor = 'border-1 bg-red-50 border-red-100';
+        $dueDate = 'Overdue';
+    } else {
+        $statusColor = 'text-black';
+        $borderColor = 'border-0';
+    }
 @endphp
 
 <a href="{{ route($route) }}">
-<div class="flex items-center gap-4 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition cursor-pointer">
+<div class="{{$borderColor}} {{ $statusColor }} flex items-center gap-4 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition cursor-pointer">
     <div class="w-12 h-12 {{ $color }} rounded-lg flex items-center justify-center text-white text-lg">
         <img src="{{ asset($icon) }}" alt="{{ $title }} icon" class="w-auto h-auto object-contain">
     </div>

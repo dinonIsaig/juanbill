@@ -32,7 +32,7 @@
 
                         </div>
 
-                        <div class="space-y-4">
+                        <div class="space-y-4 overflow-y-scroll max-h-87 pr-2">
                             @forelse($upcomingBills as $bill)
                                 @include('components.bill-card', [
                                     'icon' => match($bill->type) {
@@ -44,7 +44,8 @@
                                     },
                                     'title'   => ucfirst($bill->type),
                                     'amount'  => '₱' . number_format($bill->amount, 2),
-                                    'dueDate' => 'Due ' . $bill->due_date->format('M d'),
+                                    'dueDate' => $bill->due_date->format('M d'),
+                                    'status'  => $bill->status,
                                     'color'   => match (strtolower($bill->type)) {
                                         'electricity'      => 'bg-[#F59E0B]',
                                         'water'            => 'bg-[#06B6D4]',
