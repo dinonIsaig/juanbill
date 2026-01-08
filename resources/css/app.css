@@ -187,12 +187,15 @@
         @apply w-4 h-4 md:w-5 md:h-5;
     }
 
-    .icons-container {
-        @apply flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-gradient-to-b hover:from-primary hover:to-primary-dark hover:text-white transition;
+    .sidebar-link {
+        @apply flex items-center gap-3 px-4 py-2 rounded-lg transition;
     }
 
-    .iconsRed-container {
-    @apply flex items-center gap-3 px-4 py-2 rounded-lg transition hover:bg-gradient-to-b hover:from-[#CE1126] hover:to-[#721014] hover:text-white;
+    .user-sidebar .sidebar-link:hover {
+        @apply bg-gradient-to-b from-primary to-primary-dark text-white;
     }
 
+    .admin-sidebar .sidebar-link:hover {
+        @apply bg-gradient-to-b from-[#CE1126] to-[#721014] text-white;
+    }
 }

@@ -1,5 +1,5 @@
 <div id="sidebar" style="visibility: hidden;"
-    class="bg-gradient-to-b from-primary to-primary-dark text-white flex flex-col h-screen shrink-0 transition-all duration-300 ease-in-out w-auto shadow-xl overflow-hidden">
+    class="user-sidebar bg-gradient-to-b from-primary to-primary-dark text-white flex flex-col h-screen shrink-0 transition-all duration-300 ease-in-out w-auto shadow-xl overflow-hidden">
 
     <div id="sidebar-logo" class="py-6 px-6 flex items-center">
         <div id="sidebarToggle" class="cursor-pointer transition-transform duration-200 hover:scale-105 p-2 rounded-lg">
@@ -22,13 +22,13 @@
             <h3 class="sidebar-header h3-admin transition-all duration-200 whitespace-nowrap">General</h3>
             <ul class="space-y-3">
                 <li>
-                    <a href="{{ route('user.dashboard') }}" class="sidebar-link icons-container group transition-all duration-200">
+                    <a href="{{ route('user.dashboard') }}" class="sidebar-link group transition-all duration-200">
                         <img src="{{ asset('build/assets/icons/homeIcon.png') }}" alt="Dashboard" class="icons shrink-0">
                         <span class="sidebar-text max-sm:hidden whitespace-nowrap transition-opacity duration-200">Dashboard</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="sidebar-link icons-container group transition-all duration-200">
+                    <a href="#" class="sidebar-link group transition-all duration-200">
                         <img src="{{ asset('build/assets/icons/infoIcon.png') }}" alt="Info" class="icons shrink-0">
                         <span class="sidebar-text max-sm:hidden whitespace-nowrap transition-opacity duration-200">Info</span>
                     </a>
@@ -40,25 +40,25 @@
             <h3 class="sidebar-header h3-admin transition-all duration-200 whitespace-nowrap">Billing</h3>
             <ul class="space-y-3">
                 <li>
-                    <a href="{{ route('user.electricity') }}" class="sidebar-link icons-container group transition-all duration-200">
+                    <a href="{{ route('user.electricity') }}" class="sidebar-link group transition-all duration-200">
                         <img src="{{ asset('build/assets/icons/electricityIcon.png') }}" alt="Electricity" class="icons shrink-0">
                         <span class="sidebar-text max-sm:hidden whitespace-nowrap transition-opacity duration-200">Electricity</span>
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('user.water') }}" class="sidebar-link icons-container group transition-all duration-200">
+                    <a href="{{ route('user.water') }}" class="sidebar-link group transition-all duration-200">
                         <img src="{{ asset('build/assets/icons/waterIcon.png') }}" alt="Water" class="icons shrink-0">
                         <span class="sidebar-text max-sm:hidden whitespace-nowrap transition-opacity duration-200">Water</span>
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('user.rent') }}" class="sidebar-link icons-container group transition-all duration-200">
+                    <a href="{{ route('user.rent') }}" class="sidebar-link group transition-all duration-200">
                         <img src="{{ asset('build/assets/icons/rentIcon.png') }}" alt="Rent" class="icons shrink-0">
                         <span class="sidebar-text max-sm:hidden whitespace-nowrap transition-opacity duration-200">Rent</span>
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('user.association') }}" class="sidebar-link icons-container group transition-all duration-200">
+                    <a href="{{ route('user.association') }}" class="sidebar-link group transition-all duration-200">
                         <img src="{{ asset('build/assets/icons/associationIcon.png') }}" alt="Association" class="icons shrink-0">
                         <span class="sidebar-text max-sm:hidden whitespace-nowrap transition-opacity duration-200">Association Fees</span>
                     </a>
@@ -70,19 +70,19 @@
             <h3 class="sidebar-header h3-admin transition-all duration-200 whitespace-nowrap">Tools</h3>
             <ul class="space-y-3">
                 <li>
-                    <a href="{{ route('user.settings') }}" class="sidebar-link icons-container group transition-all duration-200">
+                    <a href="{{ route('user.settings') }}" class="sidebar-link group transition-all duration-200">
                         <img src="{{ asset('build/assets/icons/settingsIcon.png') }}" alt="Settings" class="icons shrink-0">
                         <span class="sidebar-text max-sm:hidden whitespace-nowrap transition-opacity duration-200">Settings</span>
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('user.help') }}" class="sidebar-link icons-container group transition-all duration-200">
+                    <a href="{{ route('user.help') }}" class="sidebar-link group transition-all duration-200">
                         <img src="{{ asset('build/assets/icons/helpIcon.png') }}" alt="Help" class="icons shrink-0">
                         <span class="sidebar-text max-sm:hidden whitespace-nowrap transition-opacity duration-200">Help & Support</span>
                     </a>
                 </li>
                 <li>
-                    <button type="button" class="sidebar-link icons-container w-full text-left flex items-center gap-3 group transition-all duration-200"
+                    <button type="button" class="sidebar-link w-full text-left flex items-center gap-3 transition-all duration-200"
                             onclick="document.getElementById('signOutModal').classList.remove('hidden')">
                             <img src="{{ asset('build/assets/icons/signOutIcon.png') }}" alt="Sign Out" class="icons shrink-0">
                             <span class="sidebar-text max-sm:hidden whitespace-nowrap transition-opacity duration-200">Sign Out</span>
