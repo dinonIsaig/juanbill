@@ -2,6 +2,22 @@
 
 @section('title', 'Water')
 
+@if (session('success'))
+    <div id="alert-success" class="absolute top-10 right-200 z-[100] tracking-wide flex items-center p-4 px-10 mb-4 text-green-800 rounded-lg bg-green-50 border border-green-300 shadow-lg transition-opacity duration-500" role="alert">
+        <div class="ms-3 text-sm font-medium">
+            {{ session('success') }}
+        </div>
+    </div>
+@endif
+
+@if (session('error'))
+    <div id="alert-error" class="absolute top-10 right-200 z-[100] flex items-center p-4 mb-4 text-red-800 rounded-lg bg-red-50 border border-red-300 shadow-lg" role="alert">
+        <div class="ms-3 text-sm font-medium">
+            {{ session('error') }}
+        </div>
+    </div>
+@endif
+
 @section('content')
 
 <div class="flex min-h-screen bg-neutral-light items-start">
@@ -30,12 +46,13 @@
                         <h2 class="text-xl font-medium text-admin mb-6">Monthly Consumption Summary</h2>
                         <div class="mb-4">
                         <x-annual-chart
-                            :year="$year"
+                            :year="$chartYear"
                             route="admin.water"
                             :data="$chartData"
                             label="Average Unit Consumption (cu. m)"
                             unit="cu. m"
                             color="#CE1126"
+                            yearParam="chart_year"
                         />
                     </div>
                     </div>
@@ -123,6 +140,7 @@
 @endsection
 
 @push('scripts')
+    @vite('resources/js/notification-flash.js')
     @vite('resources/js/charts.js')
     @vite('resources/js/admin-filter.js')
 @endpush
