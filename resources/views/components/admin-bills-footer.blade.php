@@ -1,51 +1,36 @@
+@props(['items'])
+
 <div class="flex items-center justify-between mt-6">
+    {{-- Check if items is a Paginator --}}
+    @php
+        $isPaginator = $items instanceof \Illuminate\Pagination\LengthAwarePaginator ||
+                       $items instanceof \Illuminate\Contracts\Pagination\Paginator;
+    @endphp
 
-    {{-- LEFT SIDE: "Showing X to Y of Z results" --}}
     <div class="transaction-counter font-medium">
-        Showing
-        {{-- firstItem() = The number of the first item on this page (e.g. 1) --}}
-        <span class="transaction-counter">{{ $bills->firstItem() ?? 0 }}</span>
-        to
-        {{-- lastItem() = The number of the last item on this page (e.g. 10) --}}
-        <span class="transaction-counter">{{ $bills->lastItem() ?? 0 }}</span>
-        of
-        {{-- total() = Total items in database --}}
-        <span class="transaction-counter">{{ $bills->total() }}</span>
-        transactions
+        @if ($isPaginator)
+            Showing {{ $items->firstItem() ?? 0 }} to {{ $items->lastItem() ?? 0 }} of {{ $items->total() }} transactions
+        @else
+            Showing {{ $items->count() }} transactions
+        @endif
     </div>
 
-    {{-- RIGHT SIDE: Buttons --}}
-    <div class="flex gap-2">
+    {{-- Only show buttons if it is a paginator --}}
+    @if ($isPaginator && $items->hasPages())
+        <div class="flex gap-2">
+            {{-- Previous Button --}}
+            @if ($items->onFirstPage())
+                <span class="admin-pagination-btn cursor-not-allowed text-gray-400 border-gray-200 bg-gray-50">Previous</span>
+            @else
+                <a href="{{ $items->previousPageUrl() }}" class="admin-pagination-btn hover:bg-admin">Previous</a>
+            @endif
 
-        {{-- PREVIOUS BUTTON --}}
-        {{-- onFirstPage() returns true if we are on page 1 --}}
-        @if ($bills->onFirstPage())
-            {{-- Disabled State --}}
-            <span class="admin-pagination-btn cursor-not-allowed border-gray-300 hover:bg-gray-300">
-                Previous
-            </span>
-        @else
-            {{-- Active Link --}}
-            <a href="{{ $bills->previousPageUrl() }}"
-            class="admin-pagination-btn">
-                Previous
-            </a>
-        @endif
-
-        {{-- NEXT BUTTON --}}
-        {{-- hasMorePages() returns true if there is a next page --}}
-        @if ($bills->hasMorePages())
-            {{-- Active Link --}}
-            <a href="{{ $bills->nextPageUrl() }}"
-            class="admin-pagination-btn">
-                Next
-            </a>
-        @else
-            {{-- Disabled State --}}
-            <span class="admin-pagination-btn cursor-not-allowed border-gray-300 hover:bg-gray-300">
-                Next
-            </span>
-        @endif
-
-    </div>
+            {{-- Next Button --}}
+            @if ($items->hasMorePages())
+                <a href="{{ $items->nextPageUrl() }}" class="admin-pagination-btn hover:bg-admin">Next</a>
+            @else
+                <span class="admin-pagination-btn cursor-not-allowed text-gray-400 border-gray-200 bg-gray-50">Next</span>
+            @endif
+        </div>
+    @endif
 </div>

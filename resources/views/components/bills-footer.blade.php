@@ -22,12 +22,12 @@
             @if ($items->onFirstPage())
                 <span class="pagination-btn cursor-not-allowed text-gray-400 border-gray-200 bg-gray-50">Previous</span>
             @else
-                <a href="{{ $items->previousPageUrl() }}" class="pagination-btn hover:bg-gray-100">Previous</a>
+                <a href="{{ $items->previousPageUrl() }}" class="pagination-btn hover:bg-primary">Previous</a>
             @endif
 
             {{-- Next Button --}}
             @if ($items->hasMorePages())
-                <a href="{{ $items->nextPageUrl() }}" class="pagination-btn hover:bg-gray-100">Next</a>
+                <a href="{{ $items->nextPageUrl() }}" class="pagination-btn hover:bg-primary">Next</a>
             @else
                 <span class="pagination-btn cursor-not-allowed text-gray-400 border-gray-200 bg-gray-50">Next</span>
             @endif
