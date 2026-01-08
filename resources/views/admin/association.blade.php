@@ -28,7 +28,7 @@
     <div class="flex-1 overflow-auto">
         @include('components.admin-topbar')
 
-        <div class="p-8 px-18 max-md:px-8 3xl:mb-120">
+        <div class="p-8 mb-70 px-18 max-md:px-8 3xl:mb-120">
 
             <div class="mb-2">
                 <h1 class="text-4xl font-bold text-overdue-text">Association</h1>
@@ -101,7 +101,7 @@
                                 </tbody>
                         </table>
                     </div>
-                    @include('components.admin-bills-footer')
+                    <x-admin-bills-footer :items="$bills" />
                 </div>
             </div>
 

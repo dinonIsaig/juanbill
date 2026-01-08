@@ -31,7 +31,7 @@
         @include('components.admin-topbar')
 
         <!-- Header -->
-         <div class="p-8 px-18 max-md:px-8 ">
+         <div class="p-8 px-18 max-md:px-8 mb-70 3xl:mb-120">
 
             <div class="mb-8">
                 <div class="flex items-center mb-2 3xl:mb-120">
@@ -126,7 +126,7 @@
                             </tbody>
                         </table>
                     </div>
-                    @include('components.admin-bills-footer')
+                    <x-admin-bills-footer :items="$bills" />
                 </div>
             </div>
         </div>
@@ -138,7 +138,6 @@
 <x-add-modal id="addModal" type="electricity"/>
 <x-edit-modal id="editModal" type="electricity"/>
 <x-delete-modal id="deleteModal" type="electricity"/>
-<x-admin-association-transaction :bill="$bill" />
 
 @endsection
 
