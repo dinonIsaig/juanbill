@@ -26,48 +26,62 @@ class SignupController extends Controller
      */
         public function store(Request $request)
     {
-        // 1. VALIDATION FIRST
-        // Keep this OUTSIDE the try-catch/transaction.
-        // If this fails, Laravel automatically redirects back with errors.
-        $validated = $request->validate([
+        $request->validate([
+
+
+
             'first_name' => 'required|string|max:50',
             'middle_name' => 'nullable|string|max:50',
-            'last_name'  => 'required|string|max:50',
-            'email'      => 'required|string|email|max:100|unique:admins,email',
-            'contact_no' => 'required|string|max:15|unique:admins,contact_no',
-            'dob'        => 'required|date',
-            'username'   => 'required|string|unique:admins,username',
-            'admin_id'   => 'required|string|unique:admins,admin_id',
-            'password'   => 'required|string|min:8|confirmed',
+            'last_name' => 'required|string|max:50',
+            'email' => 'required|string|email|max:100|unique:users',
+            'contact_no' => 'required|string|max:15',
+            'dob' => 'required|date',
+            'unit_number' => 'required|integer',
+            'username' => 'required|string|max:50|unique:users',
+            'password' => 'required|string|min:8|confirmed',
+        ], [
+            'unit_number.exists' => 'This unit number does not exist in our records.',
         ]);
 
-        // 2. TRANSACTION BLOCK
-        try {
-            DB::beginTransaction();
+        DB::beginTransaction();
 
-            // Create the record
-            Admin::create([
-                'first_name' => $validated['first_name'],
-                'middle_name'=> $validated['middle_name'],
-                'last_name'  => $validated['last_name'],
-                'email'      => $validated['email'],
-                'contact_no' => $validated['contact_no'],
-                'dob'        => $validated['dob'],
-                'username'   => $validated['username'],
-                'admin_id'   => $validated['admin_id'],
-                'password'   => Hash::make($validated['password']),
+        try {
+            // Find the Unit ID
+            $unit = Unit::where('id', $request->unit_number)->lockForUpdate()->first();
+
+            if (! $unit) {
+                throw ValidationException::withMessages([
+                    'unit_number' => 'This unit number does not exist in our records.',
+                ]);
+            }
+
+            // Create the User
+            $user = User::create([
+                'unit_id'    => $unit->id,
+                'first_name' => $request->first_name,
+                'middle_name'=> $request->middle_name,
+                'last_name'  => $request->last_name,
+                'email'      => $request->email,
+                'contact_no' => $request->contact_no,
+                'username'   => $request->username,
+                'password'   => Hash::make($request->password),
+                'dob'        => $request->dob,
             ]);
 
-            DB::commit(); // Save changes if successful
+            // Commit the Transaction
+            DB::commit();
 
-            return redirect()->route('admin.log-in')->with('success', 'Admin account created!');
+            return redirect()->route('login')->with('success', 'Account created! Please login.');
 
         } catch (\Exception $e) {
-            // 3. ROLLBACK & RETURN ERROR
+
             DB::rollBack();
-            return back()
-                ->withInput() // Keeps the typed data in the form
-                ->withErrors(['error' => 'Registration failed. Please try again.']);
+
+            if ($e instanceof ValidationException) {
+                throw $e;
+            }
+
+            return back()->withInput()->with('error', 'Something went wrong. Please try again.');
         }
     }
 }
