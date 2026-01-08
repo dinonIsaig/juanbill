@@ -22,7 +22,10 @@
                             :elecData="$elecData"
                             :waterData="$waterData"
                             :year="$currentYear"
+                            id="dashboardChart"
+                            route="user.dashboard"
                             yearParam="year"
+                            title="Monthly Billing Summary"
                         />
                     </div>
 

@@ -3,13 +3,14 @@
     'waterData',
     'year' => date('Y'),
     'id' => 'dashboardChart',
-    'route' => 'user.dashboard', // Default route
-    'yearParam' => 'year'
+    'route',
+    'yearParam' => 'year',
+    'title'
 ])
 
 <div class="bg-white rounded-lg shadow-md p-6">
     <div class="flex items-center justify-between mb-4">
-        <h2 class="text-xl font-medium text-primary">Monthly Billing Breakdown</h2>
+        <h2 class="text-xl font-medium text-primary">{{ $title }} </h2>
     </div>
 
     {{-- Canvas Container --}}

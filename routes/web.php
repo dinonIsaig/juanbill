@@ -17,7 +17,8 @@ use App\Http\Controllers\User\OnlinePaymentController;
 use App\Http\Controllers\Admin\AdminElectricityController;
 use App\Http\Controllers\Admin\AdminWaterController;
 use App\Http\Controllers\Admin\AdminRentController;
-use App\Http\Controllers\Admin\AdminAssociationController ;
+use App\Http\Controllers\Admin\AdminAssociationController;
+use App\Http\Controllers\Admin\AdminDashboardController;
 
 
 // Account Type
@@ -79,7 +80,7 @@ Route::prefix('admin')->group(function () {
 
         Route::post('/logout', [AdminLoginController::class, 'logout'])->name('admin.logout');
 
-        Route::get('/dashboard', function () { return view('admin.dashboard'); })->name('admin.dashboard');
+        Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
 
         Route::get('/electricity', [AdminElectricityController::class, 'index'])->name('admin.electricity');
 
@@ -96,7 +97,7 @@ Route::prefix('admin')->group(function () {
         Route::patch('/water', [AdminWaterController::class, 'update'])->name('admin.water.update');
 
         Route::delete('/water', [AdminWaterController::class, 'destroy'])->name('admin.water.destroy');
-        
+
         Route::get('/rent', [AdminRentController::class, 'index'])->name('admin.rent');
 
         Route::post('/rent', [AdminRentController::class, 'store'])->name('admin.rent.store');
