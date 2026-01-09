@@ -39,7 +39,7 @@
                 </a>
 
                 <!-- Association dues Card -->
-                <a href="" class="col-span-1 bg-white rounded-xl p-6 shadow-xl transition-all duration-200 hover:scale-105 hover:shadow-2xl active:scale-95 text-left">
+                <a href="{{ route('admin.association') }}" class="col-span-1 bg-white rounded-xl p-6 shadow-xl transition-all duration-200 hover:scale-105 hover:shadow-2xl active:scale-95 text-left">
                     <img src="{{ asset('build/assets/icons/blueAssociationIcon.png') }}" alt="Association dues Icon">
                     <p class="py-4 font-semibold text-neutral-800">Association Dues</p>
                 </a>
