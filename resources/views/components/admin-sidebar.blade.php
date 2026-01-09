@@ -76,7 +76,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="sidebar-link group transition-all duration-200">
+                    <a href="{{ route('admin.help-and-support') }}" class="sidebar-link group transition-all duration-200">
                         <img src="{{ asset('build/assets/icons/helpIcon.png') }}" alt="Help" class="icons shrink-0">
                         <span class="sidebar-text max-sm:hidden whitespace-nowrap transition-opacity duration-200">Help & Support</span>
                     </a>

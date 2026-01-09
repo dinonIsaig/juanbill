@@ -116,6 +116,8 @@ Route::prefix('admin')->group(function () {
 
         Route::delete('/association', [AdminAssociationController::class, 'destroy'])->name('admin.association.destroy');
 
+        Route::get('/help-and-support', function () {return view('admin.help-and-support'); })->name('admin.help-and-support');
+
 
     });
 });
