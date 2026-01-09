@@ -30,7 +30,7 @@
 
                                 <div>
                                     <label class="block text-sm font-bold text-gray-700 mb-1">Date Paid (Optional)</label>
-                                    <input type="date" name="date_paid" class="admin-input">
+                                    <input type="date" id="addDatePaidInput" name="date_paid" class="admin-input disabled:bg-gray-200 disabled:cursor-not-allowed disabled:text-gray-500">
                                 </div>
 
                                 <div>
@@ -39,7 +39,7 @@
                                 </div>
                                 <div>
                                     <label class="block text-sm font-bold text-gray-700 mb-1">Status</label>
-                                    <select name="status" required class="admin-input">
+                                    <select name="status" id="addStatusSelect" required class="admin-input">
                                         <option value="Unpaid" selected>Unpaid</option>
                                         <option value="Paid">Paid</option>
                                         <option value="Overdue">Overdue</option>
@@ -58,3 +58,7 @@
         </div>
     </div>
 </div>
+
+@push('scripts')
+    @vite('resources/js/modal-checkers.js')
+@endpush

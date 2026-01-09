@@ -60,12 +60,18 @@ class AdminAssociationController extends Controller
         $request->validate([
             'due_date'       => 'required|date',
             'date_paid'      => 'nullable|date',
+            'unit_id'       => 'required|integer',
             'amount'        => 'required|numeric',
-            'unit_id'          => 'required|integer|exists:users,unit_id',
             'status'        => 'required|string',
         ]);
 
         $user = User::where('unit_id', $request->unit_id)->first();
+        
+        if (!$user) {
+            return redirect()->back()
+                ->withInput() 
+                ->with('error', 'The specified Unit ID does not exist in our records.');
+        }
 
         $data = $request->except('unit_id');
         $data['user_id'] = $user->id;
@@ -94,6 +100,10 @@ class AdminAssociationController extends Controller
 
         if (!$bill) {
             return redirect()->back()->with('error', 'Transaction not found.');
+        }
+        
+        if ($request->status !== 'Paid') {
+        $data['date_paid'] = null;
         }
 
         $bill->update([
