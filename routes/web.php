@@ -71,6 +71,8 @@ Route::prefix('admin')->group(function () {
 
     Route::post('/sign-up', [AdminSignupController::class, 'store'])->name('admin.store');
 
+    Route::post('/admin/check-id', [AdminSignupController::class, 'checkAdminId'])->name('admin.check-id');
+
     Route::get('/log-in', [AdminLoginController::class, 'showLogin'])->name('admin.log-in');
 
     Route::post('/login', [AdminLoginController::class, 'login'])->name('admin.login');

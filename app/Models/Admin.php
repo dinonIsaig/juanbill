@@ -9,6 +9,16 @@ class Admin extends Authenticatable
 {
     use Notifiable;
 
+    protected $primaryKey = 'admin_id';
+
+    public $timestamps = false;
+
+    public $incrementing = false;
+    
+     /**
+     * The attributes that are mass assignable.
+     */
+
     protected $fillable = [
         'admin_id',
         'first_name',
@@ -19,6 +29,7 @@ class Admin extends Authenticatable
         'dob',
         'username',
         'password',
+        'is_registered',
     ];
 
     protected $hidden = [
