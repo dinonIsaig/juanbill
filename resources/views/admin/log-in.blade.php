@@ -29,29 +29,39 @@
             </div>
 
             <!-- Welcome Text -->
-            <h2 class="welcome-text text-[#CE1126] mb-2">Welcome Admin!</h2>
+            <h2 class="welcome-text text-admin mb-2">Welcome Admin!</h2>
             <p class="welcome-description">Stay updated with your latest bills</p>
 
             <!-- Log-in Form -->
             <form method="POST" action="{{ route('admin.login') }}" class="space-y-4 flex justify-center flex-col w-full">
                 @csrf
 
+                @if($errors->any())
+                    <div class="text-red-600 mb-2">
+                        <ul>
+                            @foreach($errors->all() as $err)
+                                <li>{{ $err }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
                 <!-- Username -->
                 <div>
                     <label class="input-label">Username</label>
-                    <input class="input-field" type="text" name="username" placeholder="Enter your username" required>
+                    <input class="admin-input-field" type="text" name="username" placeholder="Enter your username" required>
                 </div>
 
                 <!-- Admin ID -->
                 <div>
                     <label class="input-label">Admin ID</label>
-                    <input class="input-field" type="text" name="admin_id" placeholder="Enter your admin id" required>
+                    <input class="admin-input-field" type="text" name="admin_id" placeholder="Enter your admin id" required>
                 </div>
 
                 <!-- Password -->
                 <div>
                     <label class="input-label">Password</label>
-                    <input class="input-field" type="password" name="password" placeholder="Create a password" required>
+                    <input class="admin-input-field" type="password" name="password" placeholder="Create a password" required>
                 </div>
 
                 <!-- Submit Button -->

@@ -147,7 +147,7 @@
     }
 
     .admin-input-field {
-        @apply w-full text-[14px] md:text-[18px] border-4 border-[#F3F4F6] rounded-[11.76px] px-4 py-2 focus:outline-none focus:ring-4 focus:ring-admin
+        @apply w-full text-[14px] md:text-[18px] border-4 border-[#F3F4F6] rounded-[23.50px] px-4 py-2 focus:outline-none focus:ring-4 focus:ring-admin 
         focus:border-transparent;
     }
 

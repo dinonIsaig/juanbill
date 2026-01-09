@@ -29,7 +29,7 @@
             </div>
 
             <!-- Sign Up Form -->
-            <form method="POST" action="{{ route('admin.store') }}" class="w-full">
+            <form id="signup-form" method="POST" action="{{ route('admin.store') }}" class="w-full">
                     @csrf
                     @if ($errors->any())
                         <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4">
@@ -45,7 +45,7 @@
                     <!-- step 1 username, adminID, password -->
                     <div id="step-1" class="transition-opacity duration-300">
                         <div class="text-center mb-10">
-                            <h2 class="text-3xl font-bold text-admin mb-2">Welcome Admin!</h2>
+                            <h2 class="text-5xl font-bold text-admin mb-2">Create an Account</h2>
                             <p class="text-gray-500">Setup your login credentials</p>
                         </div>
 
@@ -58,19 +58,23 @@
 
                             <div>
                                 <label class="input-label">Admin ID</label>
-                                <input class="admin-input-field w-full" type="text" name="admin_id"
+                                <input class="admin-input-field w-full @error('admin_id') border-red-500 @enderror" type="number" name="admin_id" value="{{ old('admin_id') }}"
                                     placeholder="Enter your admin ID" required>
+                                    {{-- Display the validation error--}}
+                                        @error('admin_id')
+                                            <p class="text-admin text-xs mt-1">{{ $message }}</p>
+                                        @enderror
                             </div>
 
                             <div>
                                 <label class="input-label">Password</label>
-                                <input class="admin-input-field w-full" type="password" name="password"
+                                <input id="password" class="admin-input-field w-full" type="password" name="password"
                                     placeholder="Create a strong password" required>
                             </div>
 
                             <div>
                                 <label class="input-label">Confirm Password</label>
-                                <input class="admin-input-field w-full" type="password" name="password_confirmation"
+                                <input id="confirm_password" class="admin-input-field w-full" type="password" name="password_confirmation"
                                     placeholder="Re-enter your password" required>
                             </div>
 
@@ -80,7 +84,8 @@
                             </div>
                         </div>
 
-                        <button type="button" onclick="nextStep('step-1', 'step-2')"
+                        <button type="button" onclick="validateAdminId()" id="next-btn-step-1"
+                            data-url="{{ route('admin.check-id') }}"
                             class="admin-next-btn w-full mt-10 flex justify-center items-center gap-2">
                             Next
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
@@ -161,5 +166,6 @@
 @endsection
 
 @push('scripts')
-    @vite('resources/js/toggle-password.js')
+    @vite(['resources/js/toggle-password.js', 'resources/js/admin-signup.js'])
+    
 @endpush
