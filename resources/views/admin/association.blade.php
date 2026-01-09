@@ -2,6 +2,8 @@
 
 @section('title', 'Association')
 
+@section('content')
+
 @if (session('success'))
     <div id="alert-success" class="absolute top-10 right-200 z-[100] tracking-wide flex items-center p-4 px-10 mb-4 text-green-800 rounded-lg bg-green-50 border border-green-300 shadow-lg transition-opacity duration-500" role="alert">
         <div class="ms-3 text-sm font-medium">
@@ -18,17 +20,14 @@
     </div>
 @endif
 
-@section('content')
 <div class="flex h-screen bg-neutral-light">
 
-    <aside class="sticky top-0 self-start">
-        @include('components.admin-sidebar')
-    </aside>
+    @include('components.admin-sidebar')
 
     <div class="flex-1 overflow-auto">
         @include('components.admin-topbar')
 
-        <div class="p-8 mb-70 px-18 max-md:px-8 3xl:mb-120">
+        <div class="p-8 px-18 max-md:px-8 3xl:mb-120 mb-70 ">
 
             <div class="mb-2">
                 <h1 class="text-4xl font-bold text-overdue-text">Association</h1>
@@ -111,6 +110,7 @@
 
     </div>
 </div>
+<x-admin-sign-out-modal id="adminSignOutModal" />
 <x-admin-filter-modal id="adminfilterModal" :availableYears="$availableYears"/>
 <x-add-modal id="addModal" type="association"/>
 <x-edit-modal id="editModal"  type="association"/>
@@ -129,6 +129,7 @@
 
 
 @push('scripts')
+    @vite('resources/js/notification-flash.js')
     @vite('resources/js/admin-filter.js')
 @endpush
 

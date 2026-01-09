@@ -7,12 +7,12 @@
             <img id="logoFull"
                     src="{{ asset('build/assets/images/adminPage/wordLogowhite.png') }}"
                     alt="JuanBill Logo"
-                    class="Icons object-contain block">
+                    class="w-auto h-12 object-contain block">
 
             <img id="logoIcon"
                     src="{{ asset('build/assets/images/adminPage/logo.png') }}"
                     alt="JuanBill Icon"
-                    class="w-auto h-10 Icons hidden">
+                    class="w-auto h-10 icons hidden">
         </div>
     </div>
 
