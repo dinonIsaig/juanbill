@@ -15,7 +15,7 @@ return new class extends Migration
             $table->unsignedBigInteger('unit_id')->primary();
 
             // Unit Details
-            $table->string('unit_area', 50)->nullable();
+            $table->string('unit_area', 50);
             $table->integer('bldg_no');
             $table->integer('floor_no');
             $table->integer('unit_no');

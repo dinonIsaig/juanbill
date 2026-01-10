@@ -70,7 +70,7 @@
             <h3 class="sidebar-header h3-admin transition-all duration-200 whitespace-nowrap">Tools</h3>
             <ul class="space-y-3">
                 <li>
-                    <a href="#" class="sidebar-link group transition-all duration-200">
+                    <a href="{{ route('admin.settings') }}" class="sidebar-link group transition-all duration-200">
                         <img src="{{ asset('build/assets/icons/settingsIcon.png') }}" alt="Settings" class="icons shrink-0">
                         <span class="sidebar-text max-sm:hidden whitespace-nowrap transition-opacity duration-200">Settings</span>
                     </a>
