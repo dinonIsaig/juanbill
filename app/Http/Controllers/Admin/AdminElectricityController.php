@@ -84,7 +84,7 @@ class AdminElectricityController extends Controller
 
         if (!$user) {
             return redirect()->back()
-                ->withInput() 
+                ->withInput()
                 ->with('error', 'The specified Unit ID does not exist in our records.');
         }
 
@@ -127,7 +127,10 @@ class AdminElectricityController extends Controller
         $data['date_paid'] = null;
         }
 
-        $bill->update($request->only(['status', 'date_paid']));
+        $bill->update([
+                'date_paid' => $request->date_paid,
+                'status'    => $request->status,
+            ]);
 
         return redirect()->route('admin.electricity')->with('success', 'Transaction updated');
     }
