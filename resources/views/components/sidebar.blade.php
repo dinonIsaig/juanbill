@@ -19,7 +19,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="icons-container">
+                    <a href="{{ route('user.info') }}" class="icons-container">
                         <img src="{{ asset('build/assets/icons/infoIcon.png') }}" alt="Logo" class="icons">
                         <span class="max-sm:hidden">Info</span>
                     </a>

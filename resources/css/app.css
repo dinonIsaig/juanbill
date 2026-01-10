@@ -74,17 +74,15 @@
         @apply flex items-center gap-2 px-4 py-2 text-primary border border-primary font-medium cursor-pointer rounded-lg hover:bg-blue-50 transition-colors;
     }
 
-<<<<<<< Updated upstream
     .payment-btn{
         @apply   bg-primary text-white px-6 py-1.5 rounded-lg font-medium cursor-pointer hover:shadow-md transition hover:bg-white hover:text-primary hover:ring-1;
-=======
+    }
     .pagination-btn {
         @apply px-4 py-2 text-sm font-medium border rounded-lg bg-white text-primary hover:bg-primary hover:text-white hover:ring-1;
     }
 
     .transaction-counter {
         @apply font-medium text-gray-500;
->>>>>>> Stashed changes
     }
 
     .table-headers {

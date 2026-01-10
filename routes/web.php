@@ -26,6 +26,10 @@ Route::prefix('user')->group(function () {
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('user.dashboard')->middleware('auth');
 
+    route::get('info', function () {
+        return view('user.info');
+    })->name('user.info');
+
     route::get('/electricity', [BillController::Class,'index'])->name('user.electricity')->middleware('auth');
 
     route::get('water', function () {
@@ -68,6 +72,10 @@ Route::prefix('admin')->group(function () {
     Route::get('dashboard', function () {
         return view('admin.dashboard');
     })->name('admin.dashboard');
+
+    Route::get('info', function () {
+        return view('admin.info');
+    })->name('admin.info');
 
     Route::get('electricity', function () {
         return view('admin.electricity');
