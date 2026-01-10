@@ -57,9 +57,7 @@ class BillSeeder extends Seeder
                     'reading_start' => $billing_date,
                     'reading_end' => $billing_date->copy()->endOfMonth(),
                     'date_paid' => $paid_date,
-                    'payment_method' => $pay_method,
-                    'created_at' => $billing_date,
-                    'updated_at' => $billing_date,
+                    'payment_method' => $pay_method
                 ];
 
                 // --- 2. ELECTRICITY BILL ---
@@ -79,9 +77,7 @@ class BillSeeder extends Seeder
                     'reading_start' => $billing_date,
                     'reading_end' => $billing_date->copy()->endOfMonth(),
                     'date_paid' => $paid_date,
-                    'payment_method' => $pay_method,
-                    'created_at' => $billing_date,
-                    'updated_at' => $billing_date,
+                    'payment_method' => $pay_method
                 ];
 
                 // --- 3. RENT BILL ---
@@ -96,9 +92,7 @@ class BillSeeder extends Seeder
                     'reading_start' => null,
                     'reading_end' => null,
                     'date_paid' => $paid_date,
-                    'payment_method' => $pay_method,
-                    'created_at' => $billing_date,
-                    'updated_at' => $billing_date,
+                    'payment_method' => $pay_method
                 ];
 
                 // --- 4. ASSOCIATION DUES (Added) ---
@@ -113,9 +107,7 @@ class BillSeeder extends Seeder
                     'reading_start' => null,
                     'reading_end' => null,
                     'date_paid' => $paid_date,
-                    'payment_method' => $pay_method,
-                    'created_at' => $billing_date,
-                    'updated_at' => $billing_date,
+                    'payment_method' => $pay_method
                 ];
             }
         }

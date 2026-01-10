@@ -28,8 +28,6 @@ return new class extends Migration
         $table->date('date_paid')->nullable();
 
         $table->enum('payment_method', ['Cash', 'Online Payment'])->nullable();
-
-        $table->timestamps();
     });
 }
 

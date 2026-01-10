@@ -8,7 +8,7 @@
         @include('components.sidebar')
 
         <div class="flex-1 overflow-auto">
-            @include('components.topbar')
+            @include('components.topbar', ['color' => 'text-primary'])
 
             <div class="p-8 px-18 max-md:px-8">
 
@@ -69,7 +69,7 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                                   </svg>
                               </button>
-                              
+
                               <div id="answer-{{ $index }}" class="hidden px-6 pb-6 text-neutral-700 bg-white">
                                 <p class="text-base leading-relaxed">{{ $faq['answer'] }}</p>
                               </div>

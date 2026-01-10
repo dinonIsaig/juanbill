@@ -7,7 +7,7 @@
     <div class="flex-1 max-w-2/3">
         <div class="relative">
             <img src="{{ asset('build/assets/icons/searchIcon.png') }}" alt="Logo" class="icons absolute left-2.5 top-2.5 w-5 h-5">
-            <input type="text" placeholder="Search transactions, bills..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg w-full text-sm">
+            <input type="text" placeholder="" class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg w-full text-sm" disabled         >
         </div>
     </div>
 
@@ -30,7 +30,7 @@
 
         <!-- Profile -->
         <div class="flex items-center gap-2">
-            <div class="w-10 h-10 bg-secondary rounded-full flex items-center justify-center text-primary font-bold">
+            <div class="w-10 h-10 bg-secondary rounded-full flex items-center justify-center {{ $color }} font-bold">
                 {{$user->first_name[0]}}{{ $user->last_name[0] }}
             </div>
         </div>
