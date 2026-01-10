@@ -2,18 +2,18 @@
 
 @php
     // 1. Extract values from the passed $bill object
-    $transactionID = $bill->id ?? 'TXN-000';
-    
+    $transactionID = $bill->bill_id ?? 'TXN-000';
+
     if ($bill->type === 'Electricity') {
         $consumption = $bill->consumption . ' kWh';
     } else {
         $consumption = $bill->consumption . ' cu. m';
     }
-    
+
     // Formatting Dates
     $dueDate = $bill->due_date ? \Carbon\Carbon::parse($bill->due_date)->format('Y-m-d') : '--';
     $datePaid = $bill->date_paid ? \Carbon\Carbon::parse($bill->date_paid)->format('Y-m-d') : '--';
-    
+
     $amount = '₱' . number_format($bill->amount, 2);
     $unitNumber = $bill->unit ?? '--';
 
@@ -24,15 +24,15 @@
     // 3210 format
     $building = substr($unitNumber, 0, 1);
     $floor = substr($unitNumber, 1, 1);
-    
+
     // Date parts for year/month filtering
     $year = $bill->due_date ? \Carbon\Carbon::parse($bill->due_date)->format('Y') : '';
     $month = $bill->due_date ? \Carbon\Carbon::parse($bill->due_date)->format('m') : '';
 
 @endphp
 
-<tr class="hover:bg-gray-100 transaction-row" 
-    data-year="{{ $year }}" 
+<tr class="hover:bg-gray-100 transaction-row"
+    data-year="{{ $year }}"
     data-month="{{ $month }}"
     data-building="{{ $building }}"
     data-floor="{{ $floor }}"

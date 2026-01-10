@@ -12,7 +12,7 @@ class BillSeeder extends Seeder
     public function run(): void
     {
         // 1. Get all User IDs
-        $user_ids = DB::table('users')->pluck('id');
+        $user_ids = DB::table('users')->pluck('user_id');
 
         // 2. Define Rates
         $water_rate = 35.00;   // Per cubic meter
@@ -47,7 +47,7 @@ class BillSeeder extends Seeder
                 $water_meter += $water_usage;
 
                 $bills[] = [
-                    'id' => Str::uuid()->toString(),
+                    'bill_id' => Str::uuid()->toString(),
                     'user_id' => $user_id,
                     'type' => 'Water',
                     'status' => $status,
@@ -67,7 +67,7 @@ class BillSeeder extends Seeder
                 $elec_meter += $elec_usage;
 
                 $bills[] = [
-                    'id' => Str::uuid()->toString(),
+                    'bill_id' => Str::uuid()->toString(),
                     'user_id' => $user_id,
                     'type' => 'Electricity',
                     'status' => $status,
@@ -82,7 +82,7 @@ class BillSeeder extends Seeder
 
                 // --- 3. RENT BILL ---
                 $bills[] = [
-                    'id' => Str::uuid()->toString(),
+                    'bill_id' => Str::uuid()->toString(),
                     'user_id' => $user_id,
                     'type' => 'Rent',
                     'status' => $status,
@@ -97,7 +97,7 @@ class BillSeeder extends Seeder
 
                 // --- 4. ASSOCIATION DUES (Added) ---
                 $bills[] = [
-                    'id' => Str::uuid()->toString(),
+                    'bill_id' => Str::uuid()->toString(),
                     'user_id' => $user_id,
                     'type' => 'Association Dues',
                     'status' => $status,

@@ -2,7 +2,7 @@
 
 @php
     // 1. Extract values from the passed $bill object
-    $transactionID = $bill->id;
+    $transactionID = $bill->bill_id;
 
     if ($bill->type === 'Electricity') {
         $consumption = $bill->consumption . ' kWh';
@@ -24,7 +24,7 @@
     $paymentModalId = 'paymentModal-' . $transactionID;
 @endphp
 
-<tr class="hover:bg-gray-100 transaction-row" data-year="{{ $year }} " 
+<tr class="hover:bg-gray-100 transaction-row" data-year="{{ $year }} "
     data-month="{{ $month }}"
     data-status="{{ $status }}">
 

@@ -11,7 +11,7 @@ class Bill extends Model
     use HasFactory, HasUuids;
 
     // 1. Explicitly tell Laravel we are using UUIDs
-    protected $primaryKey = 'id';
+    protected $primaryKey = 'bill_id';
     protected $keyType = 'string';
     public $incrementing = false;
     public $timestamps = false;

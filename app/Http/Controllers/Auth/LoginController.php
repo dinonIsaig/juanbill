@@ -25,7 +25,7 @@ class LoginController extends Controller
             'password' => 'required|string',
         ]);
 
-        $unit = Unit::where('id', $data['unit_number'])->first();
+        $unit = Unit::where('unit_id', $data['unit_number'])->first();
 
         if (! $unit) {
             throw ValidationException::withMessages(['unit_number' => 'Unit number not found.']);
@@ -33,7 +33,7 @@ class LoginController extends Controller
 
         $user = User::where('username', $data['username'])->first();
 
-        if (! $user || $user->unit_id != $unit->id || ! Hash::check($data['password'], $user->password)) {
+        if (! $user || $user->unit_id != $unit->unit_id || ! Hash::check($data['password'], $user->password)) {
             throw ValidationException::withMessages(['username' => 'These credentials do not match our records.']);
         }
 

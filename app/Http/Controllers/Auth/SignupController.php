@@ -47,7 +47,7 @@ class SignupController extends Controller
 
         try {
             // Find the Unit ID
-            $unit = Unit::where('id', $request->unit_number)->lockForUpdate()->first();
+            $unit = Unit::where('unit_no', $request->unit_number)->lockForUpdate()->first();
 
             if (! $unit) {
                 throw ValidationException::withMessages([
@@ -57,7 +57,7 @@ class SignupController extends Controller
 
             // Create the User
             $user = User::create([
-                'unit_id'    => $unit->id,
+                'unit_id'    => $unit->unit_id,
                 'first_name' => $request->first_name,
                 'middle_name'=> $request->middle_name,
                 'last_name'  => $request->last_name,

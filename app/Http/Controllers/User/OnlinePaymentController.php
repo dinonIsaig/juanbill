@@ -9,11 +9,11 @@ use Illuminate\Support\Facades\Auth;
 
 class OnlinePaymentController extends Controller
 {
-    public function pay(Request $request, $id)
+    public function pay(Request $request, $bill_id)
     {
 
         $bill = Bill::where('user_id', Auth::id())
-                    ->where('id', $id)
+                    ->where('bill_id', $bill_id)
                     ->firstOrFail();
 
         // Update
@@ -25,11 +25,11 @@ class OnlinePaymentController extends Controller
         return redirect()->back()->with('success', 'Payment successful!');
     }
 
-    public function cash(Request $request, $id)
+    public function cash(Request $request, $bill_id)
     {
 
         $bill = Bill::where('user_id', Auth::id())
-                    ->where('id', $id)
+                    ->where('bill_id', $bill_id)
                     ->firstOrFail();
 
         // Update

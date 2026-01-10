@@ -2,7 +2,7 @@
 
 @php
     // 1. Extract values from the passed $bill object
-    $transactionID = $bill->id;
+    $transactionID = $bill->bill_id;
 
     if ($bill->type === 'Electricity') {
         $consumption = $bill->consumption . ' kWh';

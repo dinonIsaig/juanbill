@@ -12,9 +12,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('bills', function (Blueprint $table) {
-        $table->uuid('id')->primary();
+        $table->uuid('bill_id')->primary();
 
-        $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+        $table->foreignId('user_id')->constrained(table: 'users', column: 'user_id')->onDelete('cascade');
 
         $table->enum('type', ['Water', 'Electricity', 'Association Dues', 'Rent']);
         $table->enum('status', ['Paid', 'Unpaid', 'Overdue', 'Pending'])->default('Unpaid');

@@ -17,24 +17,21 @@ class TestPayment extends Seeder
      */
     public function run(): void
     {
-        $user = User::where('username', 'Overdue')->first();
-
-        if (!$user) {
-            $userData = [
+        $user = User::firstOrCreate(
+            ['username' => 'Overdue'],
+            [
                 'unit_id' => 3305,
                 'first_name' => 'Palautang',
                 'middle_name' => null,
                 'last_name' => 'Utang',
                 'email' => 'testforpayment@example.com',
                 'contact_no' => '09171231222',
-                'username' => 'Overdue',
                 'password' => Hash::make('Password123'),
                 'dob' => '2004-10-04'
-            ];
-            $userId = DB::table('users')->insertGetId($userData);
-        } else {
-            $userId = $user->id;
-        }
+            ]
+        );
+
+        $userId = $user->user_id;
 
         // 2. Define Rates
         $water_rate = 35.00;
@@ -70,7 +67,7 @@ class TestPayment extends Seeder
             $water_amount = $water_usage * $water_rate;
 
             $bills[] = [
-                'id' => Str::uuid()->toString(),
+                'bill_id' => Str::uuid()->toString(),
                 'user_id' => $userId,
                 'type' => 'Water',
                 'status' => $status,
@@ -89,7 +86,7 @@ class TestPayment extends Seeder
             $elec_amount = $elec_usage * $elec_rate;
 
             $bills[] = [
-                'id' => Str::uuid()->toString(),
+                'bill_id' => Str::uuid()->toString(),
                 'user_id' => $userId,
                 'type' => 'Electricity',
                 'status' => $status,
@@ -105,7 +102,7 @@ class TestPayment extends Seeder
 
             // --- 3. RENT BILL ---
             $bills[] = [
-                'id' => Str::uuid()->toString(),
+                'bill_id' => Str::uuid()->toString(),
                 'user_id' => $userId,
                 'type' => 'Rent',
                 'status' => $status,
@@ -120,7 +117,7 @@ class TestPayment extends Seeder
 
             // --- 4. ASSOCIATION DUES ---
             $bills[] = [
-                'id' => Str::uuid()->toString(),
+                'bill_id' => Str::uuid()->toString(),
                 'user_id' => $userId,
                 'type' => 'Association Dues',
                 'status' => $status,

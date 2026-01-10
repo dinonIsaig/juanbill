@@ -36,7 +36,7 @@ class AdminElectricityController extends Controller
         }
 
         if ($request->filled('TransactionID')) {
-            $query->where('id', $request->input('TransactionID'));
+            $query->where('bill_id', $request->input('TransactionID'));
         }
 
         $bills = $query->with('user')
@@ -90,7 +90,7 @@ class AdminElectricityController extends Controller
 
         // Background Calculations
         Bill::create([
-            'user_id'       => $user->id,
+            'user_id'       => $user->user_id,
             'type'          => 'Electricity',
             'amount'        => $request->amount,
             'due_date'      => $request->due_date,
@@ -112,12 +112,12 @@ class AdminElectricityController extends Controller
     public function update(Request $request)
     {
         $request->validate([
-            'TransactionID' => 'required|exists:bills,id',
+            'TransactionID' => 'required|exists:bills,bill_id',
             'status'        => 'required|string',
             'date_paid'     => 'nullable|date',
         ]);
 
-        $bill = Bill::findOrFail($request->TransactionID);
+            $bill = Bill::where('bill_id', $request->TransactionID)->firstOrFail();
 
         if (!$bill) {
             return redirect()->back()->with('error', 'Transaction not found.');
@@ -138,14 +138,10 @@ class AdminElectricityController extends Controller
     public function destroy(Request $request)
     {
     $request->validate([
-        'TransactionID' => 'required|string'
+        'TransactionID' => 'required|exists:bills,bill_id'
     ]);
 
-    $bill = Bill::where('id', $request->TransactionID)->first();
-
-    if (!$bill) {
-        return redirect()->back()->with('error', 'Transaction ID not found.');
-    }
+        $bill = Bill::where('bill_id', $request->TransactionID)->firstOrFail();
 
     $bill->delete();
 

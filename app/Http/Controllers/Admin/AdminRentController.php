@@ -31,7 +31,7 @@ class AdminRentController extends Controller
         }
 
         if ($request->filled('TransactionID')) {
-            $query->where('id', $request->input('TransactionID'));
+            $query->where('bill_id', $request->input('TransactionID'));
         }
 
         $bills = $query->with('user')->orderBy('due_date', 'desc')->paginate(10)->withQueryString(); // withQueryString to filter during pagination
@@ -73,7 +73,7 @@ class AdminRentController extends Controller
         }
 
         $data = $request->except('unit_id');
-        $data['user_id'] = $user->id;
+        $data['user_id'] = $user->user_id;
         $data['type'] = 'Rent';
 
         Bill::create($data);
@@ -90,16 +90,12 @@ class AdminRentController extends Controller
     public function update(Request $request): RedirectResponse
     {
         $request->validate([
-                    'TransactionID' => 'required|string',
+                    'TransactionID' => 'required|exists:bills,bill_id',
                     'date_paid'      => 'nullable|date',
                     'status'        => 'required|string',
                 ]);
 
-        $bill = Bill::where('id', $request->TransactionID)->first();
-
-        if (!$bill) {
-            return redirect()->back()->with('error', 'Transaction not found.');
-        }
+            $bill = Bill::where('bill_id', $request->TransactionID)->firstOrFail();
 
         if ($request->status !== 'Paid') {
         $data['date_paid'] = null;
@@ -117,14 +113,10 @@ class AdminRentController extends Controller
     public function destroy(Request $request)
     {
     $request->validate([
-        'TransactionID' => 'required|string'
+        'TransactionID' => 'required|exists:bills,bill_id'
     ]);
 
-    $bill = Bill::where('id', $request->TransactionID)->first();
-
-    if (!$bill) {
-        return redirect()->back()->with('error', 'Transaction ID not found.');
-    }
+        $bill = Bill::where('bill_id', $request->TransactionID)->firstOrFail();
 
     $bill->delete();
 

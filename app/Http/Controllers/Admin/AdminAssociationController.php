@@ -32,7 +32,7 @@ class AdminAssociationController extends Controller
         }
 
         if ($request->filled('TransactionID')) {
-            $query->where('id', $request->input('TransactionID'));
+            $query->where('bill_id', $request->input('TransactionID'));
         }
 
         $bills = $query->with('user')->orderBy('due_date', 'desc')->paginate(10)->withQueryString(); // withQueryString to filter during pagination
@@ -66,15 +66,15 @@ class AdminAssociationController extends Controller
         ]);
 
         $user = User::where('unit_id', $request->unit_id)->first();
-        
+
         if (!$user) {
             return redirect()->back()
-                ->withInput() 
+                ->withInput()
                 ->with('error', 'The specified Unit ID does not exist in our records.');
         }
 
         $data = $request->except('unit_id');
-        $data['user_id'] = $user->id;
+        $data['user_id'] = $user->user_id;
         $data['type'] = 'Association Dues';
 
         Bill::create($data);
@@ -91,17 +91,13 @@ class AdminAssociationController extends Controller
     public function update(Request $request): RedirectResponse
     {
         $request->validate([
-                    'TransactionID' => 'required|string',
+                    'TransactionID' => 'required|exists:bills,bill_id',
                     'date_paid'      => 'nullable|date',
                     'status'        => 'required|string',
                 ]);
 
-        $bill = Bill::where('id', $request->TransactionID)->first();
+            $bill = Bill::where('bill_id', $request->TransactionID)->firstOrFail();
 
-        if (!$bill) {
-            return redirect()->back()->with('error', 'Transaction not found.');
-        }
-        
         if ($request->status !== 'Paid') {
         $data['date_paid'] = null;
         }
@@ -118,14 +114,10 @@ class AdminAssociationController extends Controller
     public function destroy(Request $request)
     {
     $request->validate([
-        'TransactionID' => 'required|string'
+        'TransactionID' => 'required|exists:bills,bill_id'
     ]);
 
-    $bill = Bill::where('id', $request->TransactionID)->first();
-
-    if (!$bill) {
-        return redirect()->back()->with('error', 'Transaction ID not found.');
-    }
+        $bill = Bill::where('bill_id', $request->TransactionID)->firstOrFail();
 
     $bill->delete();
 

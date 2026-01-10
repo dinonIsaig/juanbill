@@ -21,7 +21,7 @@ class UnitSeeder extends Seeder
                     $custom_id = intval($bldg . $floor . sprintf('%02d', $unit));
 
                     $units[] = [
-                        'id' => $custom_id,
+                        'unit_id' => $custom_id,
                         'unit_area' => '45sqm',
                         'bldg_no' => $bldg,
                         'floor_no' => $floor,

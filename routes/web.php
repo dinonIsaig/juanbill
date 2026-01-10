@@ -47,8 +47,8 @@ Route::prefix('user')->group(function () {
 
     Route::get('/association', [AssociationController::Class,'index'])->name('user.association')->middleware('auth');
 
-    Route::post('/Online/pay/{id}', [OnlinePaymentController::class, 'pay'])->name('pay');
-    Route::post('/Online/cash/{id}', [OnlinePaymentController::class, 'cash'])->name('cash');
+    Route::post('/Online/pay/{bill_id}', [OnlinePaymentController::class, 'pay'])->name('pay');
+    Route::post('/Online/cash/{bill_id}', [OnlinePaymentController::class, 'cash'])->name('cash');
 
     Route::get('help', function () { return view('user.help-and-support'); })->name('user.help')->middleware('auth');
 

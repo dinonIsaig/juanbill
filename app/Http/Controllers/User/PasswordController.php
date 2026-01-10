@@ -34,7 +34,7 @@ class PasswordController extends Controller
 
             return redirect()->back()->with('success', 'Password updated successfully.');
         } catch (\Exception $e) {
-            Log::error("Password update failed for user {$user->id}: {$e->getMessage()}");
+            Log::error("Password update failed for user {$user->user_id}: {$e->getMessage()}");
             return redirect()->back()->with('error', 'Failed to update password. Please try again.');
         }
     }
