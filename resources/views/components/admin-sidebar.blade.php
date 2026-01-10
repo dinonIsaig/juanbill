@@ -28,7 +28,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="sidebar-link group transition-all duration-200">
+                    <a href="{{ route('admin.info') }}" class="sidebar-link group transition-all duration-200">
                         <img src="{{ asset('build/assets/icons/infoIcon.png') }}" alt="Info" class="icons shrink-0">
                         <span class="sidebar-text max-sm:hidden whitespace-nowrap transition-opacity duration-200">Info</span>
                     </a>

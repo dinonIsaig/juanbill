@@ -71,13 +71,9 @@ Route::prefix('admin')->group(function () {
 
     Route::post('/admin/check-id', [AdminSignupController::class, 'checkAdminId'])->name('admin.check-id');
 
-    Route::get('info', function () {
-        return view('admin.info');
-    })->name('admin.info');
+    Route::get('info', function () { return view('admin.info'); })->name('admin.info');
 
-    Route::get('electricity', function () {
-        return view('admin.electricity');
-    })->name('admin.electricity');
+    Route::get('electricity', function () { return view('admin.electricity'); })->name('admin.electricity');
 
     Route::get('/log-in', [AdminLoginController::class, 'showLogin'])->name('admin.log-in');
 
