@@ -30,7 +30,7 @@
 
             <!-- Sign Up Form -->
             <form id="signup-form" method="POST" action="{{ route('admin.store') }}" class="w-full">
-                    @csrf
+                            
                     @if ($errors->any())
                         <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4">
                             <strong class="font-bold">Whoops! Something went wrong.</strong>
@@ -41,7 +41,7 @@
                             </ul>
                         </div>
                     @endif
-                    
+
                     <!-- step 1 username, adminID, password -->
                     <div id="step-1" class="transition-opacity duration-300">
                         <div class="text-center mb-10">
@@ -167,5 +167,5 @@
 
 @push('scripts')
     @vite(['resources/js/toggle-password.js', 'resources/js/admin-signup.js'])
-    
+
 @endpush

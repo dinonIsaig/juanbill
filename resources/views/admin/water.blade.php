@@ -25,7 +25,7 @@
     @include('components.admin-sidebar')
 
     <div class="flex-1 overflow-auto">
-        @include('components.admin-topbar')
+        @include('components.topbar', ['color' => 'text-admin'])
 
         <!-- Header -->
          <div class="p-8 px-18 max-md:px-8 3xl:mb-120 mb-70 ">
@@ -130,7 +130,7 @@
         @include('components.admin-page-footer')
     </div>
 </div>
-<x-admin-sign-out-modal id="adminSignOutModal" />
+
 <x-admin-filter-modal id="adminfilterModal" :availableYears="$availableYears"/>
 <x-add-modal id="addModal" type="water"/>
 <x-edit-modal id="editModal" type="water"/>

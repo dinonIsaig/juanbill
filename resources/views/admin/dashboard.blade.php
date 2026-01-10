@@ -8,7 +8,7 @@
     @include('components.admin-sidebar')
 
     <div class="flex-1 overflow-auto">
-        @include('components.admin-topbar')
+        @include('components.topbar', ['color' => 'text-admin'])
 
         <!-- Header -->
          <div class="p-8 mb-70 max-md:mb-0 3xl:mb-120">
@@ -54,6 +54,7 @@
                 id="adminDashboardChart"
                 yearParam="year"
                 title="Monthly Billing Summary"
+                color="text-admin"
             />
         </div>
 

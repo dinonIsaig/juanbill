@@ -7,7 +7,7 @@
         @include('components.sidebar')
 
         <div class="flex-1 overflow-auto">
-            @include('components.topbar')
+            @include('components.topbar', ['color' => 'text-primary'])
 
             <div class="p-8 mb-70 max-md:mb-0 3xl:mb-120">
                 <div class="mb-8">
@@ -26,6 +26,7 @@
                             route="user.dashboard"
                             yearParam="year"
                             title="Monthly Billing Summary"
+                            color="text-primary"
                         />
                     </div>
 
