@@ -8,7 +8,7 @@
         @include('components.sidebar')
 
         <div class="flex-1 overflow-auto">
-            @include('components.topbar', ['color' => 'text-primary'])
+            @include('components.topbar', ['color' => 'text-primary'], ['id' => 'user.topbar'])
 
             <div class="p-8 px-18 max-md:px-8 mb-70 max-md:mb-0 3xl:mb-120">
 

@@ -10,7 +10,7 @@
     </aside>
 
     <div class="flex-1 flex flex-col w-full min-w-0">
-        @include('components.topbar', ['color' => 'text-admin'])
+        @include('components.topbar', ['color' => 'text-admin'], ['id' => 'admin.topbar'])
 
         <div class="flex-1 flex flex-col items-center p-6 lg:p-10 space-y-8">
 

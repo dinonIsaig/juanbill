@@ -8,7 +8,7 @@
     @include('components.admin-sidebar')
 
     <div class="flex-1 overflow-auto">
-        @include('components.topbar', ['color' => 'text-admin'])
+        @include('components.topbar', ['color' => 'text-admin'], ['id' => 'admin.topbar'])
 
         <!-- Header -->
          <div class="p-8 mb-70 max-md:mb-0 3xl:mb-120">
