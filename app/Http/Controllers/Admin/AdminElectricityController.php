@@ -75,12 +75,18 @@ class AdminElectricityController extends Controller
             'due_date' => 'required|date',
             'date_paid' => 'nullable|date',
             'amount'   => 'required|numeric',
-            'unit_id'  => 'required|integer|exists:users,unit_id',
+            'unit_id'  => 'required|integer',
             'status'   => 'required|string',
         ]);
 
         $user = User::where('unit_id', $request->unit_id)->first();
         $date = Carbon::parse($request->due_date);
+
+        if (!$user) {
+            return redirect()->back()
+                ->withInput() 
+                ->with('error', 'The specified Unit ID does not exist in our records.');
+        }
 
         // Background Calculations
         Bill::create([
@@ -112,6 +118,15 @@ class AdminElectricityController extends Controller
         ]);
 
         $bill = Bill::findOrFail($request->TransactionID);
+
+        if (!$bill) {
+            return redirect()->back()->with('error', 'Transaction not found.');
+        }
+
+        if ($request->status !== 'Paid') {
+        $data['date_paid'] = null;
+        }
+
         $bill->update($request->only(['status', 'date_paid']));
 
         return redirect()->route('admin.electricity')->with('success', 'Transaction updated');
