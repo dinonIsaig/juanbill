@@ -52,7 +52,7 @@ Route::prefix('user')->group(function () {
 
     Route::get('help', function () { return view('user.help-and-support'); })->name('user.help')->middleware('auth');
 
-    Route::get('settings', function () { return view('user.settings'); })->name('user.settings')->middleware('auth');
+    Route::get('settings', action: function () { return view('user.settings'); })->name('user.settings')->middleware('auth');
 
     Route::get('/rent', [RentController::Class,'index'])->name('user.rent')->middleware('auth');
 
@@ -120,6 +120,11 @@ Route::prefix('admin')->group(function () {
 
         Route::get('/help-and-support', function () {return view('admin.help-and-support'); })->name('admin.help-and-support');
 
+        Route::get('settings', action: function () { return view('admin.settings'); })->name('admin.settings')->middleware('auth');
+
+        Route::patch('/settings/profile', [ProfileController::class, 'update'])->name('admin.settings.updateProfile')->middleware('auth');
+
+        Route::patch('/settings/password', [PasswordController::class, 'update'])->name('admin.settings.updatePassword')->middleware('auth');
 
     });
 });
