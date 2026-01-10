@@ -1,14 +1,19 @@
 window.addEventListener('DOMContentLoaded', function () {
+    const successAlert = document.getElementById('alert-success');
+    const errorAlert = document.getElementById('alert-error');
 
-    setTimeout(function () {
-        document.getElementById('temp-success-message').style.display = 'none';
-        document.getElementById('default-sentence').classList.remove('hidden');
+    const hideAlert = (alertElement) => {
+        if (alertElement) {
+            setTimeout(() => {
+                alertElement.style.transition = 'opacity 0.5s ease';
+                alertElement.style.opacity = '0';
+                setTimeout(() => {
+                    alertElement.remove();
+                }, 500); // Wait for fade out to complete
+            }, 5000); // 5 seconds timeout
+        }
+    };
 
-        document.querySelectorAll('.success-alert').forEach(function (el) {
-            el.style.transition = 'opacity 0.5s ease';
-            el.style.opacity = '0';
-            setTimeout(function () { el.remove(); }, 500);
-        });
-    }, 10000);
-
+    hideAlert(successAlert);
+    hideAlert(errorAlert);
 });

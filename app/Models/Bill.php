@@ -42,6 +42,6 @@ class Bill extends Model
     // Relationship: A Bill belongs to a User
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id', 'user_id');
     }
 }
