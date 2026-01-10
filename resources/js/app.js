@@ -1,11 +1,14 @@
 import './bootstrap';
 import { Chart, registerables } from 'chart.js';
-import './filter.js';
+import Alpine from 'alpinejs';
 import './multi-step-form.js';
 import './notification-flash.js';
-import './toggle-password.js'
-
+import './toggle-password.js';
 
 Chart.register(...registerables);
 
 window.Chart = Chart;
+
+window.Alpine = Alpine;
+
+Alpine.start();

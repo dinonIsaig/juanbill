@@ -2,6 +2,22 @@
 
 @section('title', 'Settings')
 
+@if (session('success'))
+    <div id="alert-success" class="absolute top-10 right-200 z-[100] tracking-wide flex items-center p-4 px-10 mb-4 text-green-800 rounded-lg bg-green-50 border border-green-300 shadow-lg transition-opacity duration-500" role="alert">
+        <div class="ms-3 text-sm font-medium">
+            {{ session('success') }}
+        </div>
+    </div>
+@endif
+
+@if (session('error'))
+    <div id="alert-error" class="absolute top-10 right-200 z-[100] flex items-center p-4 mb-4 text-red-800 rounded-lg bg-red-50 border border-red-300 shadow-lg" role="alert">
+        <div class="ms-3 text-sm font-medium">
+            {{ session('error') }}
+        </div>
+    </div>
+@endif
+
 @section('content')
     <div class="flex h-screen bg-neutral-light">
 
@@ -10,27 +26,8 @@
         <div class="flex-1 overflow-auto">
             @include('components.topbar')
 
-            <div class="p-8 px-18 max-md:px-8">
+            <div class="p-8 px-18 max-md:px-8 mb-70 max-md:mb-0 3xl:mb-120">
 
-                <div class="mb-8">
-                    @if (session('error'))
-                        <div class="mb-4 rounded-md bg-red-50 p-3 max-w-xl error-alert"
-                            data-open-modal-id="editInformationModal">
-                            <p class="text-sm font-medium text-red-800">{{ session('error') }}</p>
-                        </div>
-                    @endif
-                    @if (session('success'))
-                        <div class="mb-4 rounded-md bg-green-50 p-3 max-w-xl success-alert"
-                            data-open-modal-id="editInformationModal">
-                            <p class="text-sm font-medium text-green-800">{{ session('success') }}</p>
-                        </div>
-                    @endif
-                    <div class="flex gap-2">
-                        <img src="{{ asset('build\assets\icons\settingBlue.svg') }}" alt="Icon">
-                        <h1 class="text-4xl font-bold text-primary mb-2">Settings</h1>
-                    </div>
-                    <p class="text-neutral-gray inline-block">Manage your account and billing information</p>
-                </div>
 
                 <div class="gap-8 mb-8 grid max-md:grid-cols-1">
 
@@ -92,7 +89,7 @@
                 </div>
 
                 @include('components.change-password')
-                
+
             </div>
 
             @include('components.page-footer')

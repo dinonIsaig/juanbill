@@ -12,6 +12,25 @@
     </style>
 @endpush
 
+@if ($errors->any())
+    <div x-data="{ show: true }"
+        x-show="show"
+        x-init="setTimeout(() => show = false, 5000)"
+        x-transition.duration.500ms
+        class="absolute top-10 right-200 z-[100] flex items-center p-4 mb-4 text-red-800 rounded-lg bg-red-50 border border-red-300 shadow-lg"
+        role="alert">
+
+        <div class="ms-3 text-sm font-medium">
+            <strong class="font-bold">Whoops!</strong>
+            <ul class="mt-1 list-disc list-inside">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    </div>
+@endif
+
 @section('content')
     <div class="min-h-screen bg-white flex">
         <div class="lg:w-300 bg-blue-900 banner-bg">
@@ -29,16 +48,7 @@
 
                 <form method="POST" action="{{ route('user.store') }}" class="w-full">
                     @csrf
-                    @if ($errors->any())
-                        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4">
-                            <strong class="font-bold">Whoops! Something went wrong.</strong>
-                            <ul class="mt-2 list-disc list-inside text-sm">
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
+
                     <div id="step-1" class="transition-opacity duration-300">
                         <div class="text-center mb-10">
                             <h2 class="text-5xl font-bold text-primary mb-2">Create an Account</h2>
@@ -115,13 +125,13 @@
 
                             <div>
                                 <label class="input-label">Password</label>
-                                <input class="input-field w-full" type="password" name="password"
+                                <input class="input-field w-full" type="password" id="password" name="password"
                                     placeholder="Create a strong password" required>
                             </div>
 
                             <div>
                                 <label class="input-label">Confirm Password</label>
-                                <input class="input-field w-full" type="password" name="password_confirmation"
+                                <input class="input-field w-full" type="password" id="confirm_password" name="password_confirmation"
                                     placeholder="Re-enter your password" required>
                             </div>
 

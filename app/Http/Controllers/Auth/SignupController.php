@@ -24,9 +24,12 @@ class SignupController extends Controller
     /**
      * Handle the registration request.
      */
-    public function store(Request $request)
+        public function store(Request $request)
     {
         $request->validate([
+
+
+
             'first_name' => 'required|string|max:50',
             'middle_name' => 'nullable|string|max:50',
             'last_name' => 'required|string|max:50',
@@ -71,6 +74,7 @@ class SignupController extends Controller
             return redirect()->route('login')->with('success', 'Account created! Please login.');
 
         } catch (\Exception $e) {
+
             DB::rollBack();
 
             if ($e instanceof ValidationException) {

@@ -11,6 +11,21 @@
 </style>
 @endpush
 
+@if (session('success'))
+    <div id="alert-success" class="absolute top-10 right-200 z-[100] tracking-wide flex items-center p-4 px-10 mb-4 text-green-800 rounded-lg bg-green-50 border border-green-300 shadow-lg transition-opacity duration-500" role="alert">
+        <div class="ms-3 text-sm font-medium">
+            {{ session('success') }}
+        </div>
+    </div>
+@endif
+
+@if (session('error'))
+    <div id="alert-error" class="absolute top-10 right-200 z-[100] flex items-center p-4 mb-4 text-red-800 rounded-lg bg-red-50 border border-red-300 shadow-lg" role="alert">
+        <div class="ms-3 text-sm font-medium">
+            {{ session('error') }}
+        </div>
+    </div>
+@endif
 
 @section('content')
 <div class="min-h-screen bg-white flex">
@@ -75,3 +90,7 @@
 </div>
 
 @endsection
+
+@push('scripts')
+    @vite('resources/js/notification-flash.js')
+@endpush

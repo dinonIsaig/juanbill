@@ -1,4 +1,4 @@
-<div class="footer pb-8 max-sm:pb-4">
+<div class="footer pb-4 max-sm:pb-2">
     <div class="w-full flex justify-evenly text-[14px] max-sm:text-[12px] max-sm:flex-col max-sm:items-center max-sm:gap-2">
         <img class="w-32 h-auto inline max-sm:w-1/5 max-sm:h-1/5" src="{{ asset('build/assets/images/userPage/wordLogo.png') }}" alt="Logo">
         <span>About Us</span>

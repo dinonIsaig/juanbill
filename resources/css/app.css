@@ -26,6 +26,8 @@
     --color-overdue: #FFE2E2;
     --color-overdue-border: #FFC9C9;
     --color-overdue-text: #CE1126;
+    --color-admin: #CE1126;
+    --color-admin-dark: #680913;
 }
 
 @layer base {
@@ -34,7 +36,7 @@
     }
 
     h3 {
-        @apply text-xs font-bold text-neutral-gray uppercase tracking-wider mb-4;
+        @apply text-xs font-bold text-neutral-gray capitalize tracking-wider ;
     }
     .h3-admin{
         @apply text-xs font-bold text-neutral-400 uppercase tracking-wider mb-4;
@@ -48,6 +50,11 @@
         hover:shadow-xl  transition-all cursor-pointer;
     }
 
+    .admin-normal-btn {
+        @apply w-full bg-admin text-white text-center p-2 rounded-lg hover:bg-admin-dark
+        hover:shadow-xl  transition-all cursor-pointer;
+    }
+
     .user-btn {
         @apply bg-linear-to-t from-primary to-primary-dark hover:bg-linear-to-t text-neutral-light px-6 py-3 rounded-[11.76px] font-semibold cursor-pointer
         hover:shadow-xl transition-all duration-300;
@@ -58,8 +65,16 @@
         hover:shadow-xl transition-all duration-300;
     }
 
+    .admin-add-btn{
+        @apply flex items-center cursor-pointer px-6 py-1.5 rounded-lg bg-[#CE1126] hover:shadow-md text-white transition hover:bg-white hover:text-[#CE1126] hover:ring-1;
+    }
+
     .next-btn {
         @apply bg-primary hover:bg-primary-dark text-white px-4 py-2 rounded-lg font-medium cursor-pointer hover:shadow-md transition;
+    }
+
+    .admin-next-btn {
+        @apply bg-admin hover:bg-admin-dark text-white px-4 py-2 rounded-lg font-medium cursor-pointer hover:shadow-md transition;
     }
 
     .back-btn {
@@ -71,14 +86,27 @@
     }
 
     .filter-btn {
-        @apply flex items-center gap-2 px-4 py-2 text-primary border border-primary font-medium cursor-pointer rounded-lg hover:bg-blue-50 transition-colors;
+        @apply flex items-center gap-2 px-3 py-1.5 border border-primary text-primary rounded-md hover:bg-primary hover:text-white transition-all duration-200 text-xs font-semibold h-fit leading-none;
+    }
+
+    .admin-filter-btn{
+        @apply flex items-center gap-2 px-3 py-1.5 border border-admin text-admin rounded-md hover:bg-admin hover:text-white transition-all duration-200 text-xs font-semibold h-fit leading-none;
     }
 
     .payment-btn{
         @apply   bg-primary text-white px-6 py-1.5 rounded-lg font-medium cursor-pointer hover:shadow-md transition hover:bg-white hover:text-primary hover:ring-1;
     }
+    
     .pagination-btn {
-        @apply px-4 py-2 text-sm font-medium border rounded-lg bg-white text-primary hover:bg-primary hover:text-white hover:ring-1;
+        @apply  bg-white text-primary px-6 py-1.5 rounded-lg font-medium cursor-pointer border border-primary hover:shadow-md transition hover:bg-primary hover:text-white hover:ring-1
+    }
+
+    .admin-pagination-btn {
+        @apply  bg-white text-admin px-6 py-1.5 rounded-lg font-medium cursor-pointer border border-admin hover:shadow-md transition hover:bg-admin hover:text-white hover:ring-1
+    }
+    
+    .cancel-btn{
+        @apply block w-full appearance-none rounded-md text-[#364153] py-2 sm:text-sm hover:bg-[#F3F4F6] transition-all;
     }
 
     .transaction-counter {
@@ -86,11 +114,11 @@
     }
 
     .table-headers {
-        @apply bg-gray-100 text-sm font-bold text-gray-700 text-center py-5 max-sm:text-[10px] py-0;
+        @apply px-6 py-3 text-center font-bold text-black tracking-wider max-sm:text-[10px];
     }
 
     .table-rows {
-        @apply px-6 py-4 border-b border-gray-300 text-sm text-gray-900 text-center max-sm:text-[10px];
+        @apply px-6 py-4 whitespace-nowrap text-sm text-center max-sm:text-[10px];
     }
 
     .paid {
@@ -111,6 +139,15 @@
 
     .input-field {
         @apply w-full text-[14px] md:text-[18px] border-4 border-[#F3F4F6] rounded-[23.50px] px-4 py-2 focus:outline-none focus:ring-4 focus:ring-primary
+        focus:border-transparent;
+    }
+
+    .admin-input{
+        @apply block w-full rounded-md border focus:border-admin focus:outline-none ring-admin border-gray-200 bg-gray-50 py-2.5 px-3 text-gray-500 sm:text-sm transition;
+    }
+
+    .admin-input-field {
+        @apply w-full text-[14px] md:text-[18px] border-4 border-[#F3F4F6] rounded-[23.50px] px-4 py-2 focus:outline-none focus:ring-4 focus:ring-admin 
         focus:border-transparent;
     }
 
@@ -150,12 +187,15 @@
         @apply w-4 h-4 md:w-5 md:h-5;
     }
 
-    .icons-container {
-        @apply flex items-center gap-3 px-4 py-2 rounded-lg hover:bg-primary-dark transition;
+    .sidebar-link {
+        @apply flex items-center gap-3 px-4 py-2 rounded-lg transition;
     }
 
-    .iconsRed-container {
-    @apply flex items-center gap-3 px-4 py-2 rounded-lg transition hover:bg-gradient-to-b hover:from-[#CE1126] hover:to-[#721014] hover:text-white;
+    .user-sidebar .sidebar-link:hover {
+        @apply bg-gradient-to-b from-primary to-primary-dark text-white;
     }
 
+    .admin-sidebar .sidebar-link:hover {
+        @apply bg-gradient-to-b from-[#CE1126] to-[#721014] text-white;
+    }
 }

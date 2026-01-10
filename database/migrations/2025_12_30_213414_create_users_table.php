@@ -26,7 +26,6 @@ return new class extends Migration
         $table->string('contact_no', 15)->unique();
         $table->date('dob');
         
-        $table->timestamps();
     });
     }
 

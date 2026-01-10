@@ -3,53 +3,76 @@
 @section('title', 'Dashboard')
 
 @section('content')
-<div class="flex h-screen bg-neutral-light">
-    @include('components.sidebar')
+    <div class="flex h-screen bg-neutral-light">
+        @include('components.sidebar')
 
-    <div class="flex-1 overflow-auto">
-        @include('components.topbar')
+        <div class="flex-1 overflow-auto">
+            @include('components.topbar')
 
-        <div class="p-8">
-            <div class="mb-8">
-                <h1 class="text-4xl font-bold text-primary mb-2">Billing & Payments Overview</h1>
-                <p class="text-neutral-gray">Manage your billing and track payments</p>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <div class="lg:col-span-2 bg-white rounded-lg shadow-md p-8">
-                    <h2 class="text-xl font-medium text-primary mb-6">Monthly Billing Breakdown</h2>
-
-                    <div class="h-80 relative">
-                        <canvas id="myChart"></canvas>
-                    </div>
+            <div class="p-8 mb-70 max-md:mb-0 3xl:mb-120">
+                <div class="mb-8">
+                    <h1 class="text-4xl font-bold text-primary mb-2">Billing & Payments Overview</h1>
+                    <p class="text-neutral-gray">Manage your billing and track payments</p>
                 </div>
 
-                <div class="bg-white rounded-lg shadow-md p-8">
-                    <div class="flex items-center justify-between mb-6">
-                        <h2 class="text-xl font-medium text-primary">Upcoming Bills</h2>
-                        <button class="text-neutral-gray hover:text-primary">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z"/>
-                            </svg>
-                        </button>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+                    <div class="lg:col-span-2">
+                        <x-dual-chart
+                            :elecData="$elecData"
+                            :waterData="$waterData"
+                            :year="$currentYear"
+                            id="dashboardChart"
+                            route="user.dashboard"
+                            yearParam="year"
+                            title="Monthly Billing Summary"
+                        />
                     </div>
 
-                    <div class="space-y-4">
-                        @include('components.bill-card', ['icon' => '', 'title' => 'Electricity', 'amount' => '₱1,720', 'dueDate' => 'Due Jul 10', 'color' => 'bg-secondary'])
-                        @include('components.bill-card', ['icon' => '', 'title' => 'Water', 'amount' => '₱1,720', 'dueDate' => 'Due Jul 10', 'color' => 'bg-info'])
-                        @include('components.bill-card', ['icon' => '', 'title' => 'Associate Fees', 'amount' => '₱1,720', 'dueDate' => 'Due Jul 10', 'color' => 'bg-success'])
-                        @include('components.bill-card', ['icon' => '', 'title' => 'Rent', 'amount' => '₱1,720', 'dueDate' => 'Due Jul 10', 'color' => 'bg-primary'])
-                        @include('components.bill-card', ['icon' => '', 'title' => 'Water', 'amount' => '₱1,720', 'dueDate' => 'Due Jul 10', 'color' => 'bg-info'])
+                    <div class="bg-white rounded-lg shadow-md p-8">
+                        <div class="flex items-center justify-between mb-6">
+                            <h2 class="text-xl font-medium text-primary">Upcoming Bills</h2>
+
+                        </div>
+
+                        <div class="space-y-4 overflow-y-scroll max-h-87 pr-2">
+                            @forelse($upcomingBills as $bill)
+                                @include('components.bill-card', [
+                                    'icon' => match($bill->type) {
+                                        'Electricity'      => 'build/assets/icons/electricityIcon.png',
+                                        'Water'            => 'build/assets/icons/waterIcon.png',
+                                        'Rent'             => 'build/assets/icons/rentIcon.png',
+                                        'Association Dues' => 'build/assets/icons/associationIcon.png',
+                                        default            => 'build/assets/icons/defaultIcon.png',
+                                    },
+                                    'title'   => ucfirst($bill->type),
+                                    'amount'  => '₱' . number_format($bill->amount, 2),
+                                    'dueDate' => $bill->due_date->format('M d'),
+                                    'status'  => $bill->status,
+                                    'color'   => match (strtolower($bill->type)) {
+                                        'electricity'      => 'bg-[#F59E0B]',
+                                        'water'            => 'bg-[#06B6D4]',
+                                        'rent'             => 'bg-[#0038A8]',
+                                        'association dues' => 'bg-[#10B981]',
+                                        default            => 'bg-gray-100',
+                                    },
+                                ])
+                            @empty
+                                <p class="text-gray-500 text-center py-4">No upcoming bills.</p>
+                            @endforelse
+                        </div>
                     </div>
 
-                    <button class="btn-primary w-full mt-8 text-lg font-semibold">Pay All Bills</button>
                 </div>
+
+                <div class="mt-8">
+                    <x-recent-transactions :bills="$recentPaidBills" />
+                </div>
+
             </div>
+            @include('components.page-footer')
         </div>
-        @include('components.page-footer')
     </div>
-</div>
-
 @endsection
 
 @push('scripts')

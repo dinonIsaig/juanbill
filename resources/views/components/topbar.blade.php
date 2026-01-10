@@ -1,3 +1,7 @@
+@php
+    $user = Auth::user()
+@endphp
+
 <div class="bg-white border-b border-gray-200 p-6 flex items-center justify-between">
     <!-- Search Bar -->
     <div class="flex-1 max-w-2/3">
@@ -10,8 +14,8 @@
     <!-- Right Side -->
     <div class="flex items-center gap-6 ml-8">
         <!-- Date -->
-        <div class="flex items-center gap-2 text-neutral-gray text-sm">
-            <img src="{{ asset('build/assets/icons/associationIcon.png')}}" alt="logo" class="icons w-5 h-5">
+        <div class="bg-[#F3F4F6] p-2 px-4 rounded-2xl flex items-center gap-2 text-neutral-gray text-sm">
+                <img src="{{ asset('build/assets/icons/calendarIcon.png')}}" alt="logo" class="icons w-5 h-5">
             <span>{{ now()->timezone('Asia/Manila')->format('D, F j, Y') }}</span>
         </div>
 
@@ -27,7 +31,7 @@
         <!-- Profile -->
         <div class="flex items-center gap-2">
             <div class="w-10 h-10 bg-secondary rounded-full flex items-center justify-center text-primary font-bold">
-                JC
+                {{$user->first_name[0]}}{{ $user->last_name[0] }}
             </div>
         </div>
     </div>

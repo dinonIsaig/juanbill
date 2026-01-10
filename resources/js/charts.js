@@ -60,3 +60,77 @@ window.initAnnualChart = function(canvasId, label, data, unit = '', color = '#1e
         }
     });
 };
+
+window.initDualChart = function(canvasId, year, elecData, waterData) {
+    const ctx = document.getElementById(canvasId);
+    if (!ctx) return;
+
+    // Destroy existing chart to prevent overlay glitches
+    const existingChart = Chart.getChart(ctx);
+    if (existingChart) {
+        existingChart.destroy();
+    }
+
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            datasets: [
+                {
+                    label: 'Electricity (kWh)',
+                    data: elecData,
+                    borderColor: '#fbbf24',
+                    backgroundColor: '#fbbf24',
+                    yAxisID: 'y',
+                    tension: 0.3,
+                    pointRadius: 4,
+                },
+                {
+                    label: 'Water (m³)',
+                    data: waterData,
+                    borderColor: '#3b82f6',
+                    backgroundColor: '#3b82f6',
+                    yAxisID: 'y1',
+                    tension: 0.3,
+                    pointRadius: 4,
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            interaction: {
+                mode: 'index',
+                intersect: false,
+            },
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                },
+                title: {
+                    display: true,
+                    text: 'Consumption Overview (' + year + ')'
+                }
+            },
+            scales: {
+                y: {
+                    type: 'linear',
+                    display: true,
+                    position: 'left',
+                    title: { display: true, text: 'Electricity (kWh)' },
+                    grid: { borderDash: [2, 4], color: '#f3f4f6' }
+                },
+                y1: {
+                    type: 'linear',
+                    display: true,
+                    position: 'right',
+                    title: { display: true, text: 'Water (m³)' },
+                    grid: { drawOnChartArea: false }
+                },
+                x: {
+                    grid: { display: false }
+                }
+            }
+        }
+    });
+};
