@@ -30,7 +30,7 @@
                         @php
                             $faqs = [
                                 [
-                                    'question' => 'Where can I see a breakdown of my utility usage?',
+                                    'question' => "Where can I see the breakdown of users' utility usage?",
                                     'answer'   => 'The Monthly Billing Summary chart provides a visual overview of your consumption trends for all categories throughout the year.'
                                 ],
                                 [
