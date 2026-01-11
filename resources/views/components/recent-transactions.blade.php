@@ -23,7 +23,7 @@
                     <tr class="hover:bg-gray-100 transition-colors text-center">
 
                         <td class="table-rows">
-                            {{ $bill->id }}
+                            {{ $bill->bill_id }}
                         </td>
 
                         <td class="table-rows">
