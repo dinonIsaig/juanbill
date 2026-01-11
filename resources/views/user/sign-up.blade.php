@@ -40,11 +40,13 @@
 
             <div class="max-w-md w-full">
 
-                <div
-                    class="absolute top-8 right-8 max-md:relative max-md:justify-self-center max-md:flex mb-12 max-md:top-0  max-md:right-0">
-                    <img src="{{ asset('build/assets/images/userPage/wordLogo.png') }}" alt="JuanBill Logo"
-                        class="h-12 w-auto">
+                <div class="absolute top-4 right-4 flex items-center gap-2 mb-12">
+                <div class="p-2 rounded-lg">
+                    <a href="{{ route('account-type') }}" class="p-2 rounded-lg hover:opacity-80 transition-opacity ">
+                        <img src="{{ asset('build/assets/images/userPage/wordLogo.png') }}" alt="Logo">
+                    </a>
                 </div>
+            </div>
 
                 <form method="POST" action="{{ route('user.store') }}" class="w-full">
                     @csrf

@@ -24,12 +24,12 @@
             <!-- Logo -->
             <div class="absolute top-4 right-4 flex items-center gap-2 mb-12">
                 <div class="p-2 rounded-lg">
-                <a href="{{ route('account-type') }}" class="p-2 rounded-lg hover:opacity-80 transition-opacity ">
-                    <img src="{{ asset('build/assets/images/adminPage/wordLogo.png') }}" alt="Logo">
-                </a>
+                    <a href="{{ route('account-type') }}" class="p-2 rounded-lg hover:opacity-80 transition-opacity ">
+                        <img src="{{ asset('build/assets/images/userPage/wordLogo.png') }}" alt="Logo">
+                    </a>
                 </div>
             </div>
-
+            
             <!-- Welcome Text -->
             <h2 class="welcome-text text-admin mb-2">Welcome Admin!</h2>
             <p class="welcome-description">Stay updated with your latest bills</p>
