@@ -15,7 +15,7 @@ return new class extends Migration
 
             $table->id('delete_id')->primary();
             $table->uuid('bill_id');
-            $table->text('message');
+            $table->text('message')->nullable();
             $table->dateTime('deletion_date');
 
         });

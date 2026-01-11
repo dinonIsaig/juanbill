@@ -11,20 +11,21 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('log_payment_updates', function (Blueprint $table) {
+        Schema::create('log_payment_creation', function (Blueprint $table) {
 
-            $table->id('update_id')->primary();
+            $table->id('creation_id')->primary();
             $table->uuid('bill_id');
-            $table->integer('amount')->nullable();
             $table->text('message')->nullable();
-            $table->dateTime('update_date');
-
+            $table->dateTime('creation_date');
 
         });
     }
 
+    /**
+     * Reverse the migrations.
+     */
     public function down(): void
     {
-        Schema::dropIfExists('log_payment_updates');
+        //
     }
 };
