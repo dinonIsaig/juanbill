@@ -48,7 +48,7 @@
                     $team = [
                         ['name' => 'Joyrel Baladjay', 'image' => 'joyrel-baladjay.png'],
                         ['name' => 'John Dinon Isaig', 'image' => 'dinon-isaig.png'],
-                        ['name' => 'Gwenyth Lee',         'image' => 'gwen-lee.png'],
+                        ['name' => 'Gwyneth Lee',         'image' => 'gwen-lee.png'],
                         ['name' => 'Avril Saliba',     'image' => 'avril-saliba.png']
                     ];
                 @endphp
