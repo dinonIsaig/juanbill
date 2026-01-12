@@ -45,6 +45,8 @@
             <button class="paid" disabled>Paid</button>
         @elseif ($status === 'Unpaid')
             <button class="pending" disabled>Unpaid</button>
+        @elseif ($status === 'Pending')
+            <button class="pending" disabled>Pending</button>
         @else
             <button class="overdue" disabled>{{ $status }}</button>
         @endif

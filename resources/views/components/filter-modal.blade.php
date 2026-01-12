@@ -61,6 +61,7 @@
                                     <select name="status" class="block w-full appearance-none rounded-md border border-gray-300 bg-gray-50 py-2 px-3 shadow-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary sm:text-sm bg-none">
                                         <option value="all">All Statuses</option>
                                         <option value="Paid" {{ request('status') == 'Paid' ? 'selected' : '' }}>Paid</option>
+                                        <option value="Pending" {{ request('status') == 'Pending' ? 'selected' : '' }}>Pending</option>
                                         <option value="Unpaid" {{ request('status') == 'Unpaid' ? 'selected' : '' }}>Unpaid</option>
                                         <option value="Overdue" {{ request('status') == 'Overdue' ? 'selected' : '' }}>Overdue</option>
                                     </select>

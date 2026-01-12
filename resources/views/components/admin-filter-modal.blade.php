@@ -66,6 +66,7 @@
                                     <select name="status" class="admin-input">
                                         <option value="all">All Statuses</option>
                                         <option value="Paid" {{ request('status') == 'Paid' ? 'selected' : '' }}>Paid</option>
+                                        <option value="Pending" {{ request('status') == 'Pending' ? 'selected' : '' }}>Pending</option>
                                         <option value="Unpaid" {{ request('status') == 'Unpaid' ? 'selected' : '' }}>Unpaid</option>
                                         <option value="Overdue" {{ request('status') == 'Overdue' ? 'selected' : '' }}>Overdue</option>
                                     </select>

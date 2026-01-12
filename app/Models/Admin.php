@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Illuminate\Foundation\Auth\User as Authenticatable; 
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class Admin extends Authenticatable
@@ -14,7 +14,7 @@ class Admin extends Authenticatable
     public $timestamps = false;
 
     public $incrementing = false;
-    
+
      /**
      * The attributes that are mass assignable.
      */
