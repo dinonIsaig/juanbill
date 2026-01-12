@@ -30,7 +30,7 @@
         <div class="p-8 px-18 max-md:px-8 3xl:mb-120 mb-70 ">
 
             <div class="mb-2">
-                <h1 class="text-4xl font-bold text-overdue-text">Rent Fees</h1>
+                <h1 class="text-4xl font-bold text-overdue-text">Rent</h1>
                 <p class="text-neutral-gray inline-block">Manage Rent Fees Transactions</p>
             </div>
 
